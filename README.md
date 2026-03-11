@@ -29,10 +29,19 @@
 
 ## Installation
 
-Copy the skill folders into your Claude Code skills directory:
+### Via Plugin Marketplace (Recommended)
+
+```
+/plugin marketplace add onestudio-co/flow-skills
+/plugin install flow@flow-skills
+```
+
+One install — all 20 skills.
+
+### Manual
 
 ```bash
-cp -r flow-* ~/.claude/skills/
+cp -r plugins/flow/skills/flow-* ~/.claude/skills/
 ```
 
 ## What is FLOW?

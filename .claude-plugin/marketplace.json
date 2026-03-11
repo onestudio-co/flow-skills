@@ -1,0 +1,25 @@
+{
+  "name": "flow-skills",
+  "owner": {
+    "name": "One Studio",
+    "email": "hello@onestudio.co"
+  },
+  "metadata": {
+    "description": "FLOW methodology skills for Claude Code — from intake to kill/merge decisions",
+    "version": "1.0.0",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "flow",
+      "source": "./flow",
+      "description": "Complete FLOW methodology — 20 skills for discovery, outcome, experiments, gates, rituals, and coaching",
+      "version": "1.0.0",
+      "author": {
+        "name": "One Studio"
+      },
+      "keywords": ["flow", "methodology", "product", "discovery", "outcome", "agile"],
+      "category": "methodology"
+    }
+  ]
+}
