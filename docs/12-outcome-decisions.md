@@ -3,6 +3,7 @@
 # Chapter 11: Outcome Decisions & Gates
 
 > *Panel-reviewed: Meeting #5 (2026-03-19), updated Meeting #13 (Judgment Fatigue, Observation Floor)*
+> *Updated: Meeting #14 — Kill Condition Enforcement, Judgment Fatigue Interaction*
 > **Read this**: PMs, Data Analysts, Flow Coaches, Leadership. The most important ritual in FLOW.
 
 ---
@@ -21,6 +22,8 @@ This is not a status update. It's not a demo. It's a **decision meeting** driven
 The kill condition was triggered (or the 30-minute inspection confirmed it should trigger). The work stops. The team archives the learnings, frees capacity, and moves to the next bet.
 
 Killing is not failure. Killing is the methodology WORKING. The team invested a bounded amount of time, measured the result, and made an evidence-based decision to stop before wasting more resources.
+
+**Kill Condition Enforcement (Meeting #14)**: When a kill condition triggers in Outcome mode, the **default is KILL**. This is the strongest enforcement point in all of FLOW — Outcome cycles have consumed real resources (engineering time, infrastructure, user exposure). The 30-minute inspection validates the data, not the team's desire to continue. At Maturity Level L2+ ([Chapter 2](02-mental-model.md)), a triggered kill condition that passes inspection results in immediate termination. The only valid inspection findings that override a kill: measurement instrument was broken, data was corrupted, or the sample was provably unrepresentative. "We're close to the threshold" is not a valid override — close is still triggered.
 
 **What to do after a kill:**
 1. Run the 30-minute kill condition inspection ([Chapter 1](01-why-flow.md)) — confirm the condition is valid
@@ -163,6 +166,8 @@ The archive should be searchable. Before writing a new SPEC-Lite, check: "Has an
 ### Judgment Fatigue
 
 > **Recommended maximum: ~5 major kill/merge decisions per team per week.** Batch decisions where possible. Judgment quality degrades with frequency — the fifth kill decision in a day is measurably worse than the first. If your portfolio has many active cycles reaching decision points simultaneously, stagger their timelines or batch Kill/Merge meetings to avoid decision fatigue.
+
+> **Judgment Fatigue × Kill Enforcement Interaction (Meeting #14)**: When judgment fatigue is high, the temptation to rubber-stamp "Continue" increases — which directly undermines kill condition enforcement. If a team regularly faces 5+ decisions per week, they should (1) tighten kill conditions upfront so decisions are more binary, (2) batch decisions into a single weekly meeting where the team is fresh, and (3) track their kill-to-continue ratio — if it drops below 20% kills over a month, either the conditions are too generous or fatigue is eroding discipline.
 
 ### Observation Floor
 

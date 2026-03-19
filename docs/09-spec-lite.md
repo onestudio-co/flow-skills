@@ -3,6 +3,7 @@
 # Chapter 8: SPEC-Lite
 
 > *Panel-reviewed: Meeting #5, updated Meeting #13 (2026-03-19)*
+> *Updated: Meeting #14 — Confidence Markers on References*
 > **Read this**: PMs, Engineers, stakeholders approving scope. The core Outcome-mode artifact.
 
 ---
@@ -91,6 +92,8 @@ The transition from Discovery to Outcome is a conceptual shift:
 | Success signal (validation) | → | Target metric (outcome) |
 
 The Discovery Brief FEEDS the SPEC-Lite. The validated problem becomes the Problem field. The experiment learnings inform the Scope. The kill condition shifts from "stop learning" to "stop building."
+
+> **Confidence Markers on SPEC References (Meeting #14)**: When the SPEC-Lite's Problem field references Discovery evidence or research, carry the confidence markers forward. A Problem statement grounded in `[verified]` evidence from primary sources is strong. A Problem statement referencing `[VERIFY]`-tagged claims from tertiary sources is weak — and should be flagged at Gate O2. The SPEC inherits the rigor (or weakness) of the research that produced it. See [Chapter 5](06-discovery-brief.md) for the full Research Output Standards.
 
 ---
 

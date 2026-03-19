@@ -3,6 +3,7 @@
 # Chapter 7: Discovery Decisions & Gates
 
 > *Panel-reviewed: Meeting #4 (2026-03-19) — 7 agree, 4 modify-accept*
+> *Updated: Meeting #14 — Kill Condition Enforcement*
 > **Read this**: PMs, Flow Coaches, anyone making Continue/Refine/Pivot/Stop/Escalate decisions.
 
 ---
@@ -52,6 +53,8 @@ The problem is validated but the solution direction isn't. Or: the problem is di
 The kill condition was met. The problem isn't real, isn't big enough, or isn't solvable with our current resources. This is not failure — it's success. You learned something valuable without building something nobody wants.
 
 *Action*: Archive the Discovery Brief and Experiment Log. Document what was learned. Free the team's capacity for new work. Celebrate the kill — it saved real resources.
+
+> **Kill Condition Enforcement Mode (Meeting #14)**: When a kill condition triggers, the **default is KILL**. The 30-minute inspection exists to check whether the data was valid — not to find reasons to continue. The burden of proof is on continuing, not on killing. If the data is valid and the condition was met, the work stops. Period. Teams at Maturity Level L2+ ([Chapter 2](02-mental-model.md)) enforce this strictly: triggered = killed unless the inspection reveals a flaw in the measurement itself (bad data, instrument error, unrepresentative sample). "But we're so close" is not a valid inspection finding.
 
 ### 5. Escalate
 **"Discovery revealed something bigger than our mandate."**

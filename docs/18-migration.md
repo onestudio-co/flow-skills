@@ -3,6 +3,7 @@
 # Chapter 17: Migration to FLOW
 
 > *Panel-reviewed: Meeting #7, updated Meeting #13 (2026-03-19)*
+> *Updated: Meeting #14 — Maturity Model Progression, Evaluation Tone*
 > **Read this**: PMs, Flow Coaches, team leads planning FLOW adoption. Find your starting framework.
 
 ---
@@ -80,6 +81,29 @@ Migration milestones are measured by cycle count and demonstrated understanding,
 ### Gate 4: Full Integration
 **Cycle requirement**: Complete at least 2 cycles using the full FLOW artifact set (Briefs, SPECs, Build Contracts, gates).
 **Understanding test**: Team self-corrects when they slip into old patterns without coaching intervention.
+
+### Maturity Model Progression (Meeting #14)
+
+The four adoption gates map to the FLOW Maturity Model ([Chapter 2](02-mental-model.md)):
+
+| Adoption Gate | Maturity Level | Enforcement |
+|--------------|---------------|-------------|
+| Gate 1 (Classification Fluency) | **L1 — Learning** | Advisory. Gates educate, don't block. |
+| Gate 2 (Kill Discipline) | **L1 → L2 transition** | Kill conditions become enforced. |
+| Gate 3 (Rhythm Awareness) | **L2 — Practicing** | Gates block. Ambient rules warn. Cycle state file active. |
+| Gate 4 (Full Integration) | **L2 → L3 transition** | Full enforcement. Anti-sycophancy on evaluations. |
+| Sustained (5+ cycles post-Gate 4) | **L3 — Fluent** | Structured gate interrogation. Self-correcting team. |
+
+Teams declare their maturity level in the FLOW Configuration ([Chapter 14](14-rituals.md)). The level is self-assessed but should be validated by a Flow Coach or peer team. Claiming L3 while rubber-stamping all kill decisions is a form of Process Theater (Anti-Pattern #1, [Chapter 20](21-anti-patterns.md)).
+
+### Evaluation Tone Calibration (Meeting #14)
+
+As teams progress through maturity levels, the tone of evaluation shifts. This matters for coaches, agents, and anyone facilitating gates:
+
+- **Process guidance** (how to write a better Brief, how to structure a kill condition): **warm tone**. Encouraging, educational, supportive. "Here's how to make this hypothesis more falsifiable."
+- **Decision evaluation** (does this pass the gate? should this be killed?): **cold tone**. Objective, evidence-focused, unflinching. "This kill condition was triggered. The data supports termination."
+
+Mixing these tones is dangerous. Warm tone on decisions leads to sycophancy — "This is a great effort, and the metrics are close, so let's continue." Cold tone on process leads to hostility — "This Brief is poorly written. Rejected." Calibrate deliberately.
 
 > **Speed Adoption Warning**: Going through FLOW motions fast with agentic tools does not mean you have internalized the methodology. A team that runs 5 cycles in a day has not necessarily adopted FLOW — they may have just gone through the motions at speed. Adoption is measured by the quality of decisions made, not the quantity of cycles completed. If your kill decisions are all "continue," your Discovery Briefs are copy-paste, and your retrospectives surface no surprises — you are performing process theater at high speed. Slow down. Reflect on each cycle. Speed without judgment is waste at scale.
 

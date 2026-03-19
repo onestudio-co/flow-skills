@@ -3,6 +3,7 @@
 # Chapter 20: Anti-Patterns Catalog
 
 > *Panel-reviewed: Meeting #8, updated Meeting #13 (2026-03-19)*
+> *Updated: Meeting #14 — Sycophantic Validation, Mode Amnesia*
 > **Read this**: Everyone, especially Flow Coaches. Recognize these patterns in your team and fix them.
 
 ---
@@ -192,6 +193,28 @@ The following anti-patterns are caused specifically by high execution leverage �
 **What to do**: Tempo is self-assessed, never compared across teams. There is no "agentic leaderboard." Each team's FLOW Configuration ([Chapter 14](15-production-readiness.md)) declares its own Tempo based on its context. Management reviews portfolio health (outcomes and signals), not throughput volume.
 
 **Mitigation**: Ban cross-team velocity comparisons. Review teams on outcome quality and decision rigor, not cycle count.
+
+---
+
+## 19. Sycophantic Validation (Meeting #14)
+**What it looks like**: The agent (or coach) agrees with everything the team presents. "Great hypothesis!" "Strong kill condition!" "This Brief looks solid!" Gate checks pass with no pushback. Kill/Merge meetings produce unanimous continues with the agent reinforcing the team's existing beliefs.
+
+**Why it happens**: Agents are trained to be helpful, and helpfulness is often conflated with agreement. Human coaches face social pressure — challenging a PM's Brief feels confrontational. The path of least resistance is validation. Over time, the team learns that gates are rubber stamps, not quality filters.
+
+**What to do**: Implement the anti-sycophancy behavioral rules from [Chapter 19](20-ai-agents.md): challenge don't validate, never soften kill recommendations, ask the three gate questions with evidence ratings. For human coaches: adopt the evaluation tone calibration — warm on process, cold on decisions. Track gate failure rates — if gates never fail, the evaluator isn't doing their job.
+
+**Mitigation**: At L2+, every gate evaluation must include at least one challenge question and one evidence rating below "Strong." If the evaluator can't find a single weakness, they haven't looked hard enough.
+
+---
+
+## 20. Mode Amnesia (Meeting #14)
+**What it looks like**: The team starts a Discovery cycle, runs an experiment, gets excited about early results, and starts building a production feature without passing D3 or writing a SPEC. Or: an agent assists with a Brief in one session, but the next session starts fresh with no knowledge of the active cycle. The FLOW context is lost between skill invocations.
+
+**Why it happens**: Without persistent state, every interaction is a blank slate. The agent doesn't know a cycle is active. The team forgets they're in Discovery and slips into Outcome behavior. The mode boundary — the most important structural decision in FLOW — dissolves.
+
+**What to do**: Use the Cycle State File (`active-cycle.json`) to persist context between sessions. Every FLOW skill invocation reads the state file and orients to the active cycle. If no state file exists but the team is clearly mid-cycle, the first action is to reconstruct state. At L2+, Ambient Rule #8 (Cycle Continuity) flags skipped steps and missing gate passages.
+
+**Mitigation**: The state file is infrastructure, not optional. If a team is using FLOW skills without a state file, they're at L1 (advisory) by definition — regardless of what their Configuration claims.
 
 ---
 

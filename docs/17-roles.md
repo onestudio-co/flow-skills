@@ -3,6 +3,7 @@
 # Chapter 16: Roles & Team Topology
 
 > *Panel-reviewed: Meeting #7, rewritten after Meeting #9, updated Meeting #13 (agentic role shifts) (2026-03-19)*
+> *Updated: Meeting #14 — Domain Expert role*
 > **Read this**: Everyone. Find YOUR function and understand your "From → To" transformation.
 
 ---
@@ -214,6 +215,15 @@ In a FLOW cycle, all functions work **simultaneously**, not sequentially:
 ### Launch Intelligence Partner — Product Marketing
 **In Outcome**: Participates from SPEC-Lite stage. Shapes positioning. Informs kill conditions with market context ("if the market shifted to competitor X's approach, this feature is dead"). Co-owns the rollout narrative in the Build Contract.
 **Key shift**: From "marketing what we built" to "ensuring what we build is marketable."
+
+### Domain Expert — Subject Matter Expert / Domain Validator (Meeting #14)
+**Owns**: Domain-specific validation of experiments, hypotheses, and technical claims
+**In Discovery**: Reviews experiment design at the optional Expert Review Gate (between D2 and D3). Validates: "Is this experiment measuring what you think it's measuring, given the domain's constraints?" Challenges assumptions the team may not have the expertise to question.
+**In Outcome**: Reviews SPEC-Lite scope for domain-specific feasibility. Advises on kill condition thresholds based on domain benchmarks.
+**Key shift**: From "we'll consult an expert if we get stuck" to "domain validation is a structured checkpoint."
+**AI IMPACT**: An agent can serve as a Domain Expert via `/flow-expert` — a blueprint for domain-specific validators that challenge claims with domain knowledge, flag common domain pitfalls, and rate confidence in research findings. Human domain experts remain essential for novel or high-stakes domains.
+
+This role is **optional** — teams declare whether they use Expert Review in their FLOW Configuration ([Chapter 14](14-rituals.md)). It is most valuable for medical, legal, financial, scientific, and regulatory domains where the team's general expertise may miss domain-specific risks.
 
 ### Knowledge Architect — Technical Writer / Knowledge Manager
 **Owns**: Learning Archive maintenance, experiment log curation, institutional memory

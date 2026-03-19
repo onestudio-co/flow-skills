@@ -3,6 +3,7 @@
 # Chapter 5: The Discovery Brief
 
 > *Panel-reviewed: Meeting #4 (2026-03-19) — 7 agree, 4 modify-accept*
+> *Updated: Meeting #14 — Research Output Standards, Anti-Sycophancy*
 > **Read this**: PMs, BAs, Designers — anyone writing or reviewing Discovery Briefs.
 
 ---
@@ -108,6 +109,40 @@ Before the team invests time in an experiment, the Brief passes through Gate D1:
 - [ ] **Spine traces.** The hypothesis connects to an active bet on the Decision Spine.
 
 If any item fails, the Brief goes back for revision. Gate D1 is a quality filter, not a bureaucratic hurdle — a Brief with a vague hypothesis wastes the team's experiment time.
+
+> **Anti-Sycophancy at D1 (Meeting #14)**: When an agent or coach evaluates a Discovery Brief at Gate D1, they must **challenge, not validate**. The evaluator's job is to find weaknesses — vague hypotheses, generous kill conditions, experiments that confirm rather than test. If the Brief passes too easily, the gate isn't working. Evaluation tone at gates should be warm on process guidance ("here's how to improve this hypothesis") but cold on the pass/fail decision ("this kill condition is too generous — it won't trigger even if the hypothesis is wrong"). See [Chapter 19](20-ai-agents.md) for the full anti-sycophancy behavioral rules.
+
+---
+
+## Research Output Standards (Meeting #14)
+
+When a Discovery Brief references research — desk research, competitive analysis, market data, or any claim about the world — the research must meet three standards:
+
+### Confidence Markers
+
+Every factual claim carries a confidence tag:
+
+| Marker | Meaning | When to use |
+|--------|---------|-------------|
+| **[verified]** | Confirmed from a primary or authoritative source | Official statistics, direct quotes, published data |
+| **[likely]** | Supported by multiple secondary sources or strong inference | Industry reports, consistent analyst estimates |
+| **[VERIFY]** | Unconfirmed — requires validation before acting on it | Single-source claims, hearsay, outdated data |
+
+Claims tagged `[VERIFY]` must not be used as the sole basis for a kill condition or success signal. They can inform hypothesis direction but require validation before the team commits resources.
+
+### Research Provenance
+
+Every claim must attribute its source type:
+
+- **Primary source**: Direct data (your own analytics, first-party interviews, official filings)
+- **Secondary source**: Interpreted data (industry reports, news articles, analyst estimates)
+- **Tertiary source**: Aggregated or opinion-based (blog posts, social media, unverified claims)
+
+Primary sources carry the most weight in Discovery decisions. A hypothesis grounded entirely in tertiary sources should be treated with skepticism at Gate D1.
+
+### "What Could Be Wrong?" — Mandatory Self-Critique
+
+Every research section in a Discovery Brief must include a brief "What Could Be Wrong?" paragraph: what assumptions does this research rest on? What biases might be present? What would invalidate these findings? This is not optional — it is a structural requirement. Research without self-critique is advocacy, not investigation.
 
 ---
 

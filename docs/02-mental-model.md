@@ -4,6 +4,7 @@
 
 > *Panel-reviewed: Meeting #2 (2026-03-19) — 9 agree, 2 modify-accept*
 > *Updated: Meeting #13 — Tempo, Invariants/Variables, Cycle Phases*
+> *Updated: Meeting #14 — Maturity Model, Cycle State*
 > **Read this**: Everyone. Core concepts for all of FLOW.
 
 ---
@@ -182,6 +183,22 @@ These adapt to your tempo and team shape:
 | **Migration timeline** | Repetition-based (10–15 cycles to internalize) | Same — repetition-based, not calendar-based |
 
 > **Key insight**: Migration speed is measured in **cycles completed**, not weeks elapsed. Carlos at 1-day tempo internalizes FLOW in 2 weeks (15 cycles). Sara at 3-week tempo takes ~9 months (15 cycles). Same learning curve — different clock speed. See [Chapter 17](18-migration.md).
+
+### Maturity Model (Meeting #14)
+
+FLOW enforcement intensity scales with adoption maturity. Not every team needs — or can handle — full rigor from day one:
+
+| Level | Name | What it means | Enforcement |
+|-------|------|--------------|-------------|
+| **L1** | Learning | Team is new to FLOW. Process is advisory. | Suggestions and nudges. Gates are educational, not blocking. Kill conditions are recommended but not enforced. |
+| **L2** | Practicing | Team has completed 5+ cycles. Process is expected. | Gates block progression if failed. Kill conditions are enforced. Ambient rules fire warnings. |
+| **L3** | Fluent | Team has internalized FLOW. Process is reflexive. | Full enforcement. Structured gate interrogation with evidence ratings. Anti-sycophancy rules active on evaluations. |
+
+Teams self-assess their level and declare it in their FLOW Configuration ([Chapter 14](14-rituals.md)). Progression is based on demonstrated understanding, not calendar time — see [Chapter 17](18-migration.md) for adoption gates that map to L1→L2→L3.
+
+### Cycle State as Infrastructure (Meeting #14)
+
+FLOW cycles persist across tool invocations via an `active-cycle.json` state file in the `.flow/` directory. This file tracks the current cycle's mode, phase, active gate, and history — ensuring that context is never lost between sessions. The state file is the cycle's memory: it knows what gate you passed, what experiment you ran, and what decision is pending. See [Chapter 14](14-rituals.md) for the file format and [Chapter 19](20-ai-agents.md) for how agents use it.
 
 ---
 

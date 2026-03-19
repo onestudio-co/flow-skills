@@ -3,6 +3,7 @@
 # Chapter 13: Rituals & Cadence
 
 > *Panel-reviewed: Meeting #6, updated Meeting #13 (2026-03-19)*
+> *Updated: Meeting #14 — Cycle State File, Maturity Model, Ambient Rule #8*
 > **Read this**: Flow Coaches (mandatory), PMs, team leads. **Skip if**: Solo founder (keep only weekly self-review).
 
 ---
@@ -50,6 +51,38 @@ Rituals tied to the **calendar** — they catch slow-moving issues that cycle ca
 
 ---
 
+## Cycle State File (Meeting #14)
+
+The **Cycle State File** (`active-cycle.json`) lives in `.flow/` and persists cycle context across tool invocations, sessions, and team members. It is the cycle's memory.
+
+```json
+{
+  "cycle_id": "discovery-pr-summaries-2026-03-19",
+  "mode": "discovery",
+  "phase": "experiment",
+  "current_gate": "D2",
+  "gates_passed": ["D1"],
+  "started": "2026-03-19T09:00:00Z",
+  "last_activity": "2026-03-20T14:30:00Z",
+  "paused": false,
+  "pause_reason": null,
+  "pause_started": null,
+  "kill_condition": "If fewer than 5 of 20 enable after 1 week, kill",
+  "spine_trace": "Retention > PR Intelligence > PR Summaries",
+  "history": [
+    {"event": "cycle_started", "timestamp": "2026-03-19T09:00:00Z"},
+    {"event": "gate_passed", "gate": "D1", "timestamp": "2026-03-19T09:15:00Z"},
+    {"event": "experiment_started", "timestamp": "2026-03-19T10:00:00Z"}
+  ]
+}
+```
+
+**Pause/Resume**: A cycle can be paused via the state file (`"paused": true`). Paused cycles retain their WIP slot. After 24 hours of pause, the system flags a reminder: "Cycle [name] has been paused for 24h. Resume or kill?" Cycles paused for more than 72 hours should be reviewed at the next Kill/Merge meeting.
+
+**Ambient Rule #8 — Cycle Continuity (Meeting #14)**: Every FLOW skill invocation checks the cycle state file. If an active cycle exists, the skill orients to it — showing the current phase, last gate passed, and next expected step. If steps were skipped (e.g., jumping to experiment without passing D1), the skill flags it: "Warning: Gate D1 has not been passed for this cycle. Proceeding without gate approval." At Maturity Level L2+, skipped steps are blocked, not just warned.
+
+---
+
 ## FLOW Configuration
 
 Every team should have a one-page configuration document that records how they work. It takes less than 10 minutes to create and serves as the reference for all ritual and process questions.
@@ -59,6 +92,8 @@ Team: [Name]
 Tempo: [Typical cycle duration — e.g., "1-2 days" or "2-week"]
 SPEC Minimum: [Micro-SPEC | Full SPEC-Lite]
 WIP Limits: [Active Discovery: N, Active Outcome: N]
+Maturity Level: [L1 | L2 | L3]
+Expert Review: [Yes | No — for domain-specific experiments]
 Cycle Cadence: [How cycle rituals map — e.g., "All same-day" or "Intake Mon, Review Wed, Kill/Merge Fri"]
 Portfolio Cadence: [e.g., "Weekly WIP check (Mon), Monthly strategy + health (first Friday)"]
 ```

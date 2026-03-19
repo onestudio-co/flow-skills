@@ -3,6 +3,7 @@
 # Chapter 6: Experiments
 
 > *Panel-reviewed: Meeting #4 (2026-03-19) — 7 agree, 4 modify-accept*
+> *Updated: Meeting #14 — Confidence Markers, Provenance, Expert Review Gate*
 > **Read this**: Designers (Experiment Architects), PMs, Engineers. **Skip if**: You're only doing Outcome-mode work right now.
 
 ---
@@ -136,6 +137,20 @@ Every experiment produces a record. The log prevents: re-running experiments tha
 | **What we learned** | Interpretation — what does this mean? |
 | **Decision** | Continue, Refine, Pivot, Stop, or Escalate |
 | **Next action** | What happens next based on the decision |
+
+### Confidence Markers and Provenance on Results (Meeting #14)
+
+Experiment results must carry the same rigor as research claims. When logging results:
+
+- Tag quantitative findings with confidence markers: `[verified]` for instrumented metrics, `[likely]` for estimated or sampled data, `[VERIFY]` for self-reported or anecdotal evidence.
+- Attribute provenance: did the finding come from direct measurement (primary), from user interviews (secondary), or from inference (tertiary)?
+- Include a "What Could Be Wrong?" line in the "What we learned" field: what assumptions does your interpretation rest on? What would make this result misleading?
+
+These standards prevent the team from treating weak evidence as strong evidence at decision time. See [Chapter 5](06-discovery-brief.md) for the full Research Output Standards.
+
+### Expert Review Gate (Meeting #14)
+
+For experiments that touch specialized domains (medical, legal, financial, regulatory, scientific), an optional **Expert Review Gate** can be inserted between D2 and D3. A domain expert — internal or external — reviews the experiment design and results for domain-specific validity. This is not a FLOW gate (it doesn't have a checklist) — it's a quality insertion point. The expert validates: "Is this experiment measuring what you think it's measuring, given the domain's constraints?" Teams declare whether they use Expert Review in their FLOW Configuration. See [Chapter 16](17-roles.md) for the Domain Expert role.
 
 ### Log Anti-Patterns
 

@@ -3,6 +3,7 @@
 # Chapter 19: FLOW in the Agentic Era
 
 > *Panel-reviewed: Meeting #13 (2026-03-19)*
+> *Updated: Meeting #14 — Anti-Sycophancy, Cycle State, Transition Markers, Confidence Markers, Domain Expert Agents, Maturity Model, Research Honesty*
 > **Read this**: Mandatory. Agents are reshaping how teams build. Every FLOW practitioner needs this mental model — whether you use agents today or not.
 
 ---
@@ -162,6 +163,138 @@ A solo developer is building a task management SaaS. They use Claude Code as the
 **Day 8 — Outcome cycle begins.** The developer writes a SPEC-Lite for the full dependency visualization, with a kill condition on D7 return rate. The agent builds it. The cycle continues.
 
 Compare this to the human-speed walkthrough in [Chapter 4](04-first-cycle.md). Same structure. Same gates. Same discipline. The calendar compressed from weeks to days — but the judgment points remained.
+
+---
+
+## 9. The Honesty Layer (Meeting #14)
+
+Sections 1-8 covered how agents build, analyze, and facilitate. This section covers something harder: **how agents evaluate honestly**. When an agent assists with FLOW — checking gates, reviewing Briefs, compiling evidence — there is an inherent risk of sycophancy: the agent agrees with the user, validates weak work, and softens kill recommendations. This undermines every decision structure in FLOW.
+
+### Anti-Sycophancy Rules
+
+When an agent evaluates any FLOW artifact (Brief, SPEC, experiment results, gate checklist), these behavioral rules apply:
+
+1. **Challenge, don't validate.** The agent's job at a gate is to find what's wrong, not confirm what's right. A Brief that "looks good" should still be stress-tested: "What if the kill condition is too generous? What if the hypothesis is unfalsifiable?"
+
+2. **Never soften a kill recommendation.** If the data says kill, the agent says kill. No preamble about how much effort went in. No "but you're close." The agent presents the evidence and the conclusion.
+
+3. **Flag confidence gaps.** When research claims lack provenance or carry `[VERIFY]` markers, the agent escalates this — it does not paper over weak evidence with confident language.
+
+4. **Ask the three gate questions.** Every gate evaluation must include three structured interrogation questions specific to the gate being checked. Example for D1: (1) "Can you describe a realistic scenario where this hypothesis is proven wrong?" (2) "Is there a cheaper way to test this?" (3) "If the kill condition triggers, will you actually stop?" Each question gets an evidence rating: Strong / Adequate / Weak / Missing.
+
+5. **Self-critique on research.** When the agent produces research (desk research, competitive analysis), it must include a "What Could Be Wrong?" section — acknowledging limitations, biases, and gaps in its own output.
+
+### Evaluation Tone Calibration
+
+Agents must calibrate their tone based on what they're evaluating:
+
+| Context | Tone | Example |
+|---------|------|---------|
+| Process guidance | **Warm** | "This hypothesis could be more specific. Try narrowing the user segment to nurses at 50+ bed hospitals." |
+| Gate pass/fail | **Cold** | "Gate D1 fails. The kill condition is not measurable — 'if users don't like it' cannot be instrumented." |
+| Kill recommendation | **Cold** | "Kill condition triggered: 2 of 20 users enabled (threshold was 5). Recommendation: KILL." |
+| Learning capture | **Warm** | "Good learning from this experiment. The key insight about request visibility is worth archiving." |
+
+### Structured Gate Interrogation
+
+At Maturity Level L2+, every gate check includes three required questions. The agent (or coach) asks them, the team answers, and the agent rates the evidence:
+
+```
+Gate D1 Interrogation:
+1. "Describe a realistic outcome that would DISPROVE your hypothesis."
+   → Evidence: [Strong | Adequate | Weak | Missing]
+2. "Have you considered a cheaper experiment? What would it be?"
+   → Evidence: [Strong | Adequate | Weak | Missing]
+3. "If the kill condition triggers next week, what will you do?"
+   → Evidence: [Strong | Adequate | Weak | Missing]
+
+Overall: [PASS | FAIL | CONDITIONAL PASS — requires [specific fix]]
+```
+
+The three questions vary by gate. D3 asks about evidence sufficiency. O2 asks about metric instrumentation. O5 asks about kill condition validity. The agent must tailor questions to the gate being evaluated.
+
+---
+
+## 10. Cycle State and Transition Markers (Meeting #14)
+
+### Cycle State Persistence
+
+Agents maintain the **Cycle State File** (`active-cycle.json`) in `.flow/`. This file is read at the start of every skill invocation and updated at the end. It solves the fundamental problem of agentic workflows: **context loss between invocations**.
+
+Without cycle state, each skill invocation starts fresh — the agent doesn't know what gate was last passed, what experiment is running, or whether a kill condition was already evaluated. With cycle state, every invocation begins with full context.
+
+Agent responsibilities:
+- **Read** the state file at invocation start. Orient to the current phase.
+- **Validate** that the requested action makes sense given the current state. If the user asks to run an experiment but D1 hasn't passed, flag it.
+- **Update** the state file after each action. Record gate passages, experiment starts, decisions.
+- **Flag** anomalies: skipped steps, stale cycles (no activity for 48h+), exceeded pause duration.
+
+### Transition Markers
+
+Every FLOW skill invocation ends with a visual **Transition Marker** — a formatted block that shows:
+
+```
+───────────────────────────────────
+✅ [Action completed]
+📍 Current position: [Mode] → [Phase]
+⏭️ Next step: [What comes next]
+⚠️ [Any warnings — skipped gates, stale data, etc.]
+───────────────────────────────────
+```
+
+Transition markers are not decorative — they are the user-facing representation of the cycle state update. They provide orientation ("where am I?"), direction ("what's next?"), and warnings ("what's wrong?").
+
+---
+
+## 11. Confidence Markers and Research Honesty (Meeting #14)
+
+When agents perform research — desk research during Discovery, competitive analysis, market sizing — they must apply the Research Output Standards from [Chapter 5](06-discovery-brief.md):
+
+1. **Tag every claim** with `[verified]`, `[likely]`, or `[VERIFY]`.
+2. **Attribute provenance**: primary, secondary, or tertiary source.
+3. **Include "What Could Be Wrong?"** for every research output.
+
+Agents are particularly prone to presenting uncertain information with high confidence — this is the most dangerous form of sycophancy in FLOW. A claim presented without a confidence marker is implicitly `[verified]`, which may be false. The standards exist to make the agent's uncertainty visible to the human decision-maker.
+
+### Research Provenance for Agents
+
+| Source type | Agent can provide | Confidence ceiling |
+|-------------|------------------|-------------------|
+| **Primary** | Only if querying live data (APIs, databases) | `[verified]` |
+| **Secondary** | Industry reports, published analyses | `[likely]` |
+| **Tertiary** | Training data, general knowledge, inference | `[VERIFY]` |
+
+An agent's general knowledge (from training data) is **always tertiary** — it cannot be `[verified]` without external confirmation. This is a critical distinction: an agent saying "the market size is $5B" from training data is `[VERIFY]`, not `[verified]`.
+
+---
+
+## 12. Domain Expert Agents (Meeting #14)
+
+The `/flow-expert` skill provides a blueprint for **Domain Expert Agents** — agents configured with domain-specific knowledge that serve the Expert Review Gate ([Chapter 6](07-experiments.md), [Chapter 16](17-roles.md)).
+
+A Domain Expert Agent:
+- Challenges experiment designs with domain-specific knowledge ("In healthcare, self-reported scheduling time is notoriously inaccurate — have you considered time-motion study?")
+- Rates confidence in research claims against domain benchmarks
+- Flags common domain pitfalls the team may not know about
+- Provides domain-specific kill condition calibration ("In fintech, a 3% conversion rate is actually strong — your 5% threshold may be too aggressive")
+
+Domain Expert Agents do not replace human domain experts for novel or high-stakes decisions. They supplement the team's domain awareness for routine validation, freeing human experts for the judgment calls that require experience and intuition.
+
+Teams declare whether they use Domain Expert Agents in their FLOW Configuration ([Chapter 14](14-rituals.md)).
+
+---
+
+## 13. Maturity Model and Agent Behavior (Meeting #14)
+
+Agent enforcement intensity scales with the team's declared Maturity Level ([Chapter 2](02-mental-model.md)):
+
+| Level | Agent behavior |
+|-------|---------------|
+| **L1 — Learning** | Suggests gate checks. Offers to review Briefs. Flags missing kill conditions as recommendations. Does not block progression. |
+| **L2 — Practicing** | Requires gate checks. Blocks progression on failed gates. Enforces kill conditions. Warns on skipped steps. Runs structured interrogation with evidence ratings. |
+| **L3 — Fluent** | Full enforcement. Anti-sycophancy rules fully active. Cold evaluation tone on decisions. Challenges even strong-looking artifacts. Flags process theater patterns. |
+
+The maturity level is read from the FLOW Configuration. If no level is declared, the agent defaults to L1 (advisory mode).
 
 ---
 

@@ -3,11 +3,14 @@
 # Chapter 21: Glossary
 
 > *Panel-reviewed: Meeting #8, updated Meeting #13 (2026-03-19)*
+> *Updated: Meeting #14 — New terms added*
 > **Read this**: When you encounter an unfamiliar FLOW term. Use as reference, not sequential reading.
 
 ---
 
 ## A-Z Terminology Reference
+
+**Anti-Sycophancy** — (Meeting #14) Behavioral rules preventing agents and coaches from validating weak work. At gates, the evaluator's job is to challenge, not confirm. Key rules: never soften kill recommendations, flag confidence gaps, ask structured interrogation questions. Applies at all maturity levels but enforced strictly at L2+. ([Chapter 19](20-ai-agents.md), [Chapter 20](21-anti-patterns.md))
 
 **Admission Control** — The principle that nothing enters active development without a valid spine trace. Work must map to Vision → Strategy → Bet → Cycle. Exception: operational/incident work. ([Chapter 3](03-decision-spine.md))
 
@@ -19,6 +22,8 @@
 
 **Classification** — The act of determining whether incoming work is Discovery (learn first) or Outcome (build now). Part of the intake pipeline. ([Chapter 4](05-intake.md))
 
+**Confidence Markers** — (Meeting #14) Tags applied to factual claims in research and experiment results: `[verified]` (confirmed from primary source), `[likely]` (supported by secondary sources), `[VERIFY]` (unconfirmed, requires validation). Claims tagged `[VERIFY]` must not be the sole basis for kill conditions. ([Chapter 5](06-discovery-brief.md), [Chapter 19](20-ai-agents.md))
+
 **Collapsed Mode** — A mode relationship pattern where Discovery and Outcome happen simultaneously — the act of building IS the experiment. Common for solo founders and tiny teams shipping to small audiences. ([Chapter 2](02-mental-model.md))
 
 **Comprehension Review** — Post-build review ensuring the team understands agent-built code. Not code review (which checks correctness) — comprehension review checks understanding. Strongly recommended for Micro-SPEC experiments, required for Full SPEC features. ([Chapter 19](20-ai-agents.md))
@@ -27,15 +32,23 @@
 
 **Cycle** — The bottom level of the Decision Spine. A bounded unit of work — either a Discovery cycle (learning) or an Outcome cycle (shipping). ([Chapter 3](03-decision-spine.md))
 
+**Cycle State** — (Meeting #14) Persistent state file (`active-cycle.json` in `.flow/`) that tracks the current cycle's mode, phase, gate history, and activity. Ensures context continuity across tool invocations and sessions. Supports pause/resume. Read by Ambient Rule #8 (Cycle Continuity). ([Chapter 2](02-mental-model.md), [Chapter 14](14-rituals.md), [Chapter 19](20-ai-agents.md))
+
 **Cycle Cadence** — Rituals tied to the cycle (intake, review, kill/merge). Scales with Tempo — faster teams run these more frequently. Contrast with Portfolio Cadence, which is calendar-bound. ([Chapter 14](15-production-readiness.md))
 
 **Cycle Phases** — The three explicit phases within every FLOW cycle: Build → Observe → Decide. When agents compress Build toward zero, Cycle Duration ≈ Observe + Decide. ([Chapter 2](02-mental-model.md))
 
 **Decision Spine** — The traceability chain: Vision → Strategy → Bet → Cycle. Every piece of work traces upward. If it can't trace, it shouldn't exist. ([Chapter 3](03-decision-spine.md))
 
+**Domain Expert Agent** — (Meeting #14) An agent configured with domain-specific knowledge that serves the Expert Review Gate. Built via the `/flow-expert` blueprint. Challenges experiment designs, rates research confidence, flags domain pitfalls. Does not replace human experts for novel or high-stakes decisions. ([Chapter 6](07-experiments.md), [Chapter 16](17-roles.md), [Chapter 19](20-ai-agents.md))
+
 **Discovery Brief** — A one-page hypothesis document for Discovery mode. Full version (5 fields): Problem Statement, Hypothesis, Experiment Design, Kill Condition, Success Signal. Minimum version (3 fields): Hypothesis, Kill Condition, Experiment. ([Chapter 5](06-discovery-brief.md))
 
 **Discovery Mode** — One of FLOW's two modes. Used when the primary risk is building the wrong thing. The goal is learning, not shipping. Output is evidence, not code. ([Chapter 2](02-mental-model.md))
+
+**Evaluation Tone** — (Meeting #14) The deliberate calibration of communication style during evaluations. Warm tone for process guidance (coaching, teaching, improving artifacts). Cold tone for decision evaluation (gate pass/fail, kill recommendations). Mixing tones undermines both — warm on decisions leads to sycophancy, cold on process leads to hostility. ([Chapter 17](18-migration.md), [Chapter 19](20-ai-agents.md))
+
+**Expert Review Gate** — (Meeting #14) An optional quality insertion point between D2 and D3 for domain-specific validation. A domain expert reviews experiment design and results for domain-specific validity. Not a formal FLOW gate (no checklist) — a structured consultation. Teams declare usage in their FLOW Configuration. ([Chapter 6](07-experiments.md), [Chapter 16](17-roles.md))
 
 **Escalate** — The fifth Discovery/Outcome decision outcome. Discovery revealed that the problem exceeds the team's mandate, authority, or capability. The work must be re-scoped at a higher organizational level. ([Chapter 7](08-discovery-decisions.md))
 
@@ -65,6 +78,8 @@
 
 **Learning Archive** — Institutional memory. Every completed cycle (Killed or Merged) produces an archive entry: artifacts, decision, surprises, transferable insights. Searchable by future teams. Shared between Discovery ([Chapter 7](08-discovery-decisions.md)) and Outcome ([Chapter 11](12-outcome-decisions.md)). (Chapters [7](08-discovery-decisions.md), [11](12-outcome-decisions.md))
 
+**Maturity Model** — (Meeting #14) Three-level scale of FLOW enforcement intensity: L1 (Learning — advisory), L2 (Practicing — enforced gates and kill conditions), L3 (Fluent — full enforcement with anti-sycophancy and structured interrogation). Teams self-assess and declare in FLOW Configuration. Progression based on demonstrated understanding, not calendar time. ([Chapter 2](02-mental-model.md), [Chapter 17](18-migration.md), [Chapter 19](20-ai-agents.md))
+
 **Merge** — Kill/Merge decision outcome. The evidence says the feature is working. Ship it to production. ([Chapter 11](12-outcome-decisions.md))
 
 **Micro-SPEC** — Minimum viable planning artifact — three fields: Problem, Hypothesis, Kill Condition. For high-tempo teams where build cost is near-zero. Kill condition is mandatory even at this level. ([Chapter 8](09-spec-lite.md))
@@ -89,6 +104,8 @@
 
 **Production Readiness** — The gate between exploration (feature-flagged, limited audience) and production (available to all users). Checklist includes: feature flag removed, monitoring in place, runbook exists, rollback plan tested. ([Chapter 14](15-production-readiness.md))
 
+**Research Provenance** — (Meeting #14) Source type attribution on research claims: primary (direct data), secondary (interpreted data), tertiary (aggregated/opinion). Primary sources carry the most weight in Discovery decisions. Agent training data is always tertiary. ([Chapter 5](06-discovery-brief.md), [Chapter 19](20-ai-agents.md))
+
 **Refine** — One of five Discovery decision outcomes. The direction is right but the hypothesis needs adjustment. Narrow the scope. Revise the Brief. Run a targeted follow-up experiment. ([Chapter 7](08-discovery-decisions.md))
 
 **Routing** — Assigning classified work to a team. Includes spine check (does it trace?), team assignment (who has expertise and capacity?), and priority setting. ([Chapter 4](05-intake.md))
@@ -106,6 +123,8 @@
 **Strategic Mapping Theater** — Anti-pattern. When spine mapping becomes a justification exercise rather than genuine traceability. Work maps to broad strategic pillars instead of specific bets. ([Chapter 20](21-anti-patterns.md))
 
 **Success Signal** — In a Discovery Brief, the specific measurable outcome that indicates the hypothesis is validated (not just "not killed"). Distinct from Kill Condition — the kill condition says when to stop; the success signal says what "good" looks like. ([Chapter 5](06-discovery-brief.md))
+
+**Transition Marker** — (Meeting #14) A visual block displayed at the end of every FLOW skill invocation showing: action completed, current position in the cycle, next step, and any warnings. Backed by the Cycle State File. Provides orientation and continuity across sessions. ([Chapter 4](04-first-cycle.md), [Chapter 19](20-ai-agents.md))
 
 **Target Metric** — In a SPEC-Lite, the single primary metric that determines whether the Outcome cycle succeeded. Must be measurable and instrumented. ([Chapter 8](09-spec-lite.md))
 

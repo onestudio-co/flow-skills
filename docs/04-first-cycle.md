@@ -3,6 +3,7 @@
 # Chapter 4: Your First FLOW Cycle — A Complete Walkthrough
 
 > *Added after Meeting #10 (2026-03-19) — unanimous panel request*
+> *Updated: Meeting #14 — Transition Markers, Cycle State*
 > **Read this**: Everyone — this is your first hands-on FLOW experience.
 
 ```mermaid
@@ -286,6 +287,22 @@ Dependencies: Push notification service (Platform team confirmed availability)
 
 **Total time from intake to merge: 7 weeks.**
 **Discovery: 2 weeks. Mode switch: 1 day. Outcome: 3 weeks. Merge decision: 1 day. Post-merge: ongoing.**
+
+---
+
+## Transition Markers and Cycle State (Meeting #14)
+
+At each step boundary in a FLOW cycle, a **Transition Marker** appears — a visual block showing where you are, what just completed, and what comes next. When using FLOW skills, every skill invocation ends with a marker like:
+
+```
+───────────────────────────────────
+✅ Gate D1 PASSED
+📍 You are here: Discovery → Experiment phase
+⏭️ Next: Run experiment, then Gate D2
+───────────────────────────────────
+```
+
+These markers serve two purposes: (1) orientation — you always know where you are in the cycle, and (2) continuity — the marker is backed by the **Cycle State File** (`active-cycle.json`), which persists your cycle's progress between sessions. If you step away and come back tomorrow, the state file remembers your last gate, your active experiment, and your pending decision. See [Chapter 14](14-rituals.md) for the state file format and [Chapter 19](20-ai-agents.md) for how agents maintain it.
 
 ---
 
