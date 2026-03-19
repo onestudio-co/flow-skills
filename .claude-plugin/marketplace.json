@@ -5,20 +5,20 @@
     "email": "hello@onestudio.co"
   },
   "metadata": {
-    "description": "FLOW methodology skills for Claude Code — from intake to kill/merge decisions",
-    "version": "1.0.0",
+    "description": "FLOW — decision-centric product methodology for the agentic era. 14 AI-native skills, panel-reviewed documentation (23 chapters), three-layer architecture.",
+    "version": "2.0.0",
     "pluginRoot": "./plugins"
   },
   "plugins": [
     {
       "name": "flow",
       "source": "./flow",
-      "description": "Complete FLOW methodology — 20 skills for discovery, outcome, experiments, gates, rituals, and coaching",
-      "version": "1.0.0",
+      "description": "Complete FLOW methodology — 14 skills for decision-centric product development: intake, discovery, outcome, experiments, gates, kill/merge, coaching, and health checks. Panel-reviewed by 11 PMs across 11 domains.",
+      "version": "2.0.0",
       "author": {
         "name": "One Studio"
       },
-      "keywords": ["flow", "methodology", "product", "discovery", "outcome", "agile"],
+      "keywords": ["flow", "methodology", "product", "discovery", "outcome", "decisions", "kill-conditions", "agile"],
       "category": "methodology"
     }
   ]

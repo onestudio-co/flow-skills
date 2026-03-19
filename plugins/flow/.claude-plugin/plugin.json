@@ -1,5 +1,5 @@
 {
   "name": "flow",
-  "description": "FLOW methodology — 20 interactive skills covering the full lifecycle: intake, discovery, outcome, experiments, gates, weekly rituals, and onboarding coaching.",
-  "version": "1.0.0"
+  "description": "FLOW methodology — 14 interactive skills for decision-centric product development. Three-layer architecture: ambient rules (CLAUDE.md), invoked skills, and persistent memory. Panel-reviewed documentation (23 chapters, 11 reviewers).",
+  "version": "2.0.0"
 }
