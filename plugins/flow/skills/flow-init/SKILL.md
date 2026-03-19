@@ -41,7 +41,9 @@ Create the following:
 │   └── .gitkeep
 ├── archive/             # Completed/killed cycles (learning archive)
 │   └── .gitkeep
-└── decisions/           # Kill/Merge decision records
+├── decisions/           # Kill/Merge decision records
+│   └── .gitkeep
+└── telemetry/           # Per-user-per-device skill invocation logs (auto-generated)
     └── .gitkeep
 ```
 
@@ -74,6 +76,68 @@ These rules run passively on every interaction. They enforce FLOW's decision-cen
 
 7. **Tempo Awareness**: Cycle duration is set by team Tempo (see `.flow/config.yaml`), not a global default. Never assume "2-4 weeks."
 ```
+
+## Step 3b — Set Up Telemetry Hook
+
+Create `.claude/hooks/flow-telemetry.sh` in the project — this automatically logs every `/flow-*` skill invocation with user identity and device info.
+
+**Create the hook script** at `.claude/hooks/flow-telemetry.sh`:
+
+```bash
+#!/bin/bash
+# FLOW Telemetry — logs /flow-* skill invocations
+# Per-user-per-device log files to avoid git merge conflicts
+
+INPUT=$(cat)
+PROMPT=$(echo "$INPUT" | jq -r '.prompt // empty' 2>/dev/null)
+
+if echo "$PROMPT" | grep -qE '^/flow'; then
+  SKILL=$(echo "$PROMPT" | sed 's/ .*//' | head -1)
+  TIMESTAMP=$(date '+%Y-%m-%d %H:%M')
+  CWD=$(echo "$INPUT" | jq -r '.cwd // empty' 2>/dev/null)
+  PROJECT=$(basename "$CWD" 2>/dev/null)
+  USER_EMAIL=$(cd "$CWD" 2>/dev/null && git config user.email 2>/dev/null || echo "unknown")
+  DEVICE_NAME=$(hostname -s 2>/dev/null || echo "unknown")
+  OS_TYPE=$(uname -s 2>/dev/null || echo "unknown")
+  SAFE_EMAIL=$(echo "$USER_EMAIL" | sed 's/@/_at_/g; s/\./_/g')
+  LOG_ID="${SAFE_EMAIL}__${DEVICE_NAME}"
+
+  if [ -d "$CWD/.flow" ]; then
+    mkdir -p "$CWD/.flow/telemetry"
+    echo "$TIMESTAMP | $SKILL | $USER_EMAIL | $DEVICE_NAME | $OS_TYPE | $PROJECT" >> "$CWD/.flow/telemetry/$LOG_ID.log"
+  fi
+fi
+exit 0
+```
+
+Make it executable: `chmod +x .claude/hooks/flow-telemetry.sh`
+
+**Create or update** `.claude/settings.json` in the project root:
+
+```json
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/flow-telemetry.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+If `.claude/settings.json` already exists, merge the hooks key into the existing file — do NOT overwrite other settings.
+
+Both files get committed to git — every team member gets telemetry automatically.
+
+**Log format**: `TIMESTAMP | /skill | user@email | device | OS | project`
+**File per user+device**: `.flow/telemetry/{email}__{device}.log` — no merge conflicts.
 
 ## Step 4 — Quick Tempo Assessment + Configuration
 
@@ -156,10 +220,13 @@ If the project has a `.gitignore`, ensure `.flow/` is NOT ignored. Add a comment
 > - `.flow/experiments/` — where experiment logs go
 > - `.flow/archive/` — where completed/killed cycles are archived
 > - `.flow/decisions/` — where kill/merge records are stored
+> - `.flow/telemetry/` — automatic skill usage tracking (per-user, per-device)
+> - `.claude/hooks/flow-telemetry.sh` — telemetry hook (fires on every `/flow-*` command)
+> - `.claude/settings.json` — registers the hook
 > - `CLAUDE.md` — updated with 7 FLOW ambient rules
 >
 > **Next steps:**
-> 1. **Commit this** — `git add .flow/ CLAUDE.md && git commit -m "Initialize FLOW methodology"`
+> 1. **Commit this** — `git add .flow/ .claude/ CLAUDE.md && git commit -m "Initialize FLOW methodology"`
 > 2. **Start your first cycle** — run `/flow-intake` with a real piece of work
 > 3. **After 3 cycles** — run `/flow-health` to check adoption health
 >
