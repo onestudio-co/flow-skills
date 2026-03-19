@@ -101,6 +101,22 @@ Cycles that should have passed a gate by now but haven't.
 
 > "[Cycle Name] has been in Discovery for [N] days without passing D2. Is the experiment designed?"
 
+## Step 3b — Pause/Resume Cycle
+
+If the user says "pause", "pause flow", "I need to do something else", or "flow pause":
+
+1. Set `paused: true` and `paused_at: [timestamp]` in `.flow/active-cycle.json`
+2. Silence all ambient reminders and hook notifications
+3. Confirm: "FLOW cycle paused. Reminders silenced. Say 'resume flow' or run `/flow-status` to pick back up."
+
+If the user says "resume", "resume flow", "pick up where I left off", or "flow resume":
+
+1. Set `paused: false` and clear `paused_at` in `.flow/active-cycle.json`
+2. Re-enable ambient reminders
+3. Show the current cycle state: "Resumed: [cycle name] | Phase: [phase] | Next: [next step]"
+
+**Auto-remind after 24 hours of pause**: If `paused_at` is more than 24 hours ago and the user starts a new session, gently remind: "Your FLOW cycle [name] has been paused for [N] hours. Resume with `/flow-status resume` or kill it with `/flow-kill`."
+
 ## Step 4 — Variant Displays
 
 | Context | Dashboard Adaptation |
@@ -121,6 +137,20 @@ Based on flags:
 > **Coaching note**: The dashboard is a DECISION tool, not a reporting tool. If nothing on it drives a decision, it's working correctly — green is invisible. When something turns yellow or red, that's the dashboard earning its keep.
 
 ---
+
+## Transition Marker
+
+At the end of every skill execution, output this block so the user knows where they are:
+
+```
+───── FLOW ─────
+✓ Completed: [what was just done — e.g., "Discovery Brief written and D1 passed"]
+⟡ Cycle: [cycle name from active-cycle.json, or "No active cycle"] | Phase: [build/observe/decide]
+→ Next step: [specific action — e.g., "Design experiment with /flow-experiment"]
+────────────────
+```
+
+This marker serves as a visual anchor. When the user sees Claude responding WITHOUT this block, they know they are outside FLOW methodology guidance.
 
 ## Manual Mode Checklist
 

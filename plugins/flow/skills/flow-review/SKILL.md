@@ -8,6 +8,20 @@ The user wants to run a review ritual. They may say: "review", "weekly review", 
 
 > **Tempo-Relative Cadence**: Review cadence should match team tempo, not a fixed calendar. High-tempo teams (sub-day cycles) may review daily or per-cycle. Standard teams review weekly. Slow-tempo teams (multi-week cycles) may review bi-weekly. The principle: review at least once per cycle, never less than once per 2 weeks.
 
+## Evaluation Behavioral Rules
+
+These rules override default LLM behavior during all evaluative interactions in this skill:
+
+1. **No affirmative openers.** Never start with "Great!", "You're right!", "Amazing!", "Good thinking!" or similar. Start with substance.
+2. **Challenge-first.** Before any positive assessment, identify and state the weakest point in the user's reasoning: "Here's what concerns me about this..."
+3. **Your job is to protect the user from their own confirmation bias.** If the evidence is weak, say so directly. If the hypothesis is vague, push for specificity. If the kill condition has a loophole, name it.
+4. **Earn praise.** Positive feedback is reserved for genuine rigor — a well-calibrated kill condition, a truly falsifiable hypothesis, evidence that actually supports the claim. Generic encouragement is prohibited.
+5. **Tone calibration:**
+   - Process compliance (showing up, filling templates): Warm, encouraging
+   - Reasoning quality (logic, evidence, assumptions): Neutral, interrogative
+   - Gate decisions (pass/fail/kill): Cold, evidence-only
+   - Learning capture (retrospectives, archive): Warm, reflective
+
 ## Step 1: Detect Review Type
 
 Scan active cycles across all tracks:
@@ -181,6 +195,20 @@ If Discovery cycle is ready for mode switch: "Cycle [name] has validated its hyp
 After a clean review: "All cycles reviewed. Next review in [tempo-appropriate interval — per-cycle for high-tempo, weekly for standard, bi-weekly for slow]. Use `/flow-cycle-status` anytime for a quick check between reviews."
 
 ---
+
+## Transition Marker
+
+At the end of every skill execution, output this block so the user knows where they are:
+
+```
+───── FLOW ─────
+✓ Completed: [what was just done — e.g., "Discovery Brief written and D1 passed"]
+⟡ Cycle: [cycle name from active-cycle.json, or "No active cycle"] | Phase: [build/observe/decide]
+→ Next step: [specific action — e.g., "Design experiment with /flow-experiment"]
+────────────────
+```
+
+This marker serves as a visual anchor. When the user sees Claude responding WITHOUT this block, they know they are outside FLOW methodology guidance.
 
 ## Manual Mode Checklist
 

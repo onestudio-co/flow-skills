@@ -1,5 +1,47 @@
 # Changelog
 
+## v2.3.0 — 2026-03-19
+
+**The Honesty Layer** — Panel Meeting #14: first real adoption test surfaced 3 critical issues (sycophantic validation, mode confusion, domain expertise gap). 14 proposals, all approved.
+
+### New Skill
+- `/flow-expert` — Domain Expert Agent Blueprint: helps teams build adversarial domain validators for research claims
+
+### New Infrastructure
+- **Cycle State File** (`.flow/active-cycle.json`) — persistent state between skill invocations: mode, phase, next step, completed steps, kill condition
+- **Transition Markers** — every skill outputs a visual `───── FLOW ─────` block on completion showing cycle state and next step
+- **Maturity Model** (L1/L2/L3) — enforcement intensity scales down as teams demonstrate adoption maturity
+  - L1 (Guided): blocking checks, explicit prompts — default for new teams
+  - L2 (Trusted): non-blocking reminders, dismissable
+  - L3 (Silent): telemetry-only, dashboard visibility
+- **Pause/Resume** — `/flow-status pause` silences reminders, auto-reminds after 24h
+
+### Anti-Sycophancy (all evaluative skills)
+- Evaluation Behavioral Rules added to: `/flow-gate`, `/flow-kill`, `/flow-experiment`, `/flow-review`, `/flow-spec`, `/flow-brief`
+- No affirmative openers, challenge-first, earn praise, tone calibration by context type
+- Structured Gate Interrogation: 3 required questions per gate (D1-O5) with evidence ratings
+- Kill Condition Enforcement: triggered = KILL by default, burden of proof on user to override
+
+### Research Honesty (discovery skills)
+- **Confidence Markers**: `[verified]` / `[likely]` / `[VERIFY]` on all research claims
+- **Provenance Trail**: source type (training data / web / user / inference) for every claim
+- **"What Could Be Wrong?"**: mandatory self-critique section on all research output
+- **Expert Review Gate**: optional gate between research and decision (configurable: optional/required/skip)
+
+### Updated
+- `/flow-init` — 8 ambient rules (added Cycle Continuity), extended hook with cycle awareness + maturity
+- `/flow` router — added pause/resume and domain expert routing
+- All 16 non-router skills — transition marker output format
+- Hook script — combined telemetry + cycle awareness, maturity-level-dependent output
+
+### Architecture
+- `.flow/active-cycle.json` — local session state (not committed to git)
+- `.flow/agents/` — domain expert agents (committed, shared with team)
+- `maturity.level` in `.flow/config.yaml` — L1/L2/L3 enforcement control
+- `expert_review_gate` in `.flow/config.yaml` — optional/required/skip
+
+---
+
 ## v2.2.0 — 2026-03-19
 
 **Project Bootstrap** — New `/flow-init` skill and first-time detection in `/flow` router.

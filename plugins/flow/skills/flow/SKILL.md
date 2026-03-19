@@ -39,6 +39,8 @@ Parse the user's message and match to the closest intent:
 | "tempo", "speed", "cycles too long", "cycles too short", "rhythm", "how fast", "cadence" | `/flow-tempo` | Discover the team's natural cycle rhythm |
 | "how we work", "team setup", "operating agreement", "configuration", "team agreement", "working agreement" | `/flow-config` | Generate the team's FLOW Configuration one-pager |
 | "init flow", "set up flow", "bootstrap flow", "add flow", "start using flow", "initialize" | `/flow-init` | Bootstrap FLOW in a new project |
+| "domain expert", "build expert", "expert validation", "domain review" | `/flow-expert` | Build a Domain Expert agent for validation |
+| "pause flow", "resume flow", "unpause" | `/flow-status` (pause/resume mode) | Pause or resume the active cycle |
 
 ## Step 3 — For Newcomers
 

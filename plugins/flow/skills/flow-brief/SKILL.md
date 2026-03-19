@@ -3,6 +3,20 @@
 > **Trigger**: Work has been classified as Discovery (via `/flow-intake` or directly). Time to write a falsifiable hypothesis.
 > **Reference**: Chapter 5 (The Discovery Brief), Chapter 6 (Experiments), Chapter 7 (Discovery Decisions)
 
+## Evaluation Behavioral Rules
+
+These rules override default LLM behavior during all evaluative interactions in this skill:
+
+1. **No affirmative openers.** Never start with "Great!", "You're right!", "Amazing!", "Good thinking!" or similar. Start with substance.
+2. **Challenge-first.** Before any positive assessment, identify and state the weakest point in the user's reasoning: "Here's what concerns me about this..."
+3. **Your job is to protect the user from their own confirmation bias.** If the evidence is weak, say so directly. If the hypothesis is vague, push for specificity. If the kill condition has a loophole, name it.
+4. **Earn praise.** Positive feedback is reserved for genuine rigor — a well-calibrated kill condition, a truly falsifiable hypothesis, evidence that actually supports the claim. Generic encouragement is prohibited.
+5. **Tone calibration:**
+   - Process compliance (showing up, filling templates): Warm, encouraging
+   - Reasoning quality (logic, evidence, assumptions): Neutral, interrogative
+   - Gate decisions (pass/fail/kill): Cold, evidence-only
+   - Learning capture (retrospectives, archive): Warm, reflective
+
 ## What This Skill Does
 
 Guides you through writing a Discovery Brief — a one-page hypothesis document that defines what you're trying to learn, how you'll learn it, and when you'll stop.
@@ -107,6 +121,67 @@ Produce the Discovery Brief in this format:
 [From Field 5]
 ```
 
+### Update Cycle State
+
+Create or update `.flow/active-cycle.json`:
+- `mode`: "discovery"
+- `phase`: "build" (experiment not yet designed)
+- `next_step`: `{ "action": "Design experiment", "skill": "/flow-experiment" }`
+- `kill_condition`: from the brief
+- `completed_steps`: add "Discovery Brief written"
+
+## Research Output Standards
+
+When this skill produces or references research (desk research, market analysis, competitive analysis, regulatory research, domain-specific claims), the following standards apply:
+
+### Confidence Markers
+
+Tag all factual claims with confidence levels:
+- **[verified]** — well-established facts, multiple corroborating sources, within general knowledge
+- **[likely]** — probably accurate but based on limited sources, or domain-specific claims that may have changed
+- **[VERIFY]** — regulatory claims, specific numbers/statistics, legal requirements, medical claims, financial regulations, market size figures — anything where being wrong has consequences
+
+At the end of any research section, include a **Verification Checklist**:
+
+```
+### Claims Requiring Verification
+- [ ] [Claim 1] — [why it needs verification]
+- [ ] [Claim 2] — [why it needs verification]
+```
+
+### Research Provenance
+
+Every research claim must note its source type:
+- **Training data** — from the model's knowledge (static, may be outdated — note the risk)
+- **Web search** — from live search (current but potentially unreliable — include URL)
+- **User-provided** — from documents or context the user shared (reliable but scoped)
+- **Inference** — the model's synthesis or reasoning (not a source — label it clearly)
+
+Include a **Provenance Summary** at the end of research sections:
+
+```
+### Source Provenance
+| Claim Category | Source Type | Reliability | Notes |
+|---------------|------------|-------------|-------|
+| [e.g., Market size] | [Web search] | [Medium] | [URL, date accessed] |
+| [e.g., Regulatory requirement] | [Training data] | [Low — may be outdated] | [Verify with authority] |
+```
+
+### Self-Critique: "What Could Be Wrong?"
+
+Every research output MUST end with a self-critique section:
+
+```
+### What Could Be Wrong With This Research?
+- **Assumptions not validated**: [list assumptions made without evidence]
+- **Potentially outdated**: [claims based on training data that may have changed]
+- **Domain blind spots**: [areas where domain expertise would change the analysis]
+- **Geographic/regulatory gaps**: [jurisdictions, markets, or conditions not covered]
+- **Missing perspectives**: [stakeholders, user segments, or viewpoints not represented]
+```
+
+This section is mandatory — skipping it is an anti-pattern. If the agent cannot identify any weaknesses, that itself is a red flag: state "Unable to identify weaknesses — this research should be independently reviewed."
+
 ## Step 4 — Run Gate D1 Automatically
 
 Before the team invests time, validate the brief:
@@ -137,6 +212,20 @@ If D1 fails: "Let's fix [specific item] first. [Specific guidance on how to fix 
 > **Hardware Discovery Briefs** may reference desk research, CAD simulations, or teardown analysis as experiments — not just user conversations. The hypothesis might be about technical feasibility ("We believe this controller can handle 50C ambient") not just user desirability. Experiment costs are higher — $3K-10K for a functional prototype vs. $0 for a conversation.
 
 ---
+
+## Transition Marker
+
+At the end of every skill execution, output this block so the user knows where they are:
+
+```
+───── FLOW ─────
+✓ Completed: [what was just done — e.g., "Discovery Brief written and D1 passed"]
+⟡ Cycle: [cycle name from active-cycle.json, or "No active cycle"] | Phase: [build/observe/decide]
+→ Next step: [specific action — e.g., "Design experiment with /flow-experiment"]
+────────────────
+```
+
+This marker serves as a visual anchor. When the user sees Claude responding WITHOUT this block, they know they are outside FLOW methodology guidance.
 
 ## Manual Mode Checklist
 

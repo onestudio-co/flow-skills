@@ -3,6 +3,20 @@
 > **Trigger**: Work is classified as Outcome (via `/flow-intake`), or Discovery has validated the problem and it's time to define what to build.
 > **Reference**: Chapter 8 (SPEC-Lite), Chapter 9 (Build Contract), Chapter 4 (Intake)
 
+## Evaluation Behavioral Rules
+
+These rules override default LLM behavior during all evaluative interactions in this skill:
+
+1. **No affirmative openers.** Never start with "Great!", "You're right!", "Amazing!", "Good thinking!" or similar. Start with substance.
+2. **Challenge-first.** Before any positive assessment, identify and state the weakest point in the user's reasoning: "Here's what concerns me about this..."
+3. **Your job is to protect the user from their own confirmation bias.** If the evidence is weak, say so directly. If the hypothesis is vague, push for specificity. If the kill condition has a loophole, name it.
+4. **Earn praise.** Positive feedback is reserved for genuine rigor — a well-calibrated kill condition, a truly falsifiable hypothesis, evidence that actually supports the claim. Generic encouragement is prohibited.
+5. **Tone calibration:**
+   - Process compliance (showing up, filling templates): Warm, encouraging
+   - Reasoning quality (logic, evidence, assumptions): Neutral, interrogative
+   - Gate decisions (pass/fail/kill): Cold, evidence-only
+   - Learning capture (retrospectives, archive): Warm, reflective
+
 ## What This Skill Does
 
 Guides you through writing a SPEC-Lite — the one-page planning artifact for Outcome mode. It defines what you're building, why, how you'll measure it, and when you'll stop.
@@ -166,6 +180,16 @@ Ask: "Name at least 3 things someone might reasonably expect to be included but 
 3. NOT: [Thing 3]
 ```
 
+### Update Cycle State
+
+Create or update `.flow/active-cycle.json`:
+- `mode`: "outcome" (or "collapsed" if Micro-SPEC)
+- `phase`: "build" (contract not yet written)
+- `next_step`: `{ "action": "Write Build Contract", "skill": "/flow-contract" }` (or `{ "action": "Start building", "skill": null }` for Micro-SPEC)
+- `kill_condition`: from the SPEC
+- `target_metric`: from the SPEC
+- `completed_steps`: add "SPEC-Lite written"
+
 ## Step 4 — Run Gates O1 and O2
 
 ### Gate O1: Is the Bet Worth Pursuing?
@@ -208,6 +232,20 @@ Clients love the clarity. Price the Outcome cycle based on the SPEC-Lite scope.
 > **Hardware SPEC-Lite scope** should specify whether this cycle produces a functional prototype, a field pilot, or a manufacturing run. Each has radically different cost and timeline implications. Kill conditions should account for lead times: "If pre-orders don't reach 500 units within 30 days of announcement, kill the manufacturing run."
 
 ---
+
+## Transition Marker
+
+At the end of every skill execution, output this block so the user knows where they are:
+
+```
+───── FLOW ─────
+✓ Completed: [what was just done — e.g., "Discovery Brief written and D1 passed"]
+⟡ Cycle: [cycle name from active-cycle.json, or "No active cycle"] | Phase: [build/observe/decide]
+→ Next step: [specific action — e.g., "Design experiment with /flow-experiment"]
+────────────────
+```
+
+This marker serves as a visual anchor. When the user sees Claude responding WITHOUT this block, they know they are outside FLOW methodology guidance.
 
 ## Manual Mode Checklist
 

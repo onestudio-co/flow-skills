@@ -238,6 +238,20 @@ For newcomers completing the tour: "Your next step is to observe a real `/flow-r
 
 ---
 
+## Transition Marker
+
+At the end of every skill execution, output this block so the user knows where they are:
+
+```
+───── FLOW ─────
+✓ Completed: [what was just done — e.g., "Discovery Brief written and D1 passed"]
+⟡ Cycle: [cycle name from active-cycle.json, or "No active cycle"] | Phase: [build/observe/decide]
+→ Next step: [specific action — e.g., "Design experiment with /flow-experiment"]
+────────────────
+```
+
+This marker serves as a visual anchor. When the user sees Claude responding WITHOUT this block, they know they are outside FLOW methodology guidance.
+
 ## Manual Mode Checklist
 
 If onboarding someone without the skill:
