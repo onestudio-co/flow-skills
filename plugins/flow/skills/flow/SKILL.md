@@ -3,11 +3,23 @@
 > **Trigger**: User says anything FLOW-related — "I have an idea", "how do I...", "what's active", "run a gate", etc.
 > This is the single entry point. Detect intent and route to the right skill.
 
+## Step 0 — First-Time Detection
+
+Check if `.flow/` directory exists in the current project root.
+
+**If `.flow/` does NOT exist**: This project hasn't been initialized with FLOW yet. Route to `/flow-init`:
+
+> "I notice FLOW hasn't been set up in this project yet. Let me initialize it — this creates the `.flow/` directory, adds ambient rules to your CLAUDE.md, and calibrates your team's tempo. Takes about 5 minutes."
+>
+> Then invoke `/flow-init`.
+
+**If `.flow/` exists**: Read `.flow/config.yaml` for team context (Tempo, WIP limits, SPEC minimum). Use this context for all routing decisions below.
+
 ## Step 1 — Check for Active FLOW State
 
-Read `memory/flow/` files if they exist (INDEX.md, adoption_log.md, customizations.md).
-Check if the user has active cycles in any `tracks/*/tasks.md` files tagged with `*project:*`.
-Note the user's FLOW experience level from `memory/flow/team_readiness.md` if available.
+Read `.flow/config.yaml` for team Tempo and WIP limits.
+Scan `.flow/cycles/` for active cycle documents.
+Check WIP: count active cycles vs. limits from config.
 
 ## Step 2 — Detect Intent
 
@@ -26,6 +38,7 @@ Parse the user's message and match to the closest intent:
 | "are we doing this right", "health check", "adoption" | Coach mode (inline) | Assess FLOW adoption health |
 | "tempo", "speed", "cycles too long", "cycles too short", "rhythm", "how fast", "cadence" | `/flow-tempo` | Discover the team's natural cycle rhythm |
 | "how we work", "team setup", "operating agreement", "configuration", "team agreement", "working agreement" | `/flow-config` | Generate the team's FLOW Configuration one-pager |
+| "init flow", "set up flow", "bootstrap flow", "add flow", "start using flow", "initialize" | `/flow-init` | Bootstrap FLOW in a new project |
 
 ## Step 3 — For Newcomers
 

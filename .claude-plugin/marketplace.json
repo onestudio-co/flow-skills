@@ -5,16 +5,16 @@
     "email": "hello@onestudio.co"
   },
   "metadata": {
-    "description": "FLOW — decision-centric product methodology for the agentic era. 16 AI-native skills with agentic speed support, panel-reviewed documentation (23 chapters), three-layer architecture.",
-    "version": "2.1.0",
+    "description": "FLOW — decision-centric product methodology for the agentic era. 17 AI-native skills with agentic speed support, panel-reviewed documentation (23 chapters), three-layer architecture.",
+    "version": "2.2.0",
     "pluginRoot": "./plugins"
   },
   "plugins": [
     {
       "name": "flow",
       "source": "./flow",
-      "description": "Complete FLOW methodology — 16 skills for decision-centric product development: intake, discovery, outcome, experiments, gates, kill/merge, coaching, health checks, tempo discovery, and team configuration. Panel-reviewed by 11 PMs across 11 domains.",
-      "version": "2.1.0",
+      "description": "Complete FLOW methodology — 17 skills for decision-centric product development: intake, discovery, outcome, experiments, gates, kill/merge, coaching, health checks, tempo discovery, and team configuration. Panel-reviewed by 11 PMs across 11 domains.",
+      "version": "2.2.0",
       "author": {
         "name": "One Studio"
       },

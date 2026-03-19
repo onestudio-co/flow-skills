@@ -1,5 +1,5 @@
 {
   "name": "flow",
-  "description": "FLOW methodology — 16 interactive skills for speed-agnostic, decision-centric product development. Three-layer architecture: ambient rules (CLAUDE.md), invoked skills, and persistent memory. Panel-reviewed documentation (23 chapters, 11 reviewers).",
-  "version": "2.1.0"
+  "description": "FLOW methodology — 17 interactive skills for speed-agnostic, decision-centric product development. Three-layer architecture: ambient rules (CLAUDE.md), invoked skills, and persistent memory. Panel-reviewed documentation (23 chapters, 11 reviewers).",
+  "version": "2.2.0"
 }

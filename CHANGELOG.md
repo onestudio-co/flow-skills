@@ -1,5 +1,22 @@
 # Changelog
 
+## v2.2.0 — 2026-03-19
+
+**Project Bootstrap** — New `/flow-init` skill and first-time detection in `/flow` router.
+
+### New Skill
+- `/flow-init` — Bootstraps FLOW in any project: creates `.flow/` directory (config, cycles, experiments, archive, decisions), adds 7 ambient rules to CLAUDE.md, runs quick Tempo calibration
+
+### Updated
+- `/flow` router — Detects first-time use (no `.flow/` directory) and auto-routes to `/flow-init`. Reads `.flow/config.yaml` for team context in all routing decisions.
+
+### Architecture
+- Per-project state lives in `.flow/` (committed to git, shared with team)
+- Global skills stay in `~/.claude/plugins/` (installed once per machine)
+- Dev repo symlinked to cache for instant feedback
+
+---
+
 ## v2.1.0 — 2026-03-19
 
 **The Agentic Speed Update** — Panel Meeting #13: real team feedback that FLOW's time assumptions don't match agentic reality.
