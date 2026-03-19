@@ -2,7 +2,7 @@
 
 # Chapter 12: WIP Limits
 
-> *Panel-reviewed: Meeting #6 (2026-03-19)*
+> *Panel-reviewed: Meeting #6, updated Meeting #13 (2026-03-19)*
 > **Read this**: Flow Coaches, PMs, Leadership. The capacity enforcement mechanism.
 
 ---
@@ -84,6 +84,40 @@ Platform WIP must account for downstream dependencies. A platform cycle that ena
 
 ### For Enterprise
 WIP limits apply at the squad level, not the organization level. Each squad has its own WIP limit. The portfolio-level WIP limit is the sum of all squad limits — and the leadership team must respect it. "We have 5 squads with 3 WIP each = 15 total portfolio WIP. We currently have 14 active. We can start one more."
+
+---
+
+## Bottleneck-Based WIP Calibration
+
+The team-size tables above are starting points, but the real WIP limit should be calibrated to your team's **bottleneck** — the constraint that actually limits throughput.
+
+### The Bottleneck Shift
+
+In pre-agentic teams, the bottleneck is usually **build capacity**. You can only build so many things at once, so WIP is limited by how many things you can build simultaneously.
+
+In agentic teams, build capacity explodes. An AI-augmented team can ship 10 features in a day. But the bottleneck **shifts to observation and decision capacity**. You can build 10 features in a day, but can you meaningfully observe 10 experiments at once? Can you make 10 kill/continue decisions with proper evidence? Probably not.
+
+**WIP limits must follow the bottleneck, not the build capacity.** As teams adopt agentic tools, their WIP limits may actually need to DECREASE — not because they're building less, but because observation and decision-making become the constraint.
+
+### WIP Calibration by Bottleneck Type
+
+| Bottleneck | WIP Limit Based On | Example |
+|---|---|---|
+| **Build capacity** | Team size x concurrent work | 3 engineers → 3 active cycles |
+| **Observation capacity** | Metrics the team can monitor | 2 analysts → 4-5 active experiments |
+| **Decision capacity** | PM decision bandwidth | 1 PM → max 5 kill/merge decisions per week |
+| **External constraints** | Regulatory/approval pipelines | 2 concurrent compliance reviews |
+
+### How to Find Your Bottleneck
+
+Ask: "If we started one more cycle right now, what would break first?"
+
+- **"We don't have engineers to build it"** → Build capacity bottleneck. Classic WIP limit by team size applies.
+- **"We couldn't watch the metrics properly"** → Observation capacity bottleneck. Limit WIP to what you can observe, not what you can build.
+- **"The PM couldn't make another kill/continue decision this week"** → Decision capacity bottleneck. Limit WIP to decision bandwidth.
+- **"We're waiting on legal/compliance for the last two"** → External constraint bottleneck. Limit WIP to the external pipeline's throughput.
+
+Most teams have multiple bottlenecks. Calibrate to the tightest one.
 
 ---
 

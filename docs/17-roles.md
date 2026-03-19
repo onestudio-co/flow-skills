@@ -2,7 +2,7 @@
 
 # Chapter 16: Roles & Team Topology
 
-> *Panel-reviewed: Meeting #7, rewritten after Meeting #9 (2026-03-19)*
+> *Panel-reviewed: Meeting #7, rewritten after Meeting #9, updated Meeting #13 (agentic role shifts) (2026-03-19)*
 > **Read this**: Everyone. Find YOUR function and understand your "From → To" transformation.
 
 ---
@@ -170,6 +170,12 @@ There are **ten functions** in FLOW. In a solo team, one person covers all ten. 
 **AI IMPACT**: Agents check artifacts against compliance checklists. Human compliance focuses on judgment calls, regulatory interpretation, and audit readiness.
 
 > **Note for enterprise/government**: Role transformation may require HR involvement — job descriptions, performance criteria, and sometimes union negotiation. This doesn't happen overnight. [Chapter 18](19-organizational-change.md) covers the organizational change management aspects. Start by introducing the FLOW functions as "additional responsibilities" before formally changing job titles.
+
+---
+
+## How Agentic Tooling Changes Roles
+
+Agent tooling doesn't eliminate roles — it shifts their focus. Engineers move from writing code to reviewing and directing agent output. PMs move from waiting for builds to making more frequent judgment calls (see [Ch 11](12-outcome-decisions.md), Judgment Fatigue). Designers move from producing mockups to evaluating agent-generated prototypes against user needs. The **"Agent Operator" skill** — effectively directing AI agents, writing good prompts, reviewing agent output critically, knowing when to intervene — becomes valuable across all functions. This isn't a new role; it's a new competency layered onto existing roles. Teams that develop this skill first gain execution leverage ([Ch 4](05-intake.md)); teams that ignore it lose ground.
 
 ---
 

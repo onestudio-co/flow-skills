@@ -9,6 +9,12 @@
 
 Production code is the most expensive way to learn something. A conversation is usually the cheapest. The right experiment depends on what you're trying to learn, not on a prescribed sequence.
 
+### Collapsed Mode — When Building IS the Experiment
+
+When build cost approaches zero (agentic tooling, no-code platforms, existing infrastructure), the experiment hierarchy collapses. If building a working prototype takes less time than designing a mockup, **building IS the experiment**. Don't force artificial cheapness when the "expensive" option is actually cheaper.
+
+> **Key signal**: If your team can ship a functional version in hours using AI-assisted development, skip the mockup/wireframe/prototype stages and go straight to a limited build. The build IS your cheapest valid test. Log it with `execution_leverage: high` to track this pattern.
+
 ## Step 1 — Review the Hypothesis
 
 Read the Discovery Brief. Extract:
@@ -98,6 +104,8 @@ Guide through these questions:
 **Experiment type**: [From menu]
 **Estimated cost**: [Time + money]
 **Duration**: [Start → End]
+**Build duration**: [Expected time to build/create the experiment — e.g., "2 hours", "3 days", "2 weeks"]
+**Execution leverage**: [none | low | medium | high] — how much agentic/AI tooling accelerates this experiment (high = build cost near-zero, collapsed mode applies)
 
 ### Question
 [Specific question this answers]

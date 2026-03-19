@@ -24,6 +24,8 @@ Parse the user's message and match to the closest intent:
 | "kill", "merge", "stop this", "should we continue" | `/flow-gate` (with kill/merge context) | Evidence-based kill/merge decision |
 | "what does X mean", "explain", "teach me", "how does FLOW..." | Coach mode (inline) | Explain concepts with chapter refs |
 | "are we doing this right", "health check", "adoption" | Coach mode (inline) | Assess FLOW adoption health |
+| "tempo", "speed", "cycles too long", "cycles too short", "rhythm", "how fast", "cadence" | `/flow-tempo` | Discover the team's natural cycle rhythm |
+| "how we work", "team setup", "operating agreement", "configuration", "team agreement", "working agreement" | `/flow-config` | Generate the team's FLOW Configuration one-pager |
 
 ## Step 3 — For Newcomers
 

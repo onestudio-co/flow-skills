@@ -2,7 +2,7 @@
 
 # Chapter 4: Intake, Classification & Shaping
 
-> *Panel-reviewed: Meeting #4 (2026-03-19) — 7 agree, 4 modify-accept*
+> *Panel-reviewed: Meeting #4 (2026-03-19) — 7 agree, 4 modify-accept; updated Meeting #13 (execution leverage, Collapsed Mode)*
 > **Read this**: PMs, Flow Coaches, anyone who triages incoming work.
 
 ---
@@ -137,7 +137,7 @@ Once classified, work routes to a team and traces to a spine mapping:
 
 1. **Spine check**: Does this trace to an active bet? If not, can we create a new bet under an existing strategy? If not, it's either off-strategy (rejected) or signals a strategy gap (escalate).
 
-2. **Team assignment**: Which team has the domain expertise and capacity? Check WIP limits ([Chapter 12](13-wip-limits.md)) before assigning.
+2. **Team assignment**: Which team has the domain expertise and capacity? Check WIP limits ([Chapter 12](13-wip-limits.md)) before assigning. **Consider execution leverage**: high-leverage teams (with agentic tooling) can potentially take on more experimental work because the cost of a failed experiment is lower.
 
 3. **Priority**: Where does this sit relative to active cycles? Does it displace something, queue behind it, or run in parallel?
 
@@ -163,6 +163,12 @@ Intake can be continuous (solo founders, small teams) or batched (enterprise, ag
 | Enterprise (30+) | Weekly 30-min Intake Review meeting | PM presents shaped items, team discusses classification |
 | Agency | Per-client as requests arrive + weekly internal triage | Client-facing intake is relationship management; internal intake is classification |
 | Government | Monthly programmatic intake + weekly project intake | Formal submission → review → approval → classification |
+
+---
+
+### Collapsed Mode: When Building IS the Experiment
+
+When builds are cheap, default more aggressively to Discovery mode. If building an experiment costs less than the meeting to discuss whether to build it, just build it and measure. This is the **Collapsed Mode** — building IS the experiment. The intake artifact for Collapsed Mode is a **Micro-SPEC**: a lightweight version of the SPEC-Lite that captures just the hypothesis, target metric, kill condition, and observation floor. No Build Contract needed — the build is the experiment. Collapsed Mode is valid when: (1) the build cost is under ~4 hours of agent-assisted work, (2) the kill condition is measurable, and (3) rollback is trivial.
 
 ---
 

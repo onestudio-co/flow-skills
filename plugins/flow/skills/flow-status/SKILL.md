@@ -17,20 +17,21 @@ Read the following sources in parallel:
 Extract for each active cycle:
 - **Name**: The cycle/task/project name
 - **Mode**: Discovery or Outcome (infer from artifact type — Brief = Discovery, SPEC = Outcome)
+- **Cycle Phase**: Build (constructing the artifact/experiment), Observe (measuring results in production/field), Decide (evaluating evidence at a gate) — every cycle is in exactly one phase at any time
 - **Progress**: Uphill (starting, gathering evidence), Peak (key decision point), Downhill (executing/completing)
 - **Kill condition**: What it is and whether it's been evaluated recently
 - **Target metric**: Current value vs. target (if available)
 - **Owner**: Who's accountable
-- **Age**: How long the cycle has been active
+- **Age**: How long the cycle has been active (display as Day N or Week N based on team Tempo — use days for Lightning/Sprint tempos, weeks for March/Expedition)
 
 ## Step 2 — Display the Dashboard
 
 ### Active Cycles
 
 ```
-| Cycle | Mode | Progress | Owner | Age | Kill Condition Status |
-|-------|------|----------|-------|-----|----------------------|
-| [Name] | Discovery/Outcome | Uphill/Peak/Downhill | [Person] | Xd | Active / Triggered / Not set |
+| Cycle | Mode | Phase | Progress | Owner | Age | Kill Condition Status |
+|-------|------|-------|----------|-------|-----|----------------------|
+| [Name] | Discovery/Outcome | Build/Observe/Decide | Uphill/Peak/Downhill | [Person] | Day N / Week N | Active / Triggered / Not set |
 ```
 
 ### WIP Status
@@ -57,12 +58,14 @@ Reference WIP limits from Chapter 12:
 If the user has multiple projects, show a portfolio summary:
 
 ```
-| Project | Mode | Status | Signal | Active Cycles | Overdue |
-|---------|------|--------|--------|---------------|---------|
-| [Name] | [Mode] | active/paused | green/yellow/red | N | N |
+| Project | Mode | Status | Signal | Tempo | Active Cycles | Overdue |
+|---------|------|--------|--------|-------|---------------|---------|
+| [Name] | [Mode] | active/paused | green/yellow/red | Lightning/Sprint/March/Expedition | N | N |
 ```
 
 > **Coaching note for newcomers**: The portfolio view is how leadership monitors without micromanaging. Green projects are invisible — they're working. Yellow gets a glance. Red gets intervention. This is the FLOW principle: manage by exception, not by status update.
+>
+> **Tempo context**: The Tempo column shows the team's natural cycle rhythm. A project with Lightning tempo (1-3 day cycles) that hasn't updated in a week is very different from a March-tempo project (4-6 week cycles) in the same state. Always interpret age and staleness relative to the project's Tempo.
 
 ## Step 3 — Flag Issues
 

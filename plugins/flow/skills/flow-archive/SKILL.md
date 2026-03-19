@@ -80,6 +80,9 @@ Apply structured tags for searchability:
 **Type**: Discovery | Outcome
 **Ended**: Killed | Merged | Completed
 **Duration**: [N] days ([start] to [end])
+**Build Duration**: [actual time spent building — e.g., "4 hours", "3 days", "2 weeks"]
+**Tempo**: [Lightning | Sprint | March | Expedition] — the team's cycle rhythm during this work
+**Execution Leverage**: [none | low | medium | high] — degree of agentic/AI tooling acceleration
 **Project**: [project slug]
 **Track**: [track name]
 

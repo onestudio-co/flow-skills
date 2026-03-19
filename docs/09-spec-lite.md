@@ -2,7 +2,7 @@
 
 # Chapter 8: SPEC-Lite
 
-> *Panel-reviewed: Meeting #5 (2026-03-19)*
+> *Panel-reviewed: Meeting #5, updated Meeting #13 (2026-03-19)*
 > **Read this**: PMs, Engineers, stakeholders approving scope. The core Outcome-mode artifact.
 
 ---
@@ -25,6 +25,42 @@ The SPEC-Lite IS:
 
 ---
 
+## The SPEC Spectrum
+
+Not every piece of work needs the same level of specification. FLOW defines a spectrum from minimal to full:
+
+### Micro-SPEC (Minimum)
+
+Three lines. Two minutes. For high-tempo teams where build cost is near-zero.
+
+```
+Problem: [One sentence — what validated problem?]
+Hypothesis: [If we build X, then Y will happen]
+Kill Condition: [If metric doesn't reach threshold within timeframe, kill]
+```
+
+Micro-SPEC is the absolute minimum viable specification. It works when:
+- Cycle duration is less than 1 day
+- Scope is experimental or exploratory
+- The team has high trust and shared context
+- Build cost is trivial (agentic teams, internal tools, configuration changes)
+
+### Full SPEC-Lite (Standard)
+
+All 5 fields plus Non-Goals. The default for most teams. Use when:
+- Coordination is needed across multiple people
+- Scope is large enough to warrant explicit boundaries
+- Regulatory or compliance context requires documentation
+- Stakeholder alignment is necessary
+
+### Choosing Your Level
+
+Teams can set their **minimum SPEC level** via their FLOW Configuration (see [Chapter 13](14-rituals.md)). The choice is descriptive — it records how the team actually works, not how they aspire to work.
+
+**The one non-negotiable across ALL levels: the kill condition.** No kill condition = no work. A Micro-SPEC without a kill condition is just a to-do item. A Full SPEC-Lite without a kill condition is just a PRD with fewer pages. The kill condition is what makes it FLOW.
+
+---
+
 ## The Anatomy
 
 | Field | What It Answers | Example |
@@ -34,6 +70,7 @@ The SPEC-Lite IS:
 | **Target Metric** | How will we measure success? One primary metric. | "Reduce average scheduling time from 40 min to under 15 min per shift within 4 weeks of launch." |
 | **Kill Condition** | When do we stop? Pre-committed, evidence-based. | "If scheduling time doesn't decrease by at least 30% after 2 weeks of adoption, kill." |
 | **Non-Goals** | What are we explicitly NOT doing? This is scope protection. | "Not building: manager override, multi-hospital scheduling, integration with legacy HR system, shift marketplace." |
+| **Build Duration Estimate** *(optional)* | How long will the build phase take? Not for project management — for calibrating the observation window. | "~3 days. Observation starts next week." If the build takes 1 hour, observation starts this afternoon. If 1 week, observation starts next week. |
 
 ### Why Non-Goals Matter
 

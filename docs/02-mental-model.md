@@ -3,6 +3,7 @@
 # Chapter 2: The Core Mental Model
 
 > *Panel-reviewed: Meeting #2 (2026-03-19) — 9 agree, 2 modify-accept*
+> *Updated: Meeting #13 — Tempo, Invariants/Variables, Cycle Phases*
 > **Read this**: Everyone. Core concepts for all of FLOW.
 
 ---
@@ -20,6 +21,35 @@ This is FLOW's foundational insight: **the mode you're in determines the process
 Most methodologies don't distinguish modes. Scrum treats a "research spike" and a "build user login" the same way — both are backlog items estimated in story points. Shape Up shapes everything into pitches, whether the team is exploring a new market or building a known feature. SAFe puts both exploratory and delivery work through the same PI Planning ceremony.
 
 FLOW says: **the work tells you which mode to use.** You don't decide your process once and apply it to everything. You read the uncertainty level and select the mode that matches.
+
+---
+
+## Tempo
+
+Tempo is the team's natural rhythm of **build → observe → decide**. It answers the question: *how fast can this team complete one full cycle of learning or shipping?*
+
+Four factors determine tempo:
+
+1. **Execution leverage** — how much output per unit of effort? A solo developer with Claude Code ships features in hours. A 42-person bank team ships features in weeks.
+2. **Observation requirements** — how long must you wait to see results? A/B tests need traffic. Hardware needs field deployment. Some metrics are instant; others take weeks.
+3. **Coordination overhead** — how many people must align before work moves? Solo = zero overhead. Cross-department = days of alignment.
+4. **External constraints** — regulatory review cycles, client approval gates, manufacturing lead times.
+
+**Teams discover their tempo — it is not assigned.** A team that tries to run 1-week cycles when their observation window is 3 weeks will produce meaningless data. A team running 4-week cycles when they could learn in 2 days is wasting time.
+
+### Tempo Comparison
+
+| Team | Context | Tempo | Why |
+|------|---------|-------|-----|
+| **Carlos** | Solo founder + Claude Code | ~1 day | High execution leverage (agents), instant observation (live metrics), zero coordination |
+| **Sara** | 42-person bank division | 3–4 weeks | Low execution leverage (approvals, dependencies), slow observation (compliance review), high coordination |
+| **Amara** | Hardware IoT startup | Months | Physical prototyping, field deployment for observation, supplier coordination |
+
+> **Sidebar — Solo/Agent context**: When agents compress build time toward zero, tempo is dominated by observation and decision time. Carlos doesn't need shorter cycles — he needs better observation infrastructure.
+
+> **Sidebar — Enterprise context**: Sara's tempo isn't "slow." It's *correct* for her constraints. Forcing weekly sprints on a team with 3-week regulatory review cycles creates theater, not speed.
+
+Tempo is explored further in [Chapter 6](07-cycle-engine.md) (cycle calibration) and [Chapter 17](18-migration.md) (discovering your tempo during adoption).
 
 ---
 
@@ -119,6 +149,72 @@ FLOW operates one level above your daily execution process. It decides WHAT KIND
 This is what makes FLOW adoptable alongside existing methods.
 
 > **Key insight: You don't replace Scrum. You add a layer above it.** "This sprint, are we in Discovery or Outcome mode? Let's use the right artifacts." The same applies to Kanban, Shape Up, SAFe, or any execution framework. FLOW is the decision layer. Your existing tools are the execution layer.
+
+---
+
+## FLOW Invariants vs FLOW Variables
+
+FLOW scales from a solo founder to a 500-person enterprise. What changes between these contexts? **Less than you think.** The core machinery is identical. Only the parameters adjust.
+
+### Invariants (unchanged at any tempo)
+
+These are non-negotiable. Remove any one, and you're no longer doing FLOW:
+
+| Invariant | Why it's fixed |
+|-----------|---------------|
+| **Discovery/Outcome classification** | The mode question ("wrong thing vs. fail to ship?") applies at every scale. Skipping it is how teams build features nobody wants. |
+| **Decision Spine mapping** | Every cycle must trace to a strategic bet. Without this, work drifts from strategy — regardless of team size. |
+| **Kill conditions** | Every cycle has a pre-committed condition that stops the work. Without kill conditions, sunk-cost bias takes over. |
+| **Gates** | Quality checkpoints (D1–D3, O1–O5) ensure work meets evidence or quality thresholds before progressing. |
+| **WIP limits** | Capacity is finite. This is physics, not policy. A solo developer has WIP limits just as much as a 50-person team. |
+| **Observe before Decide** | You cannot skip measuring. Deciding without observation is guessing. This holds whether observation takes 5 minutes or 5 weeks. |
+
+### Variables (scale with team context)
+
+These adapt to your tempo and team shape:
+
+| Variable | Fast tempo (solo/agent) | Slow tempo (enterprise/hardware) |
+|----------|------------------------|----------------------------------|
+| **Cycle duration** | Days | Weeks to months |
+| **Documentation depth** | Micro-SPEC (a few lines) | Full SPEC-Lite (detailed artifact) |
+| **Ritual cadence** | Informal, async, per-cycle | Formal ceremonies, scheduled reviews |
+| **Build phase duration** | Approaches zero (agents do the building) | Weeks (large teams, dependencies) |
+| **Migration timeline** | Repetition-based (10–15 cycles to internalize) | Same — repetition-based, not calendar-based |
+
+> **Key insight**: Migration speed is measured in **cycles completed**, not weeks elapsed. Carlos at 1-day tempo internalizes FLOW in 2 weeks (15 cycles). Sara at 3-week tempo takes ~9 months (15 cycles). Same learning curve — different clock speed. See [Chapter 17](18-migration.md).
+
+---
+
+## Cycle Phases: Build → Observe → Decide
+
+Every FLOW cycle — Discovery or Outcome — decomposes into three phases:
+
+1. **Build** — produce the thing. In Discovery, this is running the experiment. In Outcome, this is shipping the increment.
+2. **Observe** — measure the result. Collect evidence (Discovery) or metrics (Outcome). No interpretation yet — just data.
+3. **Decide** — read the evidence and choose: continue, pivot, kill, or merge. This is where kill conditions are evaluated and the Decision Spine is consulted.
+
+```
+┌─────────┐    ┌─────────┐    ┌─────────┐
+│  Build   │───▶│ Observe  │───▶│ Decide  │
+└─────────┘    └─────────┘    └─────────┘
+     ▲                              │
+     └──────────────────────────────┘
+              next cycle
+```
+
+### When Agents Compress Build
+
+As AI agents take over more of the Build phase, something important happens:
+
+**Cycle Duration ≈ Observe + Decide**
+
+Build time approaches zero. The cycle doesn't get shorter — it gets *rebalanced*. All the team's time goes to observation and decision-making. This is actually the **healthy state**: humans spend 100% of their time learning and deciding, not building.
+
+> **Sidebar — Solo/Agent context**: Carlos with Claude Code already lives here. His "build" is a prompt. His cycle time is dominated by "did users engage?" (Observe) and "should I iterate or kill?" (Decide). If your Build phase is still the bottleneck, you haven't leveraged agents yet.
+
+> **Sidebar — Enterprise context**: Sara's Build phase won't compress to zero anytime soon — coordination overhead, compliance checks, and integration testing dominate. But *within* each developer's work, agents are compressing individual build tasks. The enterprise benefit: more cycles per quarter, not shorter cycles.
+
+The cycle engine is detailed in [Chapter 6](07-cycle-engine.md). Gates and kill conditions that govern the Decide phase are in [Chapter 5](06-kill-conditions.md) and [Chapter 8](09-gates.md).
 
 ---
 

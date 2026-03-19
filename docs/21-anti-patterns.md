@@ -2,7 +2,7 @@
 
 # Chapter 20: Anti-Patterns Catalog
 
-> *Panel-reviewed: Meeting #8 (2026-03-19)*
+> *Panel-reviewed: Meeting #8, updated Meeting #13 (2026-03-19)*
 > **Read this**: Everyone, especially Flow Coaches. Recognize these patterns in your team and fix them.
 
 ---
@@ -109,6 +109,89 @@ Each anti-pattern follows a structure: **Name** → **What it looks like** → *
 **Why it happens**: Sunk cost. Emotional attachment. Fear of looking like the team that "failed."
 
 **What to do**: The 30-minute inspection ([Chapter 1](01-why-flow.md)) is the ONLY mechanism for questioning a triggered kill condition. The inspection evaluates whether the DATA was valid, not whether the team WANTS to continue. If the data is valid, the kill stands. If renegotiation happens outside the inspection framework, the Flow Coach flags it as this anti-pattern.
+
+---
+
+## Agentic Anti-Patterns
+
+The following anti-patterns are caused specifically by high execution leverage — when agentic tooling compresses build time, new failure modes emerge that traditional process never encountered.
+
+---
+
+## 12. Premature Confidence
+**What it looks like**: The team ships fast and assumes speed equals progress. 10 features in production, no evidence any of them work. Dashboards show deployment counts, not outcome metrics. The team feels productive because things are moving.
+
+**Why it happens**: Shipping fast creates the illusion of progress. When build cost approaches zero, the feedback loop between "we built it" and "it works" gets conflated. The dopamine of deployment replaces the discipline of observation.
+
+**What to do**: Institute an **Observation Floor** — a minimum observation window before any kill/merge decision, determined by metric maturity and domain constraints (not build speed). Click-through data matures in hours; retention in weeks; revenue in months. No decision before the floor, regardless of how fast the build was.
+
+**Mitigation**: Every merge decision must reference observation data that has matured past the Observation Floor for its metric type.
+
+---
+
+## 13. Experiment Overload
+**What it looks like**: Cheap experiments lead to too many running simultaneously. The team launches 15 experiments into observation, but nobody is analyzing the data. Results pile up unreviewed. Kill conditions trigger silently because nobody is watching.
+
+**Why it happens**: When experiments are cheap to run, the bottleneck shifts from build capacity to observation capacity. Teams calibrate WIP limits to how fast they can build, not how fast they can learn.
+
+**What to do**: Calibrate WIP limits to **observation capacity**, not build capacity. The constraint is: "How many concurrent experiments can this team meaningfully observe and decide on?" If the answer is 5, the WIP limit is 5 — even if the team could build 20 in the same period.
+
+**Mitigation**: WIP limits must account for observation queue depth, not just active build slots.
+
+---
+
+## 14. Judgment Fatigue
+**What it looks like**: The team faces 5 kill/merge decisions per week instead of 1. Decision quality degrades. Teams start rubber-stamping continues. Kill meetings become perfunctory. The rigor that made early decisions good erodes under volume.
+
+**Why it happens**: Faster cycles produce more decision points per unit of time. Human judgment doesn't scale linearly with execution speed.
+
+**What to do**: Set a recommended maximum decision frequency — guidance: approximately 5 major kill/merge decisions per team per week. Batch decisions where possible (e.g., review all cycles at a single weekly Kill/Merge meeting rather than ad-hoc). If decision volume exceeds capacity, slow down cycle starts — the team is building faster than it can think.
+
+**Mitigation**: Track decision quality (reversal rate, regret rate) alongside decision volume. If reversals spike, reduce cycle concurrency.
+
+---
+
+## 15. Context Collapse
+**What it looks like**: An agent builds code the team didn't write. It works. Weeks later, a bug appears. Nobody has the intuition to find it because nobody wrote the code. Debugging takes 10x longer than it would have if a human had built it. The team is shipping code they don't understand.
+
+**Why it happens**: Agentic tools produce working code without transferring understanding. The team skips the learning that normally happens during implementation. When things break, institutional knowledge is absent.
+
+**What to do**: Institute a **Comprehension Review** — the team must demonstrate understanding of agent-built code before it passes Gate O4. This is not code review (which checks correctness) — it's comprehension review (which checks understanding). Scale with SPEC level: Micro-SPEC experiments need lighter review; Full SPEC features need thorough walkthroughs.
+
+**Mitigation**: No agent-built code passes O4 without at least one team member who can explain how it works and where it might break.
+
+---
+
+## 16. Dependency Whiplash
+**What it looks like**: Multiple teams shipping 10x faster means API contracts change 10x faster. Team A builds against Team B's API on Monday; by Tuesday it's changed twice. Integration breaks constantly. Teams spend more time adapting to upstream changes than building their own features.
+
+**Why it happens**: High execution leverage amplifies coordination overhead. When everyone ships faster, the surface area of change per unit of time explodes. Dependency management designed for weekly releases breaks at daily or hourly release speeds.
+
+**What to do**: Enforce **API contract versioning** with explicit deprecation windows. Add **dependency WIP limits** — cap the number of breaking changes a platform team can introduce per cycle. Downstream teams pin to contract versions and upgrade on their own cycle, not reactively.
+
+**Mitigation**: Platform teams must version APIs and hold contracts stable for a minimum window proportional to downstream team cycle times.
+
+---
+
+## 17. Maintenance Debt
+**What it looks like**: The team builds 10 features in a week, kills 7, but the 3 survivors need ongoing maintenance. Next week: 3 more survivors. The maintenance surface grows faster than the team's capacity to maintain. Eventually, the team spends more time maintaining than building.
+
+**Why it happens**: Kill decisions account for build cost (already sunk) and outcome metrics, but not future maintenance cost. Every merge is an implicit maintenance commitment, and that commitment accumulates.
+
+**What to do**: Include **maintenance cost** in every kill/continue/merge decision. Before merging, ask: "What does maintaining this feature cost per cycle?" Factor that into WIP capacity — every merged feature reduces available WIP for new work. If the team is maintenance-saturated, the correct action is to kill existing features before building new ones.
+
+**Mitigation**: Track maintenance load as a percentage of team capacity. When it exceeds 40%, freeze new cycle starts until load is reduced.
+
+---
+
+## 18. Speed Inequality
+**What it looks like**: Some teams adopt agentic tools faster than others. Fast teams ship 10x more. Management starts comparing teams. "Why can't Team B keep up with Team A?" Slow teams feel pressured, cut corners, skip gates. Fast teams feel elite, resist process that "slows them down."
+
+**Why it happens**: Execution leverage varies across teams based on domain complexity, tooling maturity, team composition, and organizational constraints. Management treats output volume as a productivity metric without accounting for these differences.
+
+**What to do**: Tempo is self-assessed, never compared across teams. There is no "agentic leaderboard." Each team's FLOW Configuration ([Chapter 14](15-production-readiness.md)) declares its own Tempo based on its context. Management reviews portfolio health (outcomes and signals), not throughput volume.
+
+**Mitigation**: Ban cross-team velocity comparisons. Review teams on outcome quality and decision rigor, not cycle count.
 
 ---
 

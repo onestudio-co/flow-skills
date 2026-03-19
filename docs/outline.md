@@ -16,6 +16,9 @@
 - **Anti-pattern teaser**: 3 common failures FLOW prevents (preview of [Ch 20](21-anti-patterns.md))
 
 ### [Chapter 2: The Core Mental Model](02-mental-model.md)
+- **Tempo**: the team's natural build-observe-decide rhythm (execution leverage × observation requirements × coordination overhead × external constraints)
+- **FLOW Invariants vs Variables**: what never changes (modes, spine, kills, gates, WIP, observe-before-decide) vs what scales (cycle duration, doc depth, cadence, build time, migration pace)
+- **Cycle Phases**: Build → Observe → Decide — explicit decomposition; agents compress Build toward zero
 - Two modes: **Discovery** (learning) vs. **Outcome** (shipping) — the core distinction
 - The mode decision: "Is the primary risk that we build the wrong thing, or that we fail to ship the right thing?" (answer can be "both")
 - **Mode relationship patterns**: sequential (hardware), parallel (software), collapsed (solo), oscillating (creative), governance-gated (enterprise/gov), client-gated (agency)
@@ -87,6 +90,7 @@
 
 ### [Chapter 8: SPEC-Lite](09-spec-lite.md)
 - The one-page planning artifact
+- **SPEC Spectrum**: Micro-SPEC (3 fields: Problem, Hypothesis, Kill Condition) → Full SPEC-Lite (5+ fields)
 - Anatomy: Problem, Scope, Target Metric, Kill Condition, Non-Goals
 - Writing kill conditions that are actually useful
 - SPEC-Lite vs. PRD: why less is more
@@ -129,14 +133,15 @@
 
 ### [Chapter 12: WIP Limits](13-wip-limits.md)
 - Why unbounded work-in-progress kills teams
-- How to set WIP limits (per team, per mode, per person)
+- How to set WIP limits (per team, per mode, per person, **per bottleneck type**)
 - The WIP check: enforcing limits before accepting new work
 - What to do when you're at capacity (queue, trade, or kill)
 - WIP limits in practice: real examples
 - *Sidebars: Solo (your WIP limit is 1-2), Agency (WIP across multiple client projects), Platform (WIP across dependency graph)*
 
 ### [Chapter 13: Rituals & Cadence](14-rituals.md)
-- The weekly rhythm: what happens when
+- **Two rhythms**: Cycle Cadence (per-cycle, scales with Tempo) vs Portfolio Cadence (calendar-based, weekly/monthly minimums)
+- **FLOW Configuration**: team one-pager (Tempo, SPEC minimum, WIP limits, cadences)
 - Intake Review, Discovery Review, Outcome Review, Kill/Merge
 - Ritual anti-patterns: when meetings become process theater
 - Async alternatives: can rituals work asynchronously with AI agents?
@@ -182,7 +187,7 @@
 - **From Waterfall/PRINCE2**: introducing cycles within stages
 - **From Kanban**: adding structure without killing flow
 - **From nothing**: building methodology from scratch
-- Week-by-week migration timeline (adaptable)
+- **Repetition-based milestones** (cycle count, not calendar weeks) with adoption gates that test understanding
 - Common migration failures and how to prevent them
 - The 30-day health check: "are we doing it right?"
 - *Sidebars: Agency (migrating per-client vs. company-wide), Enterprise (phased rollout across teams)*
@@ -197,13 +202,16 @@
 - Transformation failure modes and how to avoid them
 - *Sidebars: Enterprise (executive sponsor playbook), Government (ministerial buy-in strategy), Agency (selling FLOW to clients as a value-add)*
 
-### [Chapter 19: FLOW with AI Agents](20-ai-agents.md)
-- How agentic tools change the methodology (tool-agnostic)
-- Capability patterns: intake classification, gate checks, experiment design, status reports, learning archives
-- What agents can do vs. what humans must do
-- The human-agent collaboration model
-- Building a FLOW-aware agent (capability reference, not brand-specific)
-- *Sidebars: Solo (AI agents as your team), Enterprise (AI governance and trust)*
+### [Chapter 19: FLOW in the Agentic Era](20-ai-agents.md)
+- **The Execution Cost Revolution**: when building becomes nearly free, the bottleneck shifts to judgment
+- **Three Agent Roles**: Builder (collapses build time), Analyst (processes observation data), Facilitator (runs rituals and gates)
+- **The Leverage Spectrum**: fully agentic → partially agentic → minimally agentic
+- **Tempo Impact**: how agents compress cycles by compressing the build phase; metric maturity table
+- **The Bottleneck Shift**: Theory of Constraints — when builds are fast, where does the constraint move?
+- **Decision Authority**: what agents can do vs. what humans must do (mechanics vs. judgment)
+- **The Comprehension Review**: understanding agent-built code, not just reviewing it
+- **Agentic Walkthrough**: complete FLOW cycle with agents as builders (contrast with Ch 3)
+- *Sidebars: Solo (agent as your entire team), Enterprise (AI governance and trust), Agency (client education on agentic speed), Hardware (agents don't speed up physics)*
 
 ---
 
@@ -215,6 +223,7 @@
 - **Zombie Cycles**: cycles that never get killed despite no evidence of progress
 - **Scope Creep by Consensus**: expanding scope because everyone has "one more thing"
 - **WIP Inflation**: accepting new work without killing old work
+- **7 Agentic Anti-Patterns**: Premature Confidence, Experiment Overload, Judgment Fatigue, Context Collapse, Dependency Whiplash, Maintenance Debt, Speed Inequality
 - **Gate Skipping**: treating gates as optional when under pressure
 - **Metric Gaming**: choosing metrics that always look green
 - **The Infinite Discovery**: using "we need more data" to avoid shipping decisions
@@ -233,6 +242,6 @@
 
 ---
 
-*Document version: 0.2 (panel-reviewed)*
-*Approved: 2026-03-19 — Meeting #1 (6 agree, 5 modify-accept)*
+*Document version: 0.3 (Meeting #13: Agentic Speed backport)*
+*Approved: 2026-03-19 — Meeting #1 (structure), Meeting #13 (Tempo, agentic era concepts)*
 *Agent: Waddah (وضّاح)*

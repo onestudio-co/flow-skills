@@ -50,8 +50,23 @@ Use these classification questions:
 
 **Three classifications:**
 - **Discovery** — We don't know if the problem is real or the solution is right → Write a Discovery Brief
-- **Outcome** — Evidence exists, problem is validated, approach is defined → Write a SPEC-Lite
+- **Outcome** — Evidence exists, problem is validated, approach is defined → Write a SPEC-Lite (or Micro-SPEC for quick experiments)
 - **Operational** — Incident, bug, maintenance → Bypass the spine. Track separately. If operational work exceeds 20% of capacity, that's a signal worth investigating as a bet.
+
+### Collapsed Mode — When Build IS the Experiment
+
+When execution leverage is high (agentic teams, low-code, rapid prototyping) and build cost approaches zero, the Discovery/Outcome boundary collapses:
+
+> "If it's cheaper to build and measure than to design an experiment about building, then building IS the experiment."
+
+In Collapsed Mode:
+- Discovery and Outcome merge into a single cycle
+- Use a **Micro-SPEC** (Problem, Hypothesis, Kill Condition — 3 lines) as the planning artifact
+- The "experiment" is shipping the feature to real users and measuring
+- Kill conditions and observation windows still apply — speed doesn't remove the need for evidence
+- Route here when build cost is under ~1 day AND the metric has a fast observation window (hours to days)
+
+**Execution Leverage as a Routing Factor**: When classifying, also ask: "How expensive is it to just build this?" If the answer is "a few hours with an agent," consider Collapsed Mode instead of a separate Discovery phase. The classification questions still apply — but the routing changes.
 
 > **WARNING — Political Awareness (Ch 19)**: If a senior stakeholder's request is being classified as Discovery, frame it diplomatically. Don't say "your idea needs validation." Say: "I'd recommend a 2-week experiment to validate [hypothesis]. The earliest start date given our current WIP is [date]. If the experiment validates, we move to Outcome immediately." That's not rejection — it's professional intake.
 
@@ -104,12 +119,14 @@ File this in the appropriate `tracks/*/tasks.md`.
 Based on classification:
 - **Discovery** → "Ready to write the Discovery Brief? Run `/flow-brief`"
 - **Outcome** → "Ready to write the SPEC-Lite? Run `/flow-spec`"
+- **Collapsed Mode** → "Build cost is near-zero — write a Micro-SPEC and ship. Run `/flow-spec` (Micro-SPEC path)"
 - **Operational** → Track separately, no further FLOW skills needed
 
 ## Variant Notes
 
 | Context | Intake Adaptation |
 |---------|-------------------|
+| **Agentic/High-Tempo** | Collapsed Mode likely applies. Build IS the experiment. Use Micro-SPEC. Intake takes minutes, not hours. |
 | **Solo** | Intake is your thinking before coding. Classification happens in your head. 5 minutes. |
 | **Agency** | Client intake is relationship management (billable). Internal intake is classification. Separate the two. |
 | **Enterprise** | Weekly 30-min Intake Review meeting. Multi-team routing needs a TPM to coordinate. |
@@ -124,7 +141,8 @@ If running intake without this skill:
 
 - [ ] Capture the raw request (what, who asked, why now)
 - [ ] Shape it (boundary, risk, mode)
-- [ ] Classify: Discovery / Outcome / Operational
+- [ ] Classify: Discovery / Outcome / Collapsed Mode / Operational
+- [ ] Check execution leverage — is build cost near-zero? Consider Collapsed Mode
 - [ ] Check spine trace — does it connect to an active bet?
 - [ ] Check WIP limits before accepting
 - [ ] Route to the right team/person

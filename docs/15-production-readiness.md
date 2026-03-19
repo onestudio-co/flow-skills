@@ -2,7 +2,7 @@
 
 # Chapter 14: Production Readiness
 
-> *Panel-reviewed: Meeting #6 (2026-03-19)*
+> *Panel-reviewed: Meeting #6 (2026-03-19), updated Meeting #13 (Comprehension Review)*
 > **Read this**: Engineers, DevOps, Tech Leads. Read when a cycle reaches "Merge" decision. **Skip if**: Solo founder deploying to a small audience.
 
 ---
@@ -27,6 +27,7 @@ Production readiness is not "the code works." It's "the code works, is monitored
 - [ ] **On-call team briefed**. The people who respond to incidents know this feature exists and how it works.
 - [ ] **Performance validated**. Load testing, stress testing, or at minimum: "we've seen it work under production traffic."
 - [ ] **Data migration complete**. If the feature changed data models, all migrations are applied and verified.
+- [ ] **Comprehension Review complete** (agent-built features). For features built by AI agents: the team has completed a Comprehension Review — they understand what was built, not just that it passes tests. This is distinct from code review (which checks correctness). The Comprehension Review verifies that at least one human engineer can explain the architecture, data flow, and failure modes of the agent-generated code. Without this, the on-call team inherits code nobody understands.
 
 ### What Production Readiness is NOT
 

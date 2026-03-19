@@ -58,6 +58,30 @@ Are Discovery Reviews and Outcome Reviews happening on schedule?
 - Expected: weekly for each active mode
 - Missing reviews = governance gap
 
+### Agentic Adoption Metrics
+
+**7. Team Tempo**
+What is the team's declared Tempo profile? Is the actual cycle duration matching the declared Tempo?
+- Check for a FLOW Configuration file or Tempo declaration
+- Compare declared Tempo against actual cycle durations from archive entries
+- If no Tempo is declared: flag as "Tempo not configured — run `/flow-tempo`"
+- If actual cycles consistently exceed declared Tempo by 2x+: flag as "Tempo mismatch"
+- Target: actual cycle duration within 1.5x of declared Tempo
+
+**8. Execution Leverage**
+How much is the team leveraging agentic tooling?
+- Scan archive entries and experiment logs for `execution_leverage` fields
+- Calculate distribution: what % of cycles are high/medium/low/none leverage?
+- If a team has access to agentic tools but all cycles show `none`: flag as "Tooling underutilized"
+- Note: this is informational, not prescriptive — not all work benefits from agentic tooling
+
+**9. Bottleneck Identification**
+Where are cycles getting stuck?
+- Check cycle phase distribution: how many cycles are in Build vs. Observe vs. Decide?
+- If 80%+ cycles are stuck in the same phase: flag that phase as a bottleneck
+- Common bottlenecks: Build (team lacks tooling), Observe (no observability), Decide (decision authority unclear)
+- Cross-reference with Tempo: a Lightning-tempo team stuck in Observe for weeks has a measurement problem
+
 ## Step 2: Anti-Pattern Detection
 
 Scan for each anti-pattern from Chapter 21 and flag with evidence:
@@ -109,6 +133,11 @@ Gate Compliance          [X]%      80%      [green/yellow/red]
 WIP Adherence            [status]  clean    [green/yellow/red]
 Ritual Cadence           [X/Y]     weekly   [green/yellow/red]
 
+AGENTIC ADOPTION:
+Team Tempo               [profile] declared [green/yellow/red]
+Execution Leverage       [X]% high [info]   [green/yellow/gray]
+Bottleneck               [phase]   none     [green/yellow/red]
+
 ANTI-PATTERNS DETECTED:
 [icon] [Pattern Name] — [brief evidence]
 [icon] [Pattern Name] — [brief evidence]
@@ -118,9 +147,9 @@ OVERALL HEALTH: [GREEN / YELLOW / RED]
 ```
 
 ### Scoring Rules
-- **Green**: 5-6 metrics at target, 0 anti-patterns
-- **Yellow**: 3-4 metrics at target, or 1-2 anti-patterns
-- **Red**: fewer than 3 metrics at target, or 3+ anti-patterns
+- **Green**: 5-6 core metrics at target, 0 anti-patterns (agentic metrics are informational — they inform coaching but don't downgrade overall health)
+- **Yellow**: 3-4 core metrics at target, or 1-2 anti-patterns
+- **Red**: fewer than 3 core metrics at target, or 3+ anti-patterns
 
 ## Step 4: Coaching Recommendations
 
@@ -180,6 +209,7 @@ If running this review without the skill:
 - [ ] Verify gate records exist for all mode transitions
 - [ ] Check WIP against limits (Chapter 13 tables)
 - [ ] Verify review rituals happened on schedule
+- [ ] Check Agentic Adoption: Team Tempo declared? Execution leverage tracked? Phase bottlenecks?
 - [ ] Scan for anti-patterns: Process Theater, Discovery Avoidance, Zombie Cycles, Builder Bias, WIP Inflation, Metric Avoidance, Ritual Skipping, Kill Aversion (Chapter 21)
 - [ ] Score each metric green/yellow/red
 - [ ] Compute overall health

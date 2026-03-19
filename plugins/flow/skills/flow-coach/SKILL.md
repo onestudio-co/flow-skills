@@ -42,7 +42,7 @@ Walk through FLOW's three decision capabilities in order. For each, explain the 
 
 **Explain**: Outcome mode has structure: SPEC-Lite (one-page scope), Build Contract (engineering agreement), kill conditions (pre-committed exit criteria), and gates (mechanical checklists at each transition).
 
-**Example**: "After your mobile app experiments showed users want offline access to reports, you write a SPEC-Lite: 'Enable offline report viewing for field agents. Target: 60% of field agents use offline mode within 30 days. Kill condition: less than 20% adoption after 2 weeks.'"
+**Example**: "After your mobile app experiments showed users want offline access to reports, you write a SPEC-Lite: 'Enable offline report viewing for field agents. Target: 60% of field agents use offline mode within 30 days. Kill condition: less than 20% adoption after 2 weeks.' For high-tempo teams, a Micro-SPEC (3 lines: Problem, Hypothesis, Kill Condition) may be sufficient when the build cycle is under a day."
 
 **Check**: "What's the difference between a success metric and a kill condition?"
 
@@ -90,6 +90,7 @@ The user picks a topic. Reference the appropriate chapter and teach it thoroughl
 | Migration | Ch 18 | Moving from Scrum/SAFe/Waterfall to FLOW |
 | Organizational change | Ch 19 | Adoption strategy |
 | AI agents in FLOW | Ch 20 | Agentic workflows |
+| Tempo & the Agentic Era | Module 6 | Tempo, Micro-SPEC, Observation Floor, Agentic Anti-patterns |
 | Anti-patterns | Ch 21 | What goes wrong and how to fix it |
 | Glossary | Ch 22 | Term definitions |
 | Adaptation guides | Ch 23 | Team-size-specific configurations |
@@ -106,6 +107,8 @@ Present scenario-based questions. Never multiple choice — always open-ended.
 3. "An engineer says 'I already know how to build this, why do we need a Discovery Brief?' How do you respond?"
 4. "You have 7 active cycles and a team of 5. What's wrong?"
 5. "A cycle has been continued twice and still hasn't met its kill condition. What happens next?"
+6. "Your team uses AI to build features in hours instead of weeks. You now have 12 features in production but only metrics on 3. What's wrong?"
+7. "An AI agent built a pipeline overnight. Tests pass, but no one can explain the logic. The PM wants to ship. What gate applies?"
 
 After each answer, provide feedback: what was right, what was missed, and why it matters.
 
@@ -145,6 +148,88 @@ Ask: "What symptom are you seeing?" Then match to anti-patterns from Chapter 21:
 5. **Celebrate questions** — "Great question — that's exactly the tension FLOW is designed to handle"
 6. **Be honest about tradeoffs** — FLOW adds overhead for certainty; not everything needs Discovery mode
 
+## Module 6: Tempo & the Agentic Era
+
+When the user asks about agentic teams, AI-assisted development, tempo, or fast iteration, teach this module.
+
+### Concept: Tempo
+
+> "Tempo is a team's build-observe-decide rhythm. It's not speed — it's the cadence at which a team can complete a full learning cycle."
+
+**Cycle Phases**: Every FLOW cycle has three phases:
+1. **Build** — Create the artifact (feature, experiment, prototype)
+2. **Observe** — Collect data against the target metric
+3. **Decide** — Kill, merge, continue, or pivot based on evidence
+
+Tempo is measured in cycle time — how long from "start build" to "decision made." A team with 2-day tempo completes 2-3 full cycles per week. A team with 2-week tempo completes 2 per month.
+
+### Micro-SPEC vs Full SPEC-Lite
+
+When build cost approaches zero (agentic teams, low-code, rapid prototyping):
+
+| Dimension | Micro-SPEC | Full SPEC-Lite |
+|-----------|------------|----------------|
+| When | Cycle < 1 day, build cost near-zero | Larger scope, multi-person, regulated |
+| Fields | Problem, Hypothesis, Kill Condition | All standard fields (one page) |
+| Build Contract | Skip | Required |
+| Kill condition | Required (always) | Required (always) |
+
+> **Teaching moment**: "The kill condition is the one thing that never scales down. Whether your cycle is 2 hours or 2 months, you must define when to stop."
+
+### FLOW Configuration
+
+FLOW's power is that it adapts to team tempo:
+
+**Invariants** (never change, regardless of tempo):
+- Kill conditions on every cycle
+- Evidence before Outcome mode
+- WIP limits enforced
+- Gates as quality filters
+- Decision Spine traceability
+
+**Variables** (adjust to team tempo):
+- SPEC level (Micro vs Full)
+- Review cadence (per-cycle vs weekly vs bi-weekly)
+- Gate formality (verbal vs documented)
+- Build Contract (skip for Micro-SPEC, required for Full)
+- Observation window (hours to weeks, based on metric maturity)
+
+### Observation Floor
+
+The minimum observation window before a kill/merge decision is valid. Tied to metric maturity:
+
+| Metric | Observation Floor |
+|--------|------------------|
+| Click-through | Hours |
+| Activation | Days |
+| Retention D7 | 1 week |
+| Revenue | 2-4 weeks |
+| NPS | 4-8 weeks |
+
+> **Teaching moment**: "You can build in 2 hours, but you might need to observe for 2 weeks. The bottleneck is almost never build — it's observation. Fast teams don't skip observation; they run more cycles in parallel while waiting for data."
+
+### The 7 Agentic Anti-Patterns
+
+When AI/agents accelerate build speed, these failure modes emerge:
+
+1. **Spec-less Shipping** — Building without any SPEC because "it's fast anyway." Speed without direction is just faster waste.
+2. **Observation Debt** — Shipping faster than you can measure. Features pile up with no data on whether they work.
+3. **Zombie Experiments** — Launching experiments and forgetting to check results. The build was automated; the decision wasn't.
+4. **Gate Skipping** — "We'll add tests/observability later." Later never comes. Gates exist to prevent this.
+5. **WIP Explosion** — "Build is cheap so let's do everything." Cheap builds still consume observation bandwidth and decision capacity.
+6. **Cargo-Cult Automation** — Automating the wrong thing. The bottleneck is rarely build — it's knowing what to build.
+7. **Comprehension Gap** — Team can't explain what the agent built. Code that humans don't understand is tech debt on arrival.
+
+### Agentic Quiz Scenarios
+
+**Scenario 6**: "Your team uses AI to build features in hours instead of weeks. You now have 12 features in production but only metrics on 3 of them. A stakeholder asks to start 4 more. What's happening and what do you do?"
+
+*Expected insight*: This is Observation Debt + WIP Explosion. The bottleneck shifted from build to observation. Stop starting, start measuring. The 9 untracked features are invisible — they might be harming metrics without anyone knowing.
+
+**Scenario 7**: "An AI agent built a complex data pipeline overnight. It works — tests pass, data flows. But when asked to modify it, no one on the team can explain the aggregation logic. The PM wants to ship it to production. What FLOW gate applies?"
+
+*Expected insight*: This is the Comprehension Gap. Gate O4 (observability) should catch this — if the team can't explain it, they can't monitor it. A Comprehension Review is needed before shipping agent-built features to production.
+
 ## Chain
 
 After coaching: "Ready to practice? Try `/flow-intake` with a real work item to see the classification in action."
@@ -163,6 +248,8 @@ If onboarding someone without the skill:
 - [ ] Use Socratic method — ask questions before explaining
 - [ ] Reference specific chapters for each concept
 - [ ] Provide real-world examples from the team's projects
+- [ ] For agentic/high-tempo teams: cover Module 6 (Tempo, Micro-SPEC, Observation Floor, Anti-patterns)
+- [ ] Update milestones to reference cycle counts, not calendar dates
 - [ ] End with a concrete next step (observe a ritual, try an intake, etc.)
 
 **FLOW References**: All 23 chapters are relevant. Start with Chapter 1 (Why FLOW) and Chapter 2 (Mental Model) for newcomers. Chapter 21 (Anti-patterns) for diagnostics. Chapter 18 (Migration) for framework comparisons.

@@ -2,7 +2,7 @@
 
 # Chapter 11: Outcome Decisions & Gates
 
-> *Panel-reviewed: Meeting #5 (2026-03-19)*
+> *Panel-reviewed: Meeting #5 (2026-03-19), updated Meeting #13 (Judgment Fatigue, Observation Floor)*
 > **Read this**: PMs, Data Analysts, Flow Coaches, Leadership. The most important ritual in FLOW.
 
 ---
@@ -159,6 +159,14 @@ Teams without archives re-run cycles that have already been resolved. "Should we
 The archive should be searchable. Before writing a new SPEC-Lite, check: "Has anyone attempted this bet before? What happened?"
 
 ---
+
+### Judgment Fatigue
+
+> **Recommended maximum: ~5 major kill/merge decisions per team per week.** Batch decisions where possible. Judgment quality degrades with frequency — the fifth kill decision in a day is measurably worse than the first. If your portfolio has many active cycles reaching decision points simultaneously, stagger their timelines or batch Kill/Merge meetings to avoid decision fatigue.
+
+### Observation Floor
+
+> **Before any Kill/Merge decision, verify the observation window meets the minimum for your metric type.** Deciding to kill after 3 hours of data on a metric that needs 2 weeks is not evidence-based — it's impatience. Refer to the metric maturity table in [Chapter 18](19-organizational-change.md) for minimum observation periods by metric type. A kill condition can only be evaluated after the observation floor has passed. If the floor hasn't been met, the only valid decision is **Continue** (with the explicit reason: "observation floor not yet reached").
 
 ### Kill/Merge Decision Tree
 

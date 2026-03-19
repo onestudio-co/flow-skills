@@ -1,8 +1,22 @@
 # FLOW — The Methodology for the Agentic Era
 
-**Decision-centric product development. 14 AI-native skills. Panel-reviewed documentation.**
+**Decision-centric product development. 16 AI-native skills. Panel-reviewed documentation.**
 
-`v2.0` &middot; `23 chapters` &middot; `14 skills` &middot; `11 panel reviewers`
+`v2.1` &middot; `23 chapters` &middot; `16 skills` &middot; `11 panel reviewers`
+
+---
+
+## What's New in v2.1
+
+**The Agentic Speed Update** — driven by real team feedback (Panel Meeting #13) that FLOW's time assumptions don't match agentic reality.
+
+- **Tempo**: Teams discover their own build-observe-decide rhythm. FLOW is now speed-agnostic — no hardcoded "2-4 week" cycles.
+- **Micro-SPEC**: Lightweight SPEC for cycles under 3 days — preserves kill conditions and target metrics without ceremony overhead.
+- **Cycle Phases**: Every cycle has three phases (Build, Observe, Decide) — the bottleneck shifts as tooling gets faster.
+- **FLOW Configuration**: Teams generate an operating agreement capturing their Tempo, WIP policy, gate style, and ritual cadence.
+- **Observation Floor**: Minimum observation period to prevent premature decisions — even when builds are instant.
+- **7 Agentic Anti-Patterns**: Premature Confidence, Experiment Overload, Judgment Fatigue, Context Collapse, Dependency Whiplash, Maintenance Debt, Speed Inequality.
+- **Bottleneck-based WIP**: WIP limits now account for where the bottleneck actually is (build vs. observation vs. decision capacity).
 
 ---
 
@@ -45,13 +59,13 @@ FLOW operates through three layers:
 
 ### Layer 1: CLAUDE.md (Ambient)
 
-Six rules added to your project's `CLAUDE.md`. Always active. No invocation needed. They ensure every interaction respects FLOW's decision-centric principles — mode awareness, kill conditions, spine tracing, WIP limits, gate enforcement, and learning capture.
+Seven rules added to your project's `CLAUDE.md`. Always active. No invocation needed. They ensure every interaction respects FLOW's decision-centric principles — mode awareness, kill conditions, spine tracing, WIP limits, gate enforcement, learning capture, and tempo awareness.
 
 See [CLAUDE.md Integration](#claudemd-integration) below.
 
 ### Layer 2: Skills (Invoked)
 
-14 interactive skills, each handling a specific FLOW activity. Invoked explicitly via `/flow-*` commands. They guide you through structured workflows — asking questions, producing artifacts, chaining to next steps.
+16 interactive skills, each handling a specific FLOW activity. Invoked explicitly via `/flow-*` commands. They guide you through structured workflows — asking questions, producing artifacts, chaining to next steps.
 
 See [Skills Reference](#skills-reference) below.
 
@@ -89,6 +103,8 @@ State files that persist across sessions: active cycles, experiment logs, archiv
 | `/flow-coach` | Learn FLOW interactively — guided tour, deep dives, quizzes, diagnostics, comparisons | `/flow-intake` | New team members |
 | `/flow-health` | Adoption health check — detect process theater, measure FLOW maturity | — | Flow Coach, Leadership |
 | `/flow-review` | Facilitate Discovery Review and Outcome Review rituals | `/flow-kill` | PM, Flow Coach |
+| `/flow-tempo` | Discover your team's build-observe-decide rhythm | — | PM, Team Lead |
+| `/flow-config` | Generate your team's FLOW operating agreement | — | PM, Team Lead |
 
 ### Skill Chaining
 
@@ -106,7 +122,7 @@ The router (`/flow`) handles this automatically for newcomers. Experienced users
 
 ## CLAUDE.md Integration
 
-Add these 6 rules to your project's `CLAUDE.md` to activate FLOW's ambient layer. These rules run passively on every interaction — no skill invocation needed.
+Add these 7 rules to your project's `CLAUDE.md` to activate FLOW's ambient layer. These rules run passively on every interaction — no skill invocation needed.
 
 ```markdown
 ## FLOW Ambient Rules
@@ -122,6 +138,8 @@ Add these 6 rules to your project's `CLAUDE.md` to activate FLOW's ambient layer
 5. **Gate Enforcement**: Never skip gates. D1 validates the Discovery Brief. D3 validates evidence for mode switch. O1 validates the bet. O5 is Kill/Merge. Gates are mechanical checklists, not meetings — they take 5 minutes if the work is solid.
 
 6. **Learning Capture**: When a cycle completes (killed or merged), capture what was learned. Every kill is a success — it saved resources. Archive the learning so the team never re-runs the same failed experiment.
+
+7. **Tempo Awareness**: FLOW is speed-agnostic. Cycle duration is determined by the team's Tempo — not a global default. When builds are fast (agentic tooling), the bottleneck shifts to observation and decision capacity. Never assume "2-4 weeks" — ask about the team's Tempo.
 ```
 
 These rules ensure FLOW principles are respected even when no skill is actively running.
@@ -132,7 +150,7 @@ These rules ensure FLOW principles are respected even when no skill is actively 
 
 ### Solo Founder (team of 1-2)
 
-**Start with**: `/flow-coach` (guided tour) then `/flow-intake` with a real idea.
+**Start with**: `/flow-tempo` (discover your rhythm) then `/flow-coach` (guided tour) then `/flow-intake` with a real idea.
 
 **Core skills**: `/flow-brief`, `/flow-experiment`, `/flow-kill`.
 
@@ -208,7 +226,7 @@ Every decision in FLOW was debated by a panel of 11 product managers spanning fi
 | Amara Osei | Product Lead | Climate Tech / Hardware+Software |
 | Yuki Tanaka | Product Manager | EdTech / Consumer Mobile |
 
-The panel reviewed the outline, debated every chapter's content, and validated the complete documentation across 10 review meetings. Their diverse contexts ensured FLOW works across team sizes, domains, and organizational structures — not just in theory.
+The panel reviewed the outline, debated every chapter's content, and validated the complete documentation across 13 review meetings. Their diverse contexts ensured FLOW works across team sizes, domains, and organizational structures — not just in theory.
 
 ---
 
@@ -218,7 +236,7 @@ The panel reviewed the outline, debated every chapter's content, and validated t
 /install onestudio-co/flow-skills
 ```
 
-One install — all 14 skills, 23 chapters of documentation, and the CLAUDE.md ambient rules.
+One install — all 16 skills, 23 chapters of documentation, and the CLAUDE.md ambient rules.
 
 ---
 
@@ -273,7 +291,9 @@ flow-skills/
 │           ├── flow-wip/SKILL.md
 │           ├── flow-coach/SKILL.md
 │           ├── flow-health/SKILL.md
-│           └── flow-review/SKILL.md
+│           ├── flow-review/SKILL.md
+│           ├── flow-tempo/SKILL.md
+│           └── flow-config/SKILL.md
 └── .claude-plugin/
     └── marketplace.json
 ```

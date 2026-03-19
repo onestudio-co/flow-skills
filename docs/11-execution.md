@@ -2,7 +2,7 @@
 
 # Chapter 10: Execution & Observability
 
-> *Panel-reviewed: Meeting #5 (2026-03-19)*
+> *Panel-reviewed: Meeting #5 (2026-03-19), updated Meeting #13 (agentic observability timing, Agent-as-Analyst)*
 > **Read this**: Everyone involved in an active Outcome cycle.
 
 ---
@@ -52,6 +52,14 @@ Most teams build the feature, ship it, then ask "how do we know if it's working?
 3. **Before rollout**: Verify the dashboard shows real data from staging/testing. The dashboard should be live BEFORE the first real user touches the feature.
 
 4. **After rollout**: The dashboard is the source of truth for Kill/Merge decisions. If it's empty or broken, Gate O4 hasn't passed — stop the cycle and fix observability first.
+
+### Observability Timing for Agentic Builds
+
+When the build phase is hours, observability setup must happen **BEFORE or DURING** the build, not after. An agent can instrument as it builds — make this an explicit instruction in the Build Contract. The traditional sequence (build → instrument → deploy) collapses into a single pass: the agent writes the feature code and the observability code simultaneously. If your Build Contract specifies an observability plan, the agent should treat instrumentation as part of the build definition of done, not a follow-up task.
+
+### Agent-as-Analyst
+
+Agents can process observation data and surface patterns — compile dashboards, flag anomalies, prepare Kill/Merge evidence packages. The human interprets; the agent compiles. This division is important: pattern detection scales with compute, but judgment about what the patterns MEAN requires human context. Use agents to ensure no signal is missed; use humans to decide what signals matter.
 
 ---
 

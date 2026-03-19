@@ -103,7 +103,29 @@ How will this reach users? Ask:
 - **Blast radius**: [who is affected at each stage]
 ```
 
-### 5. Definition of Done
+### 5. Build Complete Checkpoint
+
+Before moving to observation, explicitly mark the **Build Complete** moment. This is the transition from Build phase to Observe phase in the cycle.
+
+Ask:
+- "When will you consider the build DONE and ready for observation?" (This may be sub-day for agentic teams using AI-assisted tooling)
+- "Is observability instrumented DURING the build?" (For agentic teams, instrument as you build — don't bolt it on after)
+- "What's the handoff signal from Build → Observe?"
+
+```markdown
+### Build Complete Checkpoint
+- **Build complete signal**: [What marks the end of Build phase — e.g., "deployed to staging with feature flag", "PR merged and observability live"]
+- **Expected build duration**: [hours/days/weeks — note: agentic tooling can collapse multi-day builds to hours]
+- **Observability ready at build complete**: Yes/No — [If No, this is a blocking issue — you can't observe what you didn't instrument]
+- **Observation period starts**: [When observation begins after build complete]
+- **Observation duration**: [How long to observe before Gate O4 decision]
+```
+
+> **Coaching moment**: "With agentic tooling, build phases can collapse to hours or even minutes. But the observation period doesn't compress — you still need real-world data. The Build Complete checkpoint prevents teams from skipping observation just because the build was fast." (Meeting #13)
+
+> **Agentic team note**: When using AI-assisted development (Claude Code, Cursor, etc.), instrument observability DURING the build, not after. The build may be so fast that there's no separate 'add monitoring' phase — bake it into the same session.
+
+### 6. Definition of Done
 
 What must be true for this cycle to be "done"? This is a shared checklist.
 
@@ -123,7 +145,7 @@ Ask both PM and Engineering:
 - [ ] Rollback has been tested
 ```
 
-### 6. Known Risks
+### 7. Known Risks
 
 Ask both parties:
 - "What could go wrong?"
@@ -137,7 +159,7 @@ Ask both parties:
 | [risk] | high/med/low | high/med/low | [plan] |
 ```
 
-### 7. Dependencies
+### 8. Dependencies
 
 Ask:
 - "What do you need from other teams?"
@@ -159,6 +181,8 @@ Run the gate checklist:
 - [ ] PM owner and Engineering lead are identified
 - [ ] Technical approach is documented
 - [ ] Observability plan is specific and sufficient
+- [ ] Build Complete checkpoint is defined (build complete signal, expected duration, observation period)
+- [ ] Observability is planned to be instrumented DURING build (not after)
 - [ ] Rollout strategy includes feature flag and rollback plan
 - [ ] Definition of Done is agreed by both PM and Engineering
 - [ ] Known risks are documented with mitigations
@@ -192,14 +216,17 @@ Kill Condition: [Y]
 ## Rollout Strategy
 [from section 4]
 
-## Definition of Done
+## Build Complete Checkpoint
 [from section 5]
 
-## Known Risks
+## Definition of Done
 [from section 6]
 
-## Dependencies
+## Known Risks
 [from section 7]
+
+## Dependencies
+[from section 8]
 
 ---
 Signed off by:
@@ -225,6 +252,8 @@ If running this process without the skill:
 - [ ] Write Technical Approach (architecture, technologies, decomposition)
 - [ ] Write Observability Plan (metrics, dashboards, alerts, logging) — co-owned with DevOps
 - [ ] Write Rollout Strategy (feature flag, rollout stages, rollback plan)
+- [ ] Define Build Complete Checkpoint (build complete signal, expected duration, observation period)
+- [ ] Ensure observability is instrumented DURING build (especially for agentic teams)
 - [ ] Write Definition of Done (PM + Engineering + quality criteria)
 - [ ] Document Known Risks with mitigations
 - [ ] Document Dependencies with owners and timelines

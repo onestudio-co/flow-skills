@@ -8,10 +8,31 @@ The user wants to evaluate whether a cycle should be killed, merged, or continue
 
 ## Pre-Decision Protocol
 
+### Judgment Fatigue Warning
+
+> **Coaching note**: Teams have limited decision capacity. Research suggests ~5 major decisions per team per week is a sustainable ceiling. Kill/Merge decisions are cognitively expensive — they involve loss aversion, sunk cost evaluation, and team morale considerations. If the team is making more than 5 major decisions this week, flag it: "Decision fatigue may be affecting quality. Consider deferring non-urgent decisions to next cycle."
+
 ### 1. Identify the Cycle
 Ask: "Which cycle are we evaluating?" If not clear, list active cycles from track task files and let the user pick.
 
-### 2. Compile the Evidence Package
+### 2. Check the Observation Floor
+
+Before compiling evidence, verify that the minimum observation window has elapsed. The **Observation Floor** is the minimum time a metric needs to produce a reliable signal:
+
+| Metric Type | Observation Floor |
+|-------------|------------------|
+| Click-through | Hours |
+| Activation | Days |
+| Retention D7 | 1 week |
+| Revenue | 2-4 weeks |
+| NPS | 4-8 weeks |
+
+If the observation floor has NOT been met:
+> "The observation window for [metric type] is [floor]. Only [X] has elapsed. Making a kill decision now risks a false negative — the signal hasn't had time to materialize. Recommend waiting until [date]."
+
+Flag but don't block — the team may have other reasons to decide early. Document it.
+
+### 3. Compile the Evidence Package
 Gather and present these in a structured summary:
 
 **Target Metric vs. Threshold**
@@ -32,7 +53,7 @@ Gather and present these in a structured summary:
 
 > **Coaching moment**: "Kill conditions exist so you don't have to make emotional decisions under pressure. The condition was set when you were thinking clearly — trust your past self." (Chapter 12)
 
-### 3. Run Gate O5 Checklist
+### 4. Run Gate O5 Checklist
 
 Present each item and mark pass/fail:
 
@@ -102,6 +123,8 @@ Write a Kill/Merge Decision Record with this structure:
 **Decision**: Kill | Merge | Continue
 **Gate O5**: Passed | Passed with exceptions
 **Kill condition**: [condition] — Met | Not met | Ambiguous
+**Observation floor met**: Yes | No — [metric type, required window, actual elapsed]
+**Cycle phase at decision**: Build | Observe | Decide
 
 ### Evidence Summary
 - Target metric: [X] — Current: [Y] — Threshold: [Z]
@@ -143,6 +166,7 @@ After Continue: "Cycle extended. Use `/flow-review` at the next ritual to check 
 If running this process without the skill:
 
 - [ ] Identify the cycle under review
+- [ ] Check Observation Floor — has minimum observation window elapsed for the metric type?
 - [ ] Retrieve the pre-committed kill condition (from Discovery Brief or SPEC-Lite)
 - [ ] Collect current metric data against the target
 - [ ] Run Gate O5 checklist (Chapter 12)
@@ -151,6 +175,8 @@ If running this process without the skill:
 - [ ] If Kill: run 30-minute inspection, celebrate the save, name the learnings
 - [ ] If Merge: identify the absorbing cycle and what transfers
 - [ ] Write Kill/Merge Decision Record
+- [ ] Record `observation_floor_met` and `cycle_phase_at_decision` in the decision record
+- [ ] Check for judgment fatigue (~5 major decisions per team per week ceiling)
 - [ ] File in track's `decisions.md`
 - [ ] Chain to `/flow-archive` (Kill/Merge) or `/flow-review` (Continue)
 

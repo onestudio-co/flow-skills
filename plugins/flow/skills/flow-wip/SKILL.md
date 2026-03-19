@@ -29,6 +29,19 @@ Scan all `tracks/*/tasks.md` files for active (unchecked) tasks. Build a WIP sna
 
 Reference WIP limit tables from Chapter 13:
 
+### Bottleneck-Based WIP Calibration
+
+Before applying default limits, identify the team's actual bottleneck. WIP limits should be calibrated to the constraining phase, not just team size:
+
+| Bottleneck Type | Description | WIP Implication |
+|----------------|-------------|-----------------|
+| **Build** | Team can't build fast enough | Classic WIP limit — reduce active cycles |
+| **Observation** | Shipping faster than measuring | Limit new starts until metrics catch up. This is the #1 bottleneck for agentic teams. |
+| **Decision** | Data exists but decisions stall | Limit is fine — fix the decision cadence (reviews, authority) |
+| **External** | Waiting on third parties, approvals, market signals | Park cycles explicitly, don't count against active WIP |
+
+> **Coaching note for agentic teams**: "For teams using AI/agents, the bottleneck is almost never build capacity. It's observation bandwidth — how many experiments can you monitor simultaneously — and decision throughput — how many kill/continue decisions can the team make per cycle. Calibrate WIP to whichever is tighter."
+
 ### Default WIP Limits by Team Size
 
 | Team Size | Discovery Cycles | Outcome Cycles | Total Active |
@@ -145,6 +158,8 @@ If running this process without the skill:
 - [ ] Look up WIP limit for your team size (Chapter 13)
 - [ ] Compare current WIP against limits
 - [ ] If over limit: ask "What are you willing to stop?"
+- [ ] Identify the team's bottleneck (Build, Observation, Decision, External)
+- [ ] Calibrate WIP limits to the bottleneck, not just team size
 - [ ] Check for anti-patterns: inflation, parking lot, VIP exception, split trick, invisible work
 - [ ] If override needed: document justification, what was deprioritized, review date
 - [ ] File any override decision in track's `decisions.md`

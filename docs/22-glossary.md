@@ -2,7 +2,7 @@
 
 # Chapter 21: Glossary
 
-> *Panel-reviewed: Meeting #8 (2026-03-19)*
+> *Panel-reviewed: Meeting #8, updated Meeting #13 (2026-03-19)*
 > **Read this**: When you encounter an unfamiliar FLOW term. Use as reference, not sequential reading.
 
 ---
@@ -21,9 +21,15 @@
 
 **Collapsed Mode** — A mode relationship pattern where Discovery and Outcome happen simultaneously — the act of building IS the experiment. Common for solo founders and tiny teams shipping to small audiences. ([Chapter 2](02-mental-model.md))
 
+**Comprehension Review** — Post-build review ensuring the team understands agent-built code. Not code review (which checks correctness) — comprehension review checks understanding. Strongly recommended for Micro-SPEC experiments, required for Full SPEC features. ([Chapter 19](20-ai-agents.md))
+
 **Continue** — One of five Discovery/Outcome decision outcomes. The kill condition wasn't triggered, but the success signal wasn't reached either. Evidence is inconclusive. Requires justification, a revised plan, and a shorter deadline. Maximum 2 continues per cycle. (Chapters [7](08-discovery-decisions.md), [11](12-outcome-decisions.md))
 
 **Cycle** — The bottom level of the Decision Spine. A bounded unit of work — either a Discovery cycle (learning) or an Outcome cycle (shipping). ([Chapter 3](03-decision-spine.md))
+
+**Cycle Cadence** — Rituals tied to the cycle (intake, review, kill/merge). Scales with Tempo — faster teams run these more frequently. Contrast with Portfolio Cadence, which is calendar-bound. ([Chapter 14](15-production-readiness.md))
+
+**Cycle Phases** — The three explicit phases within every FLOW cycle: Build → Observe → Decide. When agents compress Build toward zero, Cycle Duration ≈ Observe + Decide. ([Chapter 2](02-mental-model.md))
 
 **Decision Spine** — The traceability chain: Vision → Strategy → Bet → Cycle. Every piece of work traces upward. If it can't trace, it shouldn't exist. ([Chapter 3](03-decision-spine.md))
 
@@ -33,9 +39,17 @@
 
 **Escalate** — The fifth Discovery/Outcome decision outcome. Discovery revealed that the problem exceeds the team's mandate, authority, or capability. The work must be re-scoped at a higher organizational level. ([Chapter 7](08-discovery-decisions.md))
 
+**Execution Leverage** — How much output per unit of human input. High with agentic tooling, lower without. Affects Tempo but does not change FLOW's core logic. ([Chapter 19](20-ai-agents.md))
+
 **Experiment Hierarchy** — A principle-based menu (not a ladder) of experiment types ordered by typical cost: conversation, desk research, mockup, prototype, concierge, wizard of oz, limited build. "Always choose the cheapest experiment that can validly answer your question." ([Chapter 6](07-experiments.md))
 
 **Experiment Log** — A record of every experiment: date, hypothesis, type, cost, results, interpretation, decision, next action. Prevents re-running experiments and preserves institutional memory. ([Chapter 6](07-experiments.md))
+
+**FLOW Configuration** — Team one-pager declaring Tempo, SPEC minimum, WIP limits, Cycle Cadence, and Portfolio Cadence. Descriptive, not prescriptive — it documents how the team actually works, not how they aspire to work. ([Chapter 14](15-production-readiness.md))
+
+**FLOW Invariants** — The parts of FLOW that never change regardless of speed: Discovery/Outcome classification, Decision Spine, kill conditions, gates, WIP limits, observe-before-decide. ([Chapter 2](02-mental-model.md))
+
+**FLOW Variables** — The parts of FLOW that scale with team context: cycle duration, documentation depth, ritual cadence, build duration, migration pace. ([Chapter 2](02-mental-model.md))
 
 **Flow Coach** — The role that facilitates rituals, enforces WIP limits, and guards gates. Previously known as Delivery Manager, Scrum Master, or Agile Coach. Does not make product or technical decisions. ([Chapter 16](17-roles.md))
 
@@ -53,6 +67,8 @@
 
 **Merge** — Kill/Merge decision outcome. The evidence says the feature is working. Ship it to production. ([Chapter 11](12-outcome-decisions.md))
 
+**Micro-SPEC** — Minimum viable planning artifact — three fields: Problem, Hypothesis, Kill Condition. For high-tempo teams where build cost is near-zero. Kill condition is mandatory even at this level. ([Chapter 8](09-spec-lite.md))
+
 **Mode** — One of two operating states in FLOW: Discovery (learning) or Outcome (shipping). The mode determines which artifacts, gates, and rituals apply. ([Chapter 2](02-mental-model.md))
 
 **Mode Relationship Patterns** — Six ways Discovery and Outcome relate: Sequential, Parallel, Collapsed, Oscillating, Governance-Gated, Client-Gated. ([Chapter 2](02-mental-model.md))
@@ -61,11 +77,15 @@
 
 **Observability** — The ability to measure whether a feature is achieving its target metric. Must be instrumented BEFORE the measurement period begins. Gate O4 checks this. ([Chapter 10](11-execution.md))
 
+**Observation Floor** — The minimum observation window before a kill/merge decision, determined by metric maturity and domain constraints (not build speed). Click-through data matures in hours; retention in weeks; revenue in months. Prevents premature decisions when build speed outpaces data maturity. (Chapters [7](08-discovery-decisions.md), [19](20-ai-agents.md))
+
 **Outcome Mode** — One of FLOW's two modes. Used when the primary risk is failing to ship the right thing. The goal is shipping, not learning. Output is working product measured by a target metric. ([Chapter 2](02-mental-model.md))
 
 **Pivot** — One of five Discovery decision outcomes. The problem is real but the approach is wrong. Change direction significantly. Write a new Discovery Brief for the pivoted direction. ([Chapter 7](08-discovery-decisions.md))
 
 **Platform Spine Topology** — A branching spine structure for platform teams. One platform bet enables N downstream bets from other teams. Kill conditions are based on downstream adoption. ([Chapter 3](03-decision-spine.md))
+
+**Portfolio Cadence** — Rituals tied to the calendar (strategy check, team health, WIP review). Has minimums: weekly for teams, monthly for portfolios. Does not scale with Tempo — even the fastest teams review strategy no more than weekly. ([Chapter 14](15-production-readiness.md))
 
 **Production Readiness** — The gate between exploration (feature-flagged, limited audience) and production (available to all users). Checklist includes: feature flag removed, monitoring in place, runbook exists, rollback plan tested. ([Chapter 14](15-production-readiness.md))
 
@@ -89,6 +109,8 @@
 
 **Target Metric** — In a SPEC-Lite, the single primary metric that determines whether the Outcome cycle succeeded. Must be measurable and instrumented. ([Chapter 8](09-spec-lite.md))
 
+**Tempo** — The team's natural rhythm of build-observe-decide, determined by execution leverage, observation requirements, coordination overhead, and external constraints. Teams discover their tempo — it is not assigned by management. ([Chapter 2](02-mental-model.md))
+
 **Vision** — The top level of the Decision Spine. Why this product/team/company exists. What future are you creating? Rarely changes. ([Chapter 3](03-decision-spine.md))
 
 **WIP Limit** — The maximum number of concurrent cycles a team can carry. Prevents context switching, zombie cycles, and quality erosion. Enforced by the Flow Coach. ([Chapter 12](13-wip-limits.md))
@@ -105,7 +127,9 @@
 
 **Shaping vs. Discovery**: Shaping = framing the question (boundaries, risks, mode). Discovery = answering the question (experiments, evidence, decisions). Shaping happens before classification. Discovery happens after classification.
 
-**Mode vs. Process**: Mode = the type of work (learning or shipping). Process = how you execute daily (Kanban, Scrum, standups). FLOW selects the mode. Your existing process handles execution within the mode.
+**Mode vs. Process**: Mode = the type of work (learning or shipping). Process = how you execute daily (Kanban, standups). FLOW selects the mode. Your existing process handles execution within the mode.
+
+**Micro-SPEC vs. SPEC-Lite vs. Full SPEC**: Micro-SPEC = 3 fields (Problem, Hypothesis, Kill Condition) for near-zero build cost experiments. SPEC-Lite = 5 fields (adds Scope, Target Metric, Non-Goals) for standard Outcome cycles. Full SPEC = complete specification for high-stakes or regulated work. The appropriate level scales with risk and investment, not team preference.
 
 ---
 

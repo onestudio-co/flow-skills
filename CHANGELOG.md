@@ -1,5 +1,22 @@
 # Changelog
 
+## v2.1.0 — 2026-03-19
+
+**The Agentic Speed Update** — Panel Meeting #13: real team feedback that FLOW's time assumptions don't match agentic reality.
+
+### New Concepts
+- Tempo, Micro-SPEC, Cycle Phases, FLOW Configuration, Observation Floor, FLOW Invariants/Variables, Bottleneck-based WIP
+
+### New Skills (2)
+- `/flow-tempo` — Discover your team's rhythm
+- `/flow-config` — Generate FLOW operating agreement
+
+### Updated Skills (14 of 14)
+All skills updated with Tempo-relative language, Micro-SPEC support, Observation Floor, Comprehension Review, bottleneck-aware WIP
+
+### 7 Agentic Anti-Patterns
+Premature Confidence, Experiment Overload, Judgment Fatigue, Context Collapse, Dependency Whiplash, Maintenance Debt, Speed Inequality
+
 ## v2.0.0 — 2026-03-19
 
 Complete redesign of the FLOW skills ecosystem.

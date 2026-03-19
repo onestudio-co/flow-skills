@@ -2,7 +2,7 @@
 
 # Chapter 22: Adaptation Guides
 
-> *Panel-reviewed: Meeting #8 (2026-03-19)*
+> *Panel-reviewed: Meeting #8, updated Meeting #13 (2026-03-19)*
 > **Read this**: Find YOUR context (Solo, Agency, Hardware, Enterprise, Government) and read that section.
 
 ---
@@ -20,14 +20,17 @@ These guides are NOT replacements for the main chapters. They're quick-reference
 ### Your FLOW in 5 Minutes
 1. **Spine**: Write it on a sticky note. Vision, Strategy, Bet. Update when it changes.
 2. **Mode**: Your mode is almost always Collapsed — you discover by building. That's valid.
-3. **Brief**: Use the 3-field minimum. Hypothesis, Kill Condition, Experiment. 5 minutes.
+3. **Brief**: Use the Micro-SPEC. Problem, Hypothesis, Kill Condition. 2 minutes.
 4. **Experiment**: Your experiment IS shipping to users. Track one metric. Set one threshold.
 5. **Kill**: If the metric doesn't hit, kill it. No renegotiation. Move to the next bet.
 6. **WIP**: Your limit is 1-2 active bets. Don't juggle 5 half-built features.
-7. **AI Agent**: Use an agent as your Flow Coach. "Am I at WIP limit? Does this Brief have a kill condition?"
+7. **AI Agent**: Your agent is your entire team — Builder, Analyst, and Flow Coach. It builds, you decide.
+
+### Your Tempo
+With agentic tooling (Claude Code, Cursor, etc.), your Tempo is likely **1-3 days** per full cycle. Build in minutes-hours, observe for hours-days, decide in minutes. Your bottleneck is NOT build capacity — it's observation (waiting for real user data) and decision quality (are you killing honestly?). Watch for Judgment Fatigue if you're making 5+ kill/merge decisions per week.
 
 ### Your Roles
-You are all 10 functions ([Ch 16](17-roles.md)). The three that matter most daily: Decision Maker (PM hat -- "should I build this?"), Builder (Engineer hat -- "how do I build this?"), and Signal Provider (Support hat -- "what are users telling me?"). Check which hat you're wearing every morning.
+You are all 10 functions ([Ch 16](17-roles.md)). The three that matter most daily: Decision Maker (PM hat — "should I build this?"), Builder (Engineer hat — directing the agent), and Signal Provider (Support hat — "what are users telling me?"). The Agent Operator skill — effectively directing AI agents — is your superpower.
 
 ### What to Skip
 - Build Contract ([Ch 9](10-build-contract.md)) — you ARE product and engineering
@@ -61,12 +64,18 @@ You are all 10 functions ([Ch 16](17-roles.md)). The three that matter most dail
 | Designer | Experiment Architect | From client mockups to experiment design |
 | QA | Quality Intelligence | From test scripts to quality kill conditions |
 
+### Client Education on Agentic Speed
+When your team uses agentic tools, clients will notice builds are fast. Two problems arise:
+1. **"Charge me less"** — they equate time with cost. Your value is the outcome, not the hours. The SPEC-Lite scope doc helps: "This is what we're delivering, this is how we measure success."
+2. **"Change scope every day"** — they see speed and want constant pivots. Explain: the build is fast, but the observation window is fixed. Changing scope mid-observation invalidates the experiment. Use the metric maturity table to show why 2 weeks of data is 2 weeks regardless of build speed.
+
 ### What Changes for Agencies
 - **Intake happens at two levels**: Client-facing (relationship management) and internal (classification and routing)
 - **Kill authority**: You can't kill what the client paid for — but you can present evidence and recommend stopping. Frame kills as fiduciary responsibility.
 - **Multiple cadences**: Each client may have different ritual schedules. Your internal cadence (weekly triage) is separate from client cadences.
 - **Learning Archive**: Critical for agencies — knowledge walks out the door when projects end. Archive EVERYTHING.
 - **Discovery avoidance is YOUR biggest risk**: Clients say "just build it." Your job is to sell learning before building.
+- **Agent-built demos**: Agents can generate demo artifacts after each build — video, interactive prototype, slide deck. Clients love fast turnaround on demos. But demos are not evidence of value.
 
 ### What to Read
 All chapters — but read every agency sidebar. Especially: [Ch 4](05-intake.md) (dual-level intake), [Ch 5](06-discovery-brief.md) (Discovery as deliverable), [Ch 8](09-spec-lite.md) (SPEC-Lite as scope doc), [Ch 11](12-outcome-decisions.md) (killing when client pays), [Ch 18](19-organizational-change.md) (selling FLOW to clients).
@@ -117,11 +126,18 @@ All chapters — but read every agency sidebar. Especially: [Ch 4](05-intake.md)
 | Technical Writer | Knowledge Architect | From documenting builds to curating learnings |
 | Solution Architect | Build Contract Co-Owner | From upfront design to embedded technical advisor |
 
+### Multi-Tempo Coordination
+In enterprise, different teams will have different Tempos. A team with agentic tooling may run 1-day cycles while a team doing compliance work runs 4-week cycles. This creates coordination challenges:
+- **Dependency Whiplash**: Fast teams iterate on APIs that slow teams depend on. Mitigation: API contract versioning + dependency WIP limits.
+- **Speed Inequality**: Fast teams feel elite, slow teams feel pressured. Mitigation: Tempo is self-assessed, never compared across teams. No "agentic leaderboard."
+- **Portfolio Cadence** keeps everyone synchronized regardless of individual Tempo. The monthly portfolio review is where all teams align.
+
 ### What Changes for Enterprise
 - **Organizational Change ([Ch 18](19-organizational-change.md)) is your most important chapter**: Without executive sponsorship, FLOW won't survive the organizational antibodies.
 - **Regulated Environments ([Ch 15](16-regulated-environments.md))**: Map FLOW gates to your compliance framework. FLOW evidence satisfies audit requirements.
 - **Team Topology ([Ch 16](17-roles.md))**: Different team types use FLOW differently. Stream-aligned teams use it directly. Platform teams need branching spines. Enabling teams lean toward Discovery mode.
 - **Migration ([Ch 17](18-migration.md))**: Start with one pilot squad. Expand based on evidence. Don't do Big Bang.
+- **FLOW Configuration per squad**: Each squad declares its Tempo, SPEC minimum, and WIP limits. Portfolio leadership reviews configurations quarterly.
 
 ### What to Read
 All chapters — enterprise readers need the full methodology. Focus especially on: [Ch 3](03-decision-spine.md) (Spine mapping), [Ch 4](05-intake.md) (Intake authority), [Ch 12](13-wip-limits.md) (WIP), [Ch 15](16-regulated-environments.md) (Regulated), [Ch 16](17-roles.md) (Topology), [Ch 17](18-migration.md)-[18](19-organizational-change.md) (Migration + Change).
@@ -160,8 +176,8 @@ All chapters — enterprise readers need the full methodology. Focus especially 
 
 ---
 
-*Document version: 1.0 (complete, panel-reviewed)*
-*Total chapters: 22*
-*Total words: ~35,000*
+*Document version: 1.1 (Meeting #13: Agentic Speed backport)*
+*Total chapters: 23*
+*Total words: ~40,000*
 *Completed: 2026-03-19*
 *Agent: Waddah (وضّاح)*

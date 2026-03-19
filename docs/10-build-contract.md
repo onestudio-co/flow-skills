@@ -2,7 +2,7 @@
 
 # Chapter 9: The Build Contract
 
-> *Panel-reviewed: Meeting #5 (2026-03-19)*
+> *Panel-reviewed: Meeting #5 (2026-03-19), updated Meeting #13 (Build Complete checkpoint, sub-day builds)*
 > **Read this**: Engineers, Tech Leads, DevOps, PMs. Joint ownership document.
 
 ---
@@ -98,6 +98,16 @@ The Build Contract is written in a conversation, not a handoff. Here's the typic
 4. **Joint review.** PM and engineering review the Contract together. Negotiate: "The rollout strategy seems too aggressive — can we start with one hospital?" "The observability plan doesn't track the primary metric — add it."
 
 5. **Both sign off.** The Contract is agreed. Gate O3 passes. Building begins.
+
+---
+
+### "Build Complete" Checkpoint
+
+For agentic teams where the build phase is hours not weeks, add a **"Build Complete" checkpoint** that triggers the start of the observation period. This is distinct from the cycle end — the cycle continues through observation and Kill/Merge, but the build phase itself has a clear completion marker. Without this checkpoint, the observation period starts ambiguously and teams may evaluate metrics before the feature is fully deployed.
+
+### Sub-Day Build Phases
+
+With agentic tooling, the build phase may last hours rather than days. The Build Contract should still define technical approach and observability plan — these are **thinking tools, not time-fillers**. A 2-hour build still benefits from a 15-minute Build Contract conversation. The contract's value is alignment and observability planning, not proportional to build duration.
 
 ---
 

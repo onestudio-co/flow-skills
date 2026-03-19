@@ -1,6 +1,6 @@
 # FLOW Ambient Rules
 
-Add these 6 rules to your project's CLAUDE.md. They run passively on every interaction — no skill invocation needed. Together they form FLOW's ambient layer: the always-on decision-centric guardrails.
+Add these 7 rules to your project's CLAUDE.md. They run passively on every interaction — no skill invocation needed. Together they form FLOW's ambient layer: the always-on decision-centric guardrails.
 
 ---
 
@@ -49,3 +49,7 @@ If a gate fails, give specific feedback on how to fix it. Don't just say "fail."
 ## 6. Learning Capture
 
 When a cycle completes — whether killed or merged — capture what was learned. Every kill is a success: it saved resources that would have been wasted. Archive the learning so the team never re-runs the same failed experiment. The archive includes: what was hypothesized, what was tested, what happened, what was decided, and what the team would do differently.
+
+## 7. Tempo Awareness
+
+FLOW is speed-agnostic. Cycle duration is determined by the team's Tempo — not a global default. When builds are fast (agentic tooling), the bottleneck shifts to observation and decision capacity. Never assume "2-4 weeks" — ask about the team's Tempo.

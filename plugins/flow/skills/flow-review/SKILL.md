@@ -4,7 +4,9 @@ You are **Waddah** (وضّاح), facilitating the weekly review ritual. Reviews 
 
 ## Trigger
 
-The user wants to run a review ritual. They may say: "review", "weekly review", "discovery review", "outcome review", "what did we learn this week?", "are we on track?", or arrive here from a scheduled ritual.
+The user wants to run a review ritual. They may say: "review", "weekly review", "discovery review", "outcome review", "what did we learn this cycle?", "are we on track?", or arrive here from a scheduled ritual.
+
+> **Tempo-Relative Cadence**: Review cadence should match team tempo, not a fixed calendar. High-tempo teams (sub-day cycles) may review daily or per-cycle. Standard teams review weekly. Slow-tempo teams (multi-week cycles) may review bi-weekly. The principle: review at least once per cycle, never less than once per 2 weeks.
 
 ## Step 1: Detect Review Type
 
@@ -18,15 +20,20 @@ Ask: "I see [N] Discovery cycles and [M] Outcome cycles active. Which review do 
 
 ## Discovery Review
 
+### Collapsed Mode Note
+
+For teams operating in Collapsed Mode (build IS the experiment), Discovery and Outcome reviews merge. The review asks: "We shipped it — what does the data say? Kill, continue, or iterate?" Use the Outcome Review format but with Discovery's 5-decision vocabulary (Continue, Refine, Pivot, Stop, Escalate).
+
 ### Compile Agenda
 
 For each active Discovery cycle, gather:
 
 1. **Cycle name and hypothesis**
-2. **Experiments run this week** — what was tested?
+2. **Experiments run this cycle** — what was tested?
 3. **Results** — what did the evidence say?
-4. **Days elapsed** vs. time-box
-5. **Current confidence level** — is the hypothesis looking validated, invalidated, or inconclusive?
+4. **Cycle phase** — Build / Observe / Decide (where is this cycle right now?)
+5. **Days elapsed** vs. time-box
+6. **Current confidence level** — is the hypothesis looking validated, invalidated, or inconclusive?
 
 Present as a summary table:
 
@@ -85,9 +92,11 @@ For each active Outcome cycle, gather:
 1. **Cycle name and target metric**
 2. **Current metric value** vs. target
 3. **Kill condition** and current status (approaching? met? far from?)
-4. **Days elapsed** vs. cycle length
-5. **Blockers** — anything preventing progress
-6. **Continue count** — how many times has this cycle been continued?
+4. **Observation Floor status** — has the minimum observation window for this metric type elapsed? (See Metric Maturity Table in `/flow-spec`). If not, the metric data is premature — flag it but still track trajectory.
+5. **Cycle phase** — Build / Observe / Decide (where is this cycle right now?)
+6. **Days elapsed** vs. cycle length
+7. **Blockers** — anything preventing progress
+8. **Continue count** — how many times has this cycle been continued?
 
 Present as a summary table:
 
@@ -95,9 +104,9 @@ Present as a summary table:
 === Outcome Review Agenda ===
 Date: [YYYY-MM-DD]
 
-CYCLE              METRIC        CURRENT  TARGET   KILL     DAYS    STATUS
-[Cycle Name]       [metric]      [val]    [target] [cond]   [X/Y]  [On track/At risk/Kill zone]
-[Cycle Name]       [metric]      [val]    [target] [cond]   [X/Y]  [On track/At risk/Kill zone]
+CYCLE              METRIC        CURRENT  TARGET   KILL     PHASE     OBS.FLOOR  DAYS    STATUS
+[Cycle Name]       [metric]      [val]    [target] [cond]   [B/O/D]   [Met/Not]  [X/Y]  [On track/At risk/Kill zone]
+[Cycle Name]       [metric]      [val]    [target] [cond]   [B/O/D]   [Met/Not]  [X/Y]  [On track/At risk/Kill zone]
 ```
 
 ### Per-Cycle Discussion
@@ -113,7 +122,8 @@ For each cycle, assess:
 - If direction issue: consider whether this should return to Discovery
 
 **Kill Zone** — Kill condition is met or nearly met.
-- Flag immediately: "This cycle is approaching its kill condition. Recommend running `/flow-kill` for a formal decision."
+- First check: has the Observation Floor been met? If not, flag: "Kill condition appears triggered, but the observation window for [metric type] hasn't elapsed. Data may be premature."
+- If Observation Floor IS met: Flag immediately: "This cycle is approaching its kill condition. Recommend running `/flow-kill` for a formal decision."
 - Do NOT let the team silently continue past a met kill condition
 
 **Approaching Kill Condition Warning**
@@ -168,7 +178,7 @@ If any cycle is ready for Kill/Merge: "Cycle [name] needs a Kill/Merge decision.
 
 If Discovery cycle is ready for mode switch: "Cycle [name] has validated its hypothesis. Run `/flow-spec-lite` to create the SPEC-Lite for Outcome mode."
 
-After a clean review: "All cycles reviewed. Next review in one week. Use `/flow-cycle-status` anytime for a quick check between reviews."
+After a clean review: "All cycles reviewed. Next review in [tempo-appropriate interval — per-cycle for high-tempo, weekly for standard, bi-weekly for slow]. Use `/flow-cycle-status` anytime for a quick check between reviews."
 
 ---
 
@@ -176,10 +186,12 @@ After a clean review: "All cycles reviewed. Next review in one week. Use `/flow-
 
 If running this review without the skill:
 
-- [ ] List all active Discovery and Outcome cycles
-- [ ] For Discovery cycles: gather experiment results from the past week
+- [ ] Determine review cadence based on team tempo (per-cycle / weekly / bi-weekly)
+- [ ] List all active Discovery and Outcome cycles (including Collapsed Mode cycles)
+- [ ] For Discovery cycles: gather experiment results from the current cycle
 - [ ] For each Discovery cycle: decide Continue / Refine / Pivot / Stop / Escalate (Chapter 8)
-- [ ] For Outcome cycles: gather current metric values vs. targets
+- [ ] For Outcome cycles: gather current metric values vs. targets and check Observation Floor status
+- [ ] Record cycle phase (Build / Observe / Decide) for each active cycle
 - [ ] For each Outcome cycle: assess On Track / At Risk / Kill Zone
 - [ ] Flag any cycles approaching kill conditions
 - [ ] Capture all decisions made during the review

@@ -2,32 +2,70 @@
 
 # Chapter 13: Rituals & Cadence
 
-> *Panel-reviewed: Meeting #6 (2026-03-19)*
+> *Panel-reviewed: Meeting #6, updated Meeting #13 (2026-03-19)*
 > **Read this**: Flow Coaches (mandatory), PMs, team leads. **Skip if**: Solo founder (keep only weekly self-review).
 
 ---
 
-## The Weekly Rhythm
+## Two Rhythms: Cycle Cadence vs. Portfolio Cadence
 
-FLOW has four rituals. Not all teams need all four. Use what fits your context and drop what doesn't.
+FLOW rituals operate on two distinct rhythms. Conflating them is a common source of confusion.
 
-| Ritual | Purpose | Default Cadence | Duration | Who |
+### Cycle Cadence
+
+Rituals tied to the **cycle lifecycle** — they happen relative to each cycle's start, midpoint, and end. These scale with Tempo:
+
+| Ritual | Purpose | Timing (Cycle-Relative) | Duration | Who |
+|--------|---------|------------------------|----------|-----|
+| **Intake Review** | Route new work: classify, shape, assign | Start of cycle (or continuous for high-tempo teams) | 15 min | PM + Tech Lead |
+| **Discovery Review** | Check experiment progress across Discovery cycles | Mid-cycle checkpoint | 30 min | PM + team |
+| **Outcome Review** | Check metric progress across Outcome cycles | Mid-cycle checkpoint | 30 min | PM + team |
+| **Kill/Merge** | Portfolio decisions: kill, merge, or continue active cycles | End of cycle | 45 min | PM + team + stakeholders |
+
+**Tempo scaling**: If your cycle is 1 day, all four rituals happen the same day (intake in the morning, review at midday, kill/merge in the evening). If your cycle is 4 weeks, they spread across the month. The rituals are the same — the calendar spacing changes.
+
+### Portfolio Cadence
+
+Rituals tied to the **calendar** — they catch slow-moving issues that cycle cadence misses: strategic drift, WIP inflation, interpersonal friction, organizational health.
+
+| Ritual | Purpose | Minimum Cadence | Duration | Who |
 |--------|---------|----------------|----------|-----|
-| **Intake Review** | Route new work: classify, shape, assign | Daily async or weekly 15 min | 15 min | PM + Tech Lead |
-| **Discovery Review** | Check experiment progress across Discovery cycles | Weekly 30 min | 30 min | PM + team |
-| **Outcome Review** | Check metric progress across Outcome cycles | Weekly 30 min | 30 min | PM + team |
-| **Kill/Merge** | Portfolio decisions: kill, merge, or continue active cycles | End of cycle (or weekly if multiple cycles) | 45 min | PM + team + stakeholders |
+| **Strategy Check** | Are our bets still aligned with the spine? | Monthly | 60 min | Leadership + PMs |
+| **Team Health** | Morale, collaboration, burnout signals | Monthly | 30 min | Team + manager |
+| **WIP Review** | Are we at capacity? Is WIP inflating? | Weekly | 15 min | PM + Flow Coach |
+| **Portfolio Review** | Cross-team view of all active cycles | Bi-weekly or monthly | 45 min | Leadership + team leads |
 
-### Which Rituals to Keep
+**Portfolio rituals do NOT scale with Tempo** because the problems they catch are time-based, not cycle-based. A team running 1-day cycles still needs a monthly strategy check — strategic drift happens on calendar time, not cycle time.
+
+### Which Cycle Rituals to Keep
 
 | Context | Intake | Discovery Review | Outcome Review | Kill/Merge |
 |---------|--------|-----------------|----------------|------------|
-| **Solo** | Continuous (mental triage) | When experiments complete | Check metrics daily | Weekly with yourself: "kill or keep?" |
-| **Small team** | Daily async or 2x/week | Weekly | Weekly | End of each cycle |
-| **Enterprise** | Weekly formal | Bi-weekly | Weekly | Monthly + end of cycle |
-| **Agency** | Per-client as requests arrive | Weekly (internal) | Per-client cadence | Per-client cycle end |
-| **Hardware** | Weekly | Monthly (long experiments) | Monthly (long cycles) | End of cycle (quarterly-ish) |
-| **Government** | Monthly programmatic + weekly project | Monthly | Monthly | Quarterly + end of cycle |
+| **Solo** | Continuous (mental triage) | When experiments complete | Check metrics daily | End of each cycle: "kill or keep?" |
+| **Small team** | Start of each cycle | Mid-cycle | Mid-cycle | End of each cycle |
+| **Enterprise** | Weekly formal (or per-cycle if cycles > 1 week) | Mid-cycle | Mid-cycle | End of cycle + monthly portfolio |
+| **Agency** | Per-client as requests arrive | Mid-cycle (internal) | Per-client cadence | Per-client cycle end |
+| **Hardware** | Start of cycle | Mid-cycle (may be monthly for long cycles) | Mid-cycle | End of cycle |
+| **Government** | Start of cycle + monthly programmatic | Mid-cycle | Mid-cycle | End of cycle + quarterly portfolio |
+
+---
+
+## FLOW Configuration
+
+Every team should have a one-page configuration document that records how they work. It takes less than 10 minutes to create and serves as the reference for all ritual and process questions.
+
+```
+Team: [Name]
+Tempo: [Typical cycle duration — e.g., "1-2 days" or "2-week"]
+SPEC Minimum: [Micro-SPEC | Full SPEC-Lite]
+WIP Limits: [Active Discovery: N, Active Outcome: N]
+Cycle Cadence: [How cycle rituals map — e.g., "All same-day" or "Intake Mon, Review Wed, Kill/Merge Fri"]
+Portfolio Cadence: [e.g., "Weekly WIP check (Mon), Monthly strategy + health (first Friday)"]
+```
+
+**This is descriptive, not prescriptive.** It records how the team actually works today. It's not a process mandate from management — it's a team artifact that makes implicit agreements explicit.
+
+**Some contexts require governance review.** In government or regulated industries, the FLOW Configuration may need sign-off from a compliance or governance body. That's fine — the document is lightweight enough to survive review.
 
 ---
 

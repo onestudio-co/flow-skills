@@ -34,6 +34,7 @@ If the user says "check a gate" without specifying: "Which artifact are you chec
 - [ ] **Experiment is designed.** Team knows what they'll do, who they'll talk to, what they'll measure.
 - [ ] **Experiment is cheapest valid option.** Considered conversations before prototypes.
 - [ ] **Kill condition is pre-committed.** Written before experiment starts. Specific. Measurable.
+- [ ] **Build duration estimated?** Team has an estimate for how long the build phase will take. This informs tempo and SPEC level selection.
 - [ ] **Success signal is defined** (full brief only). Team knows what "validated" looks like.
 - [ ] **Spine traces.** Hypothesis connects to an active bet on the Decision Spine.
 
@@ -70,8 +71,9 @@ If the user says "check a gate" without specifying: "Which artifact are you chec
 - [ ] **Scope is bounded.** Clear boundaries, concrete deliverable.
 - [ ] **Target metric is measurable.** Can be instrumented before building.
 - [ ] **Kill condition is pre-committed.** Specific threshold, specific timeframe.
-- [ ] **Non-goals documented.** At least 3 explicit non-goals.
+- [ ] **Non-goals documented.** At least 3 explicit non-goals. (For **Micro-SPECs**: non-goals are optional if scope is self-evident from the 3-line format.)
 - [ ] **SPEC fits on one page.** If longer, over-specifying.
+- [ ] **Micro-SPEC accepted for small-scope work.** If build duration < 1 day and scope is narrow, a Micro-SPEC (Problem, Hypothesis, Kill Condition) is sufficient. Full SPEC-Lite is not required for sub-day cycles.
 
 ### Gate O3 — Build Contract Complete (Ch 9)
 - [ ] **Scope matches SPEC-Lite.** No scope additions without updating the SPEC.
@@ -85,15 +87,17 @@ If the user says "check a gate" without specifying: "Which artifact are you chec
 - [ ] **Dashboard exists.** Team can see metrics without manual queries.
 - [ ] **Kill condition is monitorable.** The team will KNOW when the condition triggers.
 - [ ] **Alerts are configured** (if applicable). Automated notification when thresholds are crossed.
+- [ ] **Comprehension Review completed** (for agent-built features). If an AI agent or automated tool generated the code, at least one team member must be able to explain the implementation logic. Code that humans cannot explain is unmonitorable tech debt. Ask: "Can someone on the team walk through what this code does and why?"
 
 ### Gate O5 — Kill, Merge, or Continue (Ch 11)
+- [ ] **Observation Floor met.** Minimum observation window for the metric type has elapsed (see Metric Maturity Table in `/flow-spec`). If not met, flag: making a decision now risks false negatives.
 - [ ] **Evidence reviewed.** Target metric data, user feedback, technical performance.
 - [ ] **Kill condition evaluated.** Was it triggered? If yes → 30-min inspection.
 - [ ] **Decision is one of three**: Kill (stop + archive), Merge (ship to production), Continue (extend with justification).
 - [ ] **If Kill**: Learnings archived. WIP slot freed. Celebrated (killing is the methodology WORKING).
 - [ ] **If Merge**: Production readiness verified (Ch 14). Feature flags removed. Monitoring in place.
 - [ ] **If Continue**: Justified with specific evidence. New, shorter deadline set. Beware zombie cycles.
-- [ ] **Decision record created.** Date, gate, evidence reviewed, decision, reasoning.
+- [ ] **Decision record created.** Date, gate, evidence reviewed, decision, reasoning. Include `observation_floor_met` and `cycle_phase_at_decision`.
 
 ## Step 3 — Produce the Gate Review Record
 

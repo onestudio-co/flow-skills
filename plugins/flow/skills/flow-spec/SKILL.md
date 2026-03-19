@@ -9,6 +9,33 @@ Guides you through writing a SPEC-Lite — the one-page planning artifact for Ou
 
 > **Coaching note for newcomers**: A SPEC-Lite is NOT a PRD (those are 20-page monuments to uncertainty), a Jira epic (that's execution tracking), or a business case (that lives on the spine). It IS a one-page contract between PM, team, and stakeholders. One page. If it's longer, you're over-specifying — save details for the Build Contract (Ch 9).
 
+## SPEC Spectrum — Choose Your Level
+
+Not all work needs the same planning depth. Choose the SPEC level based on cycle duration and risk:
+
+| SPEC Level | When to Use | Fields | Typical Cycle |
+|------------|-------------|--------|---------------|
+| **Micro-SPEC** | Build cost near-zero, high-tempo teams, cycle < 1 day | Problem, Hypothesis, Kill Condition (3 lines) | Hours to 1 day |
+| **Full SPEC-Lite** | Larger scope, multi-person teams, regulated environments | All fields below (one page) | Days to weeks |
+
+> **Coaching note**: Micro-SPEC is for teams where building IS the experiment — when it's faster to ship and measure than to write a full spec. The kill condition is still NON-NEGOTIABLE at every level. No kill condition = no SPEC at any size.
+
+### Micro-SPEC Template
+
+For high-tempo / agentic teams where build cost approaches zero:
+
+```markdown
+## Micro-SPEC — [Title]
+**Date**: YYYY-MM-DD
+**Build duration estimate**: [hours]
+
+**Problem**: [What validated problem, one line]
+**Hypothesis**: [What we believe will happen if we build this]
+**Kill Condition**: "If [metric] doesn't reach [threshold] within [timeframe] after [trigger], kill."
+```
+
+If the Micro-SPEC passes Gate O2 (adapted: problem has evidence, hypothesis is falsifiable, kill condition is pre-committed), proceed directly to build. No Build Contract needed for Micro-SPECs.
+
 ## Step 1 — Check for Discovery Evidence
 
 Ask: "Has this problem been validated through Discovery, or is it well-understood from prior experience?"
@@ -51,13 +78,37 @@ One number. Not three, not a dashboard — one primary metric the team rallies a
 
 Ask: "What single metric will tell you this worked? How will you measure it?"
 
-### Field 4: Kill Condition
+### Field 4: Build Duration Estimate
+
+> How long will the build phase take?
+
+Ask: "How long do you estimate the build will take? (hours, days, weeks)"
+
+This estimate determines the SPEC level (Micro-SPEC vs Full SPEC-Lite) and informs the observation window for the kill condition. Record it in the SPEC.
+
+### Field 5: Kill Condition
 
 > When do we stop? Pre-committed, evidence-based.
 
 This is where FLOW earns its value. Teach the kill condition formula:
 
 > **"If [metric] doesn't reach [threshold] within [timeframe] after [trigger event], kill."**
+
+### Kill Condition Timeframe — Metric Maturity Table
+
+The observation window in your kill condition must match how fast the metric can produce a reliable signal:
+
+| Metric Type | Minimum Observation Window | Notes |
+|-------------|---------------------------|-------|
+| Click-through | Hours | Fast signal, high volume needed |
+| Activation | Days | First-use behavior, measurable quickly |
+| Retention D7 | 1 week | By definition requires 7 days |
+| Revenue | 2-4 weeks | Purchase cycles vary by product |
+| NPS | 4-8 weeks | Requires sustained usage before meaningful |
+
+> **Coaching note**: Setting a kill condition timeframe shorter than the metric's observation window guarantees a false negative. If you're measuring retention, you CANNOT kill after 3 days. Match the timeframe to the metric, not to your impatience.
+
+**Kill conditions are NON-NEGOTIABLE at every SPEC level** — Micro-SPEC or Full SPEC-Lite. A SPEC without a kill condition is not a SPEC.
 
 ### Kill Condition Calibration (4 methods)
 
@@ -77,7 +128,7 @@ Guide the user through the right calibration method:
 
 > **Coaching note**: Common mistakes — too strict (everything dies after 3 days), too generous (nothing ever triggers — "if literally zero users sign up"), too vague ("if users don't like it"), too narrow ("exactly 47 users by Tuesday"). Your first kill conditions will be wrong. Calibrate after 3 cycles.
 
-### Field 5: Non-Goals
+### Field 6: Non-Goals
 
 > What are we explicitly NOT doing? This is your scope protection.
 
@@ -95,6 +146,7 @@ Ask: "Name at least 3 things someone might reasonably expect to be included but 
 **Author**: [Name]
 **Spine trace**: [Vision → Strategy → Bet]
 **Discovery reference**: [Link to Brief or evidence source]
+**Build duration estimate**: [hours/days/weeks]
 
 ### Problem
 [Validated problem with evidence reference]
