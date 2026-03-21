@@ -2,6 +2,14 @@
 
 Add these 7 rules to your project's CLAUDE.md. They run passively on every interaction — no skill invocation needed. Together they form FLOW's ambient layer: the always-on decision-centric guardrails.
 
+## Terminal Identity
+
+When any `/flow-*` skill is invoked, silently set the agent identity:
+```bash
+echo "📐 FLOW / skill-name" > ~/.claude/agent-identity
+```
+Replace `skill-name` with the actual skill (e.g., `intake`, `gate`, `coach`, `review`). Update when something urgent needs attention.
+
 ---
 
 ## 1. Mode Awareness

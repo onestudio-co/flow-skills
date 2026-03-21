@@ -1,5 +1,24 @@
 # Changelog
 
+## v2.4.0 — 2026-03-21
+
+**Plugin Architecture Compliance** — Restructured to match Claude Code plugin spec, added MCP App dashboard.
+
+### New
+- **MCP App** — Interactive FLOW cycle dashboard for Claude Desktop / claude.ai. Renders inline in conversation with health signals, mode badges, kill conditions.
+
+### Fixed
+- **Hooks location** — Moved `hooks/` from repo root into `plugins/flow/hooks/` (plugin spec compliance)
+- **Marketplace format** — Updated `marketplace.json` to use structured source format (`source.source`, `source.repo`, `source.directory`)
+- **Plugin manifest** — Added `hooks` and `mcpServers` fields to `plugin.json`
+
+### Architecture
+- `plugins/flow/.mcp.json` — MCP server config for the FLOW dashboard app
+- `plugins/flow/mcp-app/` — Server + UI source (TypeScript, Vite single-file build)
+- `plugins/flow/hooks/flow-telemetry.sh` — Telemetry hook (moved from repo root)
+
+---
+
 ## v2.3.0 — 2026-03-19
 
 **The Honesty Layer** — Panel Meeting #14: first real adoption test surfaced 3 critical issues (sycophantic validation, mode confusion, domain expertise gap). 14 proposals, all approved.

@@ -1,5 +1,7 @@
 {
   "name": "flow",
-  "description": "FLOW methodology — 18 interactive skills for speed-agnostic, decision-centric product development. Honesty layer (anti-sycophancy, kill enforcement, confidence markers), cycle state persistence, maturity model (L1/L2/L3). Panel-reviewed documentation (23 chapters, 14 meetings, 11 reviewers).",
-  "version": "2.3.0"
+  "description": "FLOW methodology — 18 interactive skills for speed-agnostic, decision-centric product development. MCP App dashboard for Claude Desktop. Honesty layer (anti-sycophancy, kill enforcement, confidence markers), cycle state persistence, maturity model (L1/L2/L3). Panel-reviewed documentation (23 chapters, 14 meetings, 11 reviewers).",
+  "version": "2.4.0",
+  "hooks": "./hooks/flow-telemetry.sh",
+  "mcpServers": "./.mcp.json"
 }
