@@ -1,156 +1,150 @@
-console.log("Starting FLOW MCP App server...");
-
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
-import {
-  registerAppTool,
-  registerAppResource,
-  RESOURCE_MIME_TYPE,
-} from "@modelcontextprotocol/ext-apps/server";
-import cors from "cors";
-import express from "express";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import fs from "node:fs/promises";
 import path from "node:path";
 
+// --- Read real FLOW data from .flow/ directory ---
+
+interface Cycle {
+  id: string;
+  name: string;
+  mode: "discovery" | "outcome";
+  phase: string;
+  status: "active" | "paused" | "completed" | "killed";
+  bet: string;
+  started: string;
+  killCondition: string;
+  health: "green" | "yellow" | "red" | "gray";
+  daysRemaining: number;
+}
+
+async function loadCycles(): Promise<Cycle[]> {
+  // Look for .flow/ in current working directory
+  const flowDir = path.join(process.cwd(), ".flow");
+
+  try {
+    await fs.access(flowDir);
+  } catch {
+    return []; // No .flow/ directory — return empty
+  }
+
+  const cycles: Cycle[] = [];
+
+  // Read active cycles from .flow/cycles/
+  const cyclesDir = path.join(flowDir, "cycles");
+  try {
+    const files = await fs.readdir(cyclesDir);
+    for (const file of files) {
+      if (!file.endsWith(".json")) continue;
+      try {
+        const raw = await fs.readFile(path.join(cyclesDir, file), "utf-8");
+        const data = JSON.parse(raw);
+        cycles.push({
+          id: data.id ?? file.replace(".json", ""),
+          name: data.name ?? "Unnamed",
+          mode: data.mode ?? "discovery",
+          phase: data.phase ?? "Unknown",
+          status: data.status ?? "active",
+          bet: data.bet ?? "",
+          started: data.started ?? "",
+          killCondition: data.killCondition ?? data.kill_condition ?? "",
+          health: data.health ?? "gray",
+          daysRemaining: data.daysRemaining ?? data.days_remaining ?? 0,
+        });
+      } catch {
+        // Skip malformed cycle files
+      }
+    }
+  } catch {
+    // No cycles directory
+  }
+
+  // Also check .flow/config.yaml for WIP limits (informational)
+  return cycles;
+}
+
+// --- MCP Server ---
+
 const server = new McpServer({
   name: "FLOW Cycle Dashboard",
-  version: "0.1.0",
+  version: "0.2.0",
 });
 
-// --- Mock FLOW data (in production, read from .flow/ directory) ---
-
-const cycles = [
-  {
-    id: "D-2026-001",
-    name: "RE Tokenization Research",
-    mode: "discovery",
-    phase: "D2 — Experiment",
-    status: "active",
-    bet: "Saudi RE market entry",
-    started: "2026-03-10",
-    killCondition: "No platform partner interest by Mar 25",
-    health: "green",
-    daysRemaining: 4,
-  },
-  {
-    id: "O-2026-003",
-    name: "HQ Web Dashboard",
-    mode: "outcome",
-    phase: "O3 — Build",
-    status: "active",
-    bet: "Agentic command center",
-    started: "2026-03-15",
-    killCondition: "N/A (internal tooling)",
-    health: "green",
-    daysRemaining: 2,
-  },
-  {
-    id: "D-2026-004",
-    name: "CEO AI Training Workshop",
-    mode: "discovery",
-    phase: "D1 — Brief",
-    status: "active",
-    bet: "Consulting funnel via free workshops",
-    started: "2026-03-17",
-    killCondition: "< 3 signups by Mar 28",
-    health: "yellow",
-    daysRemaining: 7,
-  },
-  {
-    id: "O-2026-002",
-    name: "Neo Later Onboarding",
-    mode: "outcome",
-    phase: "O4 — Observe",
-    status: "paused",
-    bet: "Neo Bank employment",
-    started: "2026-03-01",
-    killCondition: "N/A (employment)",
-    health: "gray",
-    daysRemaining: 0,
-  },
-];
-
-// --- MCP App registration ---
-
-const dashboardUri = "ui://flow-dashboard/mcp-app.html";
-const detailUri = "ui://flow-cycle-detail/mcp-app.html";
-
-// Tool 1: Show the FLOW dashboard
-registerAppTool(
-  server,
+// Tool 1: List all FLOW cycles
+server.tool(
   "flow-dashboard",
-  {
-    title: "FLOW Dashboard",
-    description:
-      "Show an interactive FLOW cycle dashboard with active cycles, their modes, phases, and health signals.",
-    inputSchema: {},
-    _meta: { ui: { resourceUri: dashboardUri } },
-  },
+  "List all FLOW cycles with their modes, phases, health signals, and kill conditions. Returns structured data from the project's .flow/cycles/ directory.",
+  {},
   async () => {
+    const cycles = await loadCycles();
     const active = cycles.filter((c) => c.status === "active");
+
+    if (cycles.length === 0) {
+      return {
+        content: [
+          {
+            type: "text",
+            text: JSON.stringify({
+              cycles: [],
+              summary: { total: 0, active: 0 },
+              hint: "No cycles found. Run /flow-intake to start a new cycle, or ensure .flow/cycles/ contains cycle JSON files.",
+            }),
+          },
+        ],
+      };
+    }
+
     return {
       content: [
         {
           type: "text",
-          text: JSON.stringify({ cycles, summary: { total: cycles.length, active: active.length } }),
+          text: JSON.stringify({
+            cycles,
+            summary: {
+              total: cycles.length,
+              active: active.length,
+              discovery: cycles.filter((c) => c.mode === "discovery").length,
+              outcome: cycles.filter((c) => c.mode === "outcome").length,
+            },
+          }),
         },
       ],
     };
   },
 );
 
-// Tool 2: Get cycle detail
-registerAppTool(
-  server,
+// Tool 2: Get cycle detail by ID
+server.tool(
   "flow-cycle-detail",
+  "Get detailed information about a specific FLOW cycle by ID.",
   {
-    title: "FLOW Cycle Detail",
-    description: "Get detailed information about a specific FLOW cycle by ID.",
-    inputSchema: {
-      type: "object" as const,
-      properties: {
-        cycleId: { type: "string", description: "The cycle ID (e.g. D-2026-001)" },
-      },
-      required: ["cycleId"],
-    },
-    _meta: { ui: { resourceUri: detailUri } },
+    cycleId: { type: "string", description: "The cycle ID (e.g. D-2026-001)" },
   },
-  async (args: { cycleId: string }) => {
-    const cycle = cycles.find((c) => c.id === args.cycleId);
+  async ({ cycleId }) => {
+    const cycles = await loadCycles();
+    const cycle = cycles.find((c) => c.id === cycleId);
+
     if (!cycle) {
-      return { content: [{ type: "text", text: JSON.stringify({ error: "Cycle not found" }) }] };
+      return {
+        content: [
+          {
+            type: "text",
+            text: JSON.stringify({
+              error: "Cycle not found",
+              available: cycles.map((c) => c.id),
+            }),
+          },
+        ],
+      };
     }
-    return { content: [{ type: "text", text: JSON.stringify(cycle) }] };
+
+    return {
+      content: [{ type: "text", text: JSON.stringify(cycle) }],
+    };
   },
 );
 
-// Serve the bundled HTML for both tools (same UI, different data)
-for (const uri of [dashboardUri, detailUri]) {
-  registerAppResource(server, uri, uri, { mimeType: RESOURCE_MIME_TYPE }, async () => {
-    const html = await fs.readFile(
-      path.join(import.meta.dirname, "dist", "mcp-app.html"),
-      "utf-8",
-    );
-    return { contents: [{ uri, mimeType: RESOURCE_MIME_TYPE, text: html }] };
-  });
-}
+// --- Stdio transport (works with Claude Code plugin system) ---
 
-// --- Express HTTP transport ---
-
-const app = express();
-app.use(cors());
-app.use(express.json());
-
-app.post("/mcp", async (req, res) => {
-  const transport = new StreamableHTTPServerTransport({
-    sessionIdGenerator: undefined,
-    enableJsonResponse: true,
-  });
-  res.on("close", () => transport.close());
-  await server.connect(transport);
-  await transport.handleRequest(req, res, req.body);
-});
-
-app.listen(3002, () => {
-  console.log("FLOW MCP App server listening on http://localhost:3002/mcp");
-});
+const transport = new StdioServerTransport();
+await server.connect(transport);

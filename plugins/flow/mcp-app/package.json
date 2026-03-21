@@ -1,20 +1,19 @@
 {
   "name": "flow-mcp-app",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "scripts": {
-    "build": "INPUT=mcp-app.html vite build",
-    "serve": "npx tsx server.ts"
+    "build:html": "INPUT=mcp-app.html vite build",
+    "build:server": "esbuild server.ts --bundle --platform=node --format=esm --outfile=dist/server.mjs --banner:js=\"import{createRequire}from'module';const require=createRequire(import.meta.url);\"",
+    "build": "npm run build:html && npm run build:server",
+    "dev": "npx tsx server.ts"
   },
   "dependencies": {
-    "@modelcontextprotocol/ext-apps": "^1.2.2",
-    "@modelcontextprotocol/sdk": "^1.12.0",
-    "cors": "^2.8.5",
-    "express": "^4.21.0"
+    "@modelcontextprotocol/sdk": "^1.12.0"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.17",
-    "@types/express": "^5.0.0",
+    "@modelcontextprotocol/ext-apps": "^1.2.2",
+    "esbuild": "^0.25.0",
     "tsx": "^4.19.0",
     "typescript": "^5.7.0",
     "vite": "^6.3.0",

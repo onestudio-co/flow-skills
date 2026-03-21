@@ -1,6 +1,6 @@
 {
   "name": "flow-skills",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "description": "FLOW — decision-centric product methodology for the agentic era. 18 AI-native skills, MCP App dashboard, panel-reviewed documentation (23 chapters), three-layer architecture.",
   "owner": {
     "name": "One Studio",
@@ -15,7 +15,7 @@
         "directory": "plugins/flow"
       },
       "description": "Complete FLOW methodology — 18 skills for decision-centric product development, interactive MCP App dashboard for Claude Desktop. Panel-reviewed by 11 PMs across 11 domains.",
-      "version": "2.4.0",
+      "version": "2.5.0",
       "author": {
         "name": "One Studio"
       },
