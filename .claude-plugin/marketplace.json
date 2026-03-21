@@ -9,11 +9,7 @@
   "plugins": [
     {
       "name": "flow",
-      "source": {
-        "source": "github",
-        "repo": "onestudio-co/flow-skills",
-        "directory": "plugins/flow"
-      },
+      "source": ".",
       "description": "Complete FLOW methodology — 18 skills for decision-centric product development, interactive MCP App dashboard for Claude Desktop. Panel-reviewed by 11 PMs across 11 domains.",
       "version": "2.5.0",
       "author": {
