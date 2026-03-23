@@ -136,9 +136,36 @@ Add to your project's `CLAUDE.md`:
 
 ## Installation
 
+### First time
 ```
-/install onestudio-co/flow-skills
+/plugin marketplace add onestudio-co/flow-skills
+/plugin install flow@flow-skills
 ```
+
+### Update to latest
+```
+/plugin marketplace update flow-skills
+/plugin update flow@flow-skills
+```
+
+### For your team (auto-install)
+Add to your project's `.claude/settings.json`:
+```json
+{
+  "extraKnownMarketplaces": {
+    "flow-skills": {
+      "source": {
+        "source": "github",
+        "repo": "onestudio-co/flow-skills"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "flow@flow-skills": true
+  }
+}
+```
+Team members get FLOW automatically when they trust the project folder.
 
 ---
 
