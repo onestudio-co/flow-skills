@@ -1,136 +1,72 @@
 # Changelog
 
+## v3.0.0 — 2026-03-23
+
+**The Great Simplification** — Panel Meeting #18: 3 rounds, 33 agent invocations, 11 panelists, 0 blocks. Radical redesign driven by consensus that FLOW had become the bloated framework it was designed to replace.
+
+### Breaking Changes
+
+Everything. This is a complete rewrite.
+
+| Dimension | v2 | v3 | Reduction |
+|-----------|----|----|-----------|
+| Gates | 8 (D1-D3, O1-O5) | 3 (G1 Commit, G2 Pulse, G3 Resolve) | 63% |
+| Artifacts | 8 standalone docs | 3 (Cycle Brief, Kill/Merge Record, Learning Entry) | 63% |
+| Core concepts | 21+ named | 7 (4 primitives + 3 config dimensions) | 67% |
+| Anti-patterns | 21 named | 7 named + 14 inlined | 67% |
+| Glossary | 50+ terms | ~15 | 70% |
+| Documentation | 23 chapters + 5 guides | 8 core + 6 appendix | 50% |
+| Skills | 19 commands | 5 | 74% |
+| Doc lines | 5,235 | 1,526 | 71% |
+
+### New Skills (5 total)
+
+- `/flow` — Context-aware entry point. Shows status, suggests actions, auto-initializes new projects
+- `/flow-start` — Begin new work. Conversational cycle creation: 3-5 questions -> Cycle Brief
+- `/flow-check` — Evaluate progress. G2 Pulse, G3 Resolve, reconciliation
+- `/flow-close` — End work. Kill/merge decision, learning capture, archive
+- `/flow-coach` — Thinking partner. 1-1-1 rule: 1 observation, 1 suggestion, 1 question
+
+### Removed Skills (17)
+
+flow-archive, flow-brief, flow-config, flow-contract, flow-experiment, flow-expert, flow-gate, flow-health, flow-init, flow-intake, flow-kill, flow-reconcile, flow-review, flow-spec, flow-status, flow-tempo, flow-wip
+
+All functionality absorbed into the 5 new skills.
+
+### New Core Model
+
+**4 Primitives**: Cycle, Decision, Learning, Two Modes (Discovery/Outcome)
+**3 Config Dimensions**: Tempo (cycle length), Scale (team size), Rigor (ceremony level)
+**3 Gates**: G1 Commit (blocking entry), G2 Pulse (mid-cycle check), G3 Resolve (kill/merge decision)
+**3 Artifacts**: Cycle Brief (living doc), Kill/Merge Record, Learning Entry
+
+### New Documentation (14 files, 1,526 lines)
+
+Core (8): Why FLOW, Spine, Discovery, Outcome, Kill Discipline, Tempo & WIP, Roles & Rituals, Getting Started
+Appendix (6): Agentic Era, Adaptation Guide, Anti-Patterns, Templates, Glossary, Facilitation
+
+### Absorbed Proposals (from M16 + M17)
+
+- Translation Card -> Chapter 8 Getting Started (framework comparison tables)
+- Spike Tier -> Short Discovery cycles (no special concept needed)
+- Capability Trigger -> Sidebar recipe in Chapter 3 Discovery
+
+### Dropped Proposals
+
+- Stride Rename (cycle is sufficient)
+- Multi-Context Mode (teams solve locally)
+- Agent Escalation Protocol (premature)
+- Conviction Decay Metrics (anti-pattern naming is enough)
+- Domain Gate Templates (folded into Appendix B)
+
+---
+
+## v2.5.0 — 2026-03-21
+
+**Validation Debt** — Panel Meeting #15. `/flow-reconcile` skill, three-bucket classification.
+
+---
+
 ## v2.4.0 — 2026-03-21
 
-**Plugin Architecture Compliance** — Restructured to match Claude Code plugin spec, added MCP App dashboard.
-
-### New
-- **MCP App** — Interactive FLOW cycle dashboard for Claude Desktop / claude.ai. Renders inline in conversation with health signals, mode badges, kill conditions.
-
-### Fixed
-- **Hooks location** — Moved `hooks/` from repo root into `plugins/flow/hooks/` (plugin spec compliance)
-- **Marketplace format** — Updated `marketplace.json` to use structured source format (`source.source`, `source.repo`, `source.directory`)
-- **Plugin manifest** — Added `hooks` and `mcpServers` fields to `plugin.json`
-
-### Architecture
-- `plugins/flow/.mcp.json` — MCP server config for the FLOW dashboard app
-- `plugins/flow/mcp-app/` — Server + UI source (TypeScript, Vite single-file build)
-- `plugins/flow/hooks/flow-telemetry.sh` — Telemetry hook (moved from repo root)
-
----
-
-## v2.3.0 — 2026-03-19
-
-**The Honesty Layer** — Panel Meeting #14: first real adoption test surfaced 3 critical issues (sycophantic validation, mode confusion, domain expertise gap). 14 proposals, all approved.
-
-### New Skill
-- `/flow-expert` — Domain Expert Agent Blueprint: helps teams build adversarial domain validators for research claims
-
-### New Infrastructure
-- **Cycle State File** (`.flow/active-cycle.json`) — persistent state between skill invocations: mode, phase, next step, completed steps, kill condition
-- **Transition Markers** — every skill outputs a visual `───── FLOW ─────` block on completion showing cycle state and next step
-- **Maturity Model** (L1/L2/L3) — enforcement intensity scales down as teams demonstrate adoption maturity
-  - L1 (Guided): blocking checks, explicit prompts — default for new teams
-  - L2 (Trusted): non-blocking reminders, dismissable
-  - L3 (Silent): telemetry-only, dashboard visibility
-- **Pause/Resume** — `/flow-status pause` silences reminders, auto-reminds after 24h
-
-### Anti-Sycophancy (all evaluative skills)
-- Evaluation Behavioral Rules added to: `/flow-gate`, `/flow-kill`, `/flow-experiment`, `/flow-review`, `/flow-spec`, `/flow-brief`
-- No affirmative openers, challenge-first, earn praise, tone calibration by context type
-- Structured Gate Interrogation: 3 required questions per gate (D1-O5) with evidence ratings
-- Kill Condition Enforcement: triggered = KILL by default, burden of proof on user to override
-
-### Research Honesty (discovery skills)
-- **Confidence Markers**: `[verified]` / `[likely]` / `[VERIFY]` on all research claims
-- **Provenance Trail**: source type (training data / web / user / inference) for every claim
-- **"What Could Be Wrong?"**: mandatory self-critique section on all research output
-- **Expert Review Gate**: optional gate between research and decision (configurable: optional/required/skip)
-
-### Updated
-- `/flow-init` — 8 ambient rules (added Cycle Continuity), extended hook with cycle awareness + maturity
-- `/flow` router — added pause/resume and domain expert routing
-- All 16 non-router skills — transition marker output format
-- Hook script — combined telemetry + cycle awareness, maturity-level-dependent output
-
-### Architecture
-- `.flow/active-cycle.json` — local session state (not committed to git)
-- `.flow/agents/` — domain expert agents (committed, shared with team)
-- `maturity.level` in `.flow/config.yaml` — L1/L2/L3 enforcement control
-- `expert_review_gate` in `.flow/config.yaml` — optional/required/skip
-
----
-
-## v2.2.0 — 2026-03-19
-
-**Project Bootstrap** — New `/flow-init` skill and first-time detection in `/flow` router.
-
-### New Skill
-- `/flow-init` — Bootstraps FLOW in any project: creates `.flow/` directory (config, cycles, experiments, archive, decisions), adds 7 ambient rules to CLAUDE.md, runs quick Tempo calibration
-
-### Updated
-- `/flow` router — Detects first-time use (no `.flow/` directory) and auto-routes to `/flow-init`. Reads `.flow/config.yaml` for team context in all routing decisions.
-
-### Architecture
-- Per-project state lives in `.flow/` (committed to git, shared with team)
-- Global skills stay in `~/.claude/plugins/` (installed once per machine)
-- Dev repo symlinked to cache for instant feedback
-
----
-
-## v2.1.0 — 2026-03-19
-
-**The Agentic Speed Update** — Panel Meeting #13: real team feedback that FLOW's time assumptions don't match agentic reality.
-
-### New Concepts
-- Tempo, Micro-SPEC, Cycle Phases, FLOW Configuration, Observation Floor, FLOW Invariants/Variables, Bottleneck-based WIP
-
-### New Skills (2)
-- `/flow-tempo` — Discover your team's rhythm
-- `/flow-config` — Generate FLOW operating agreement
-
-### Updated Skills (14 of 14)
-All skills updated with Tempo-relative language, Micro-SPEC support, Observation Floor, Comprehension Review, bottleneck-aware WIP
-
-### 7 Agentic Anti-Patterns
-Premature Confidence, Experiment Overload, Judgment Fatigue, Context Collapse, Dependency Whiplash, Maintenance Debt, Speed Inequality
-
-## v2.0.0 — 2026-03-19
-
-Complete redesign of the FLOW skills ecosystem.
-
-- **Decision-centric identity**: FLOW optimizes for three decisions (what to learn, what to build, what to stop) — not delivery velocity
-- **14 skills** consolidated from 20: merged overlapping skills, unified gates, added intelligent router (`/flow`)
-- **Panel-reviewed documentation**: 23 chapters validated by 11 product managers across fintech, gaming, healthtech, solo startups, e-commerce, insurance, edtech, climate tech, dev tools, agencies, and government
-- **Three-layer architecture**: CLAUDE.md ambient layer (6 rules, always active) + Skills (14 invoked tools) + Memory (persistent state)
-- **CLAUDE.md ambient layer**: 6 rules that run passively — mode awareness, kill conditions, spine trace, WIP limits, gate enforcement, learning capture
-- **Context-adaptive**: every skill adapts to team size (solo, small, enterprise), domain (agency, hardware, government), and FLOW experience level
-- **Skill chaining**: skills chain naturally through the FLOW lifecycle — intake to brief to experiment to gate to kill to archive
-
-### Skills (v2.0)
-
-| Command | Replaces (v1.0) |
-|---------|-----------------|
-| `/flow` | New — intelligent router |
-| `/flow-intake` | `/flow-intake` |
-| `/flow-brief` | `/flow-discovery-brief` |
-| `/flow-experiment` | `/flow-experiment-design` + `/flow-experiment-log` |
-| `/flow-spec` | `/flow-spec-lite` |
-| `/flow-contract` | `/flow-build-contract` |
-| `/flow-gate` | `/flow-gate-discovery` + `/flow-gate-outcome` + `/flow-spine-check` |
-| `/flow-status` | `/flow-cycle-status` |
-| `/flow-kill` | `/flow-kill-merge-agenda` + `/flow-kill-merge-notes` |
-| `/flow-archive` | `/flow-learning-archive` |
-| `/flow-wip` | `/flow-wip-check` |
-| `/flow-coach` | `/flow-coach` |
-| `/flow-health` | `/flow-health-report` |
-| `/flow-review` | `/flow-discovery-review` + `/flow-outcome-review` |
-
-### Removed Skills
-
-- `/flow-glossary` — replaced by `docs/22-glossary.md` (reference doc, not interactive skill)
-- `/flow-production-readiness` — folded into `/flow-gate` (O4/O5 gates)
-
-## v1.0.0 — 2026-03-01
-
-Initial release. 20 skills covering the full FLOW lifecycle: intake, discovery, outcome, experiments, gates, weekly rituals, and coaching.
+**Plugin Architecture Compliance** — Restructured to match Claude Code plugin spec.

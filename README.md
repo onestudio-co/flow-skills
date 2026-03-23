@@ -2,24 +2,21 @@
 
 **Decision-centric product development. 18 AI-native skills. Panel-reviewed documentation.**
 
-`v2.3` &middot; `23 chapters` &middot; `18 skills` &middot; `14 panel meetings`
+`v2.5` &middot; `23 chapters` &middot; `19 skills` &middot; `15 panel meetings`
 
 ---
 
-## What's New in v2.3.0
+## What's New in v2.5.0
 
-**The Honesty Layer** — anti-sycophancy rules, cycle persistence, and maturity model.
+**Validation Debt** — Panel Meeting #15: when speed outpaces the framework.
 
-- **Anti-sycophancy evaluation rules** across all evaluative skills
-- **Cycle state persistence** (`active-cycle.json`) for methodology continuity
-- **Maturity Model** (L1 Guided → L2 Trusted → L3 Silent)
-- **Confidence markers**, research provenance, mandatory self-critique
-- **Kill condition enforcement** (triggered = KILL by default)
-- **Structured gate interrogation** (3 questions per gate)
-- **Domain Expert Agent** blueprint (`/flow-expert`)
-- **Transition markers** on every skill output
-- **Pause/resume** for active cycles
-- **8th ambient rule**: Cycle Continuity
+- **`/flow-reconcile`** — Retroactive FLOW alignment for shipped-but-untracked work
+- **Validation Debt** concept — decision-oriented equivalent of tech debt
+- **Three-bucket classification**: Dismiss (no validation needed), Acknowledge (production-validated), Activate (needs kill condition + observation)
+- **Untracked work detection** in `/flow-status` — scans git commits against FLOW checkpoints
+- **Reconciliation cadence** — optional portfolio ritual with debt-level-based frequency
+- **Anti-pattern #21**: Validation Debt added to catalog
+- **4 new glossary terms**: Validation Debt, Reconciliation, Reconciliation Cadence, Dismiss/Acknowledge/Activate
 
 ---
 
@@ -112,6 +109,7 @@ State files that persist across sessions: active cycles (including `active-cycle
 | `/flow-config` | Generate your team's FLOW operating agreement | — | PM, Team Lead |
 | `/flow-init` | Bootstrap FLOW in a new project — creates `.flow/`, ambient rules, telemetry | `/flow-intake` | New teams |
 | `/flow-expert` | Build a Domain Expert agent for domain-specific research validation | — | PM, Domain Lead |
+| `/flow-reconcile` | Retroactive alignment — scan for untracked work, classify, create retroactive cycles | `/flow-status`, `/flow-kill` | PM, Flow Coach |
 
 ### Skill Chaining
 
@@ -121,6 +119,8 @@ Skills are designed to chain naturally through the FLOW lifecycle:
 /flow-intake → /flow-brief → /flow-experiment → /flow-gate (D1-D3)
                                                        ↓
 /flow-intake → /flow-spec → /flow-contract → /flow-gate (O1-O5) → /flow-kill → /flow-archive
+
+/flow-status → (untracked work detected) → /flow-reconcile → /flow-status or /flow-kill
 ```
 
 The router (`/flow`) handles this automatically for newcomers. Experienced users invoke skills directly.
@@ -245,7 +245,7 @@ The panel reviewed the outline, debated every chapter's content, and validated t
 /install onestudio-co/flow-skills
 ```
 
-One install — all 18 skills, 23 chapters of documentation, and the CLAUDE.md ambient rules.
+One install — all 19 skills, 23 chapters of documentation, and the CLAUDE.md ambient rules.
 
 ---
 
@@ -304,7 +304,8 @@ flow-skills/
 │           ├── flow-tempo/SKILL.md
 │           ├── flow-config/SKILL.md
 │           ├── flow-init/SKILL.md
-│           └── flow-expert/SKILL.md
+│           ├── flow-expert/SKILL.md
+│           └── flow-reconcile/SKILL.md
 └── .claude-plugin/
     └── marketplace.json
 ```
