@@ -1,5 +1,14 @@
 # Changelog
 
+## v3.0.1 — 2026-03-24
+
+**Bugfix** — MCP server hint referenced removed `/flow-intake` skill instead of `/flow-start`.
+
+### Fixed
+- MCP server: "No cycles found" hint now correctly points to `/flow-start` (was `/flow-intake`, a v2 skill removed in v3.0.0)
+
+---
+
 ## v3.0.0 — 2026-03-23
 
 **The Great Simplification** — Panel Meeting #18: 3 rounds, 33 agent invocations, 11 panelists, 0 blocks. Radical redesign driven by consensus that FLOW had become the bloated framework it was designed to replace.

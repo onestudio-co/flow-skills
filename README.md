@@ -2,7 +2,7 @@
 
 > **Decide what to bet on. Run small cycles. Kill what's not working. Keep what you learn.**
 
-`v3.0.0` &middot; `14 docs` &middot; `5 skills` &middot; `18 panel meetings`
+`v3.0.1` &middot; `14 docs` &middot; `5 skills` &middot; `18 panel meetings`
 
 ---
 

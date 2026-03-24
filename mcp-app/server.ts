@@ -87,7 +87,7 @@ server.tool(
             text: JSON.stringify({
               cycles: [],
               summary: { total: 0, active: 0 },
-              hint: "No cycles found. Run /flow-intake to start a new cycle, or ensure .flow/cycles/ contains cycle JSON files.",
+              hint: "No cycles found. Run /flow-start to begin a new cycle, or ensure .flow/cycles/ contains cycle JSON files.",
             }),
           },
         ],
