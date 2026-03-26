@@ -16,13 +16,13 @@ Listen for the answer. Don't ask more than necessary. One question at a time.
 
 ## Step 2 — Classify Mode
 
-Based on the user's description, determine:
+Use these practical questions to determine mode:
 
-> "Is the primary risk that you build the wrong thing, or that you fail to ship the right thing?"
+1. **"Do you have evidence users need this?"** — Yes = likely Outcome, No = Discovery
+2. **"If you gave your best developer 2 weeks, would they know exactly what to build?"** — Yes = Outcome, No = Discovery
+3. **"Is there a technical risk you haven't tried before?"** — Yes = Discovery spike needed
 
-- High uncertainty, unvalidated problem -> **Discovery**
-- Known problem, need to execute -> **Outcome**
-- Not sure -> **Discovery** (when in doubt, learn first)
+You don't need to ask all three. Stop as soon as the mode is clear. When in doubt, default to Discovery.
 
 Tell the user which mode and why. One sentence. Move on.
 
@@ -46,12 +46,13 @@ Guide toward the experiment hierarchy: conversation > prototype > concierge > pr
 
 ## Step 4 — Write the Cycle Brief
 
-Create a file in `.flow/cycles/` named `YYYY-MM-DD-[slug].md` using the Cycle Brief template:
+Create a file in `.flow/cycles/` named `YYYY-MM-DD-[slug].md` using this template:
 
 ```markdown
 # Cycle Brief: [Name]
 Date: [today]
 Mode: [Discovery / Outcome]
+Owner: [person who ran /flow-start]
 Bet: [spine trace — which bet does this serve?]
 Tempo: [from config]
 
@@ -59,7 +60,10 @@ Tempo: [from config]
 [from Step 3]
 
 ## Kill Condition
-[from Step 3 — specific, measurable, timebound]
+[MUST have all three parts]:
+- **Metric**: [what you're measuring]
+- **Threshold**: [specific number or state that triggers kill]
+- **Deadline**: [by when — exact date]
 
 ## Experiment / Scope
 [from Step 3]
@@ -71,17 +75,41 @@ Tempo: [from config]
 [empty — updated during cycle]
 ```
 
-## Step 5 — G1 Commit
+## Step 5 — Validate Before G1
 
-Run the G1 checklist:
+Before passing G1, verify the Cycle Brief. Show it to the user and ask: **"Does this look right?"**
 
-- [ ] Hypothesis/problem stated clearly
-- [ ] Kill condition is specific, measurable, timebound
+Check these requirements:
+- [ ] Kill condition has a **metric** (what you're measuring)
+- [ ] Kill condition has a **threshold** (specific number)
+- [ ] Kill condition has a **deadline** (exact date)
+- [ ] Hypothesis/problem is stated in one clear sentence
 - [ ] Experiment/scope is defined
 - [ ] Spine trace exists (even informal)
 - [ ] WIP capacity confirmed
 
-If all pass: "G1 Commit passed. Cycle is active. Good luck — run `/flow-check` when you want a pulse."
+**If kill condition is missing any of the 3 parts**, do NOT pass G1. Tell the user what's missing and help them fix it:
+- Missing metric: "What would you measure to know if this is working?"
+- Missing threshold: "What number would make you stop?"
+- Missing deadline: "By when do you need to see results?"
+
+### Examples of good kill conditions:
+
+**Discovery**: "If fewer than 5 of 20 beta users enable auto-summaries after 7 days (by April 3), kill."
+- Metric: beta user enable rate
+- Threshold: fewer than 5 of 20
+- Deadline: April 3 (7 days)
+
+**Outcome**: "If abandon rate doesn't drop below 40% within 10 days of launch (by April 10), kill."
+- Metric: onboarding step 3 abandon rate
+- Threshold: below 40%
+- Deadline: April 10
+
+## Step 6 — G1 Commit
+
+If all checks pass AND user confirms the brief looks right:
+
+"G1 Commit passed. Cycle is active. Good luck — run `/flow-check` when you want a pulse."
 
 If any fail: Tell the user what's missing. Help them fix it. Don't block with jargon — just say what's needed.
 

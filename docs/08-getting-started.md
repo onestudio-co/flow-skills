@@ -130,6 +130,38 @@ Done. You just ran a FLOW cycle.
 
 ---
 
+## FLOW for Your Role
+
+### FLOW for Developers
+
+FLOW asks you to **build small, observe fast, and stop when evidence says stop.** Your key touchpoints:
+- **Kill conditions**: Understand them before you build. If the kill condition triggers, your work stops — that's by design, not a failure.
+- **Scope clarity**: The Cycle Brief's scope section is your contract. If it's vague, push back at G1.
+- **Experiment hierarchy**: conversation > prototype > concierge > production code. Build the cheapest thing that tests the hypothesis.
+
+### FLOW for PMs / Product Owners
+
+FLOW asks you to **own the kill condition and the observation plan.** You're the cycle owner:
+- **Mode classification**: You decide Discovery vs Outcome. Use the practical test: "Do we have evidence users need this?"
+- **Spine trace**: Every cycle traces to a bet. If you can't connect cycle to strategy, don't start it.
+- **G3 decisions**: You present evidence and recommend Kill, Merge, or Continue. Own the recommendation.
+
+### FLOW for Designers
+
+FLOW asks you to **validate before polishing.** In Discovery, your designs are experiments, not deliverables:
+- **Discovery mode**: Sketch, low-fidelity, conversation-based testing. Don't produce final designs until Discovery ends.
+- **Cheapest valid test**: Your superpower is finding the fastest way to learn — a paper sketch that tests the hypothesis is better than a pixel-perfect mockup.
+- **Mode transition**: When Discovery merges and Outcome starts, that's when full design begins.
+
+### FLOW for QA
+
+FLOW asks you to **help the team know when something is working or not:**
+- **Observation plans**: Help define how evidence will be collected. What metrics? What tools?
+- **Evidence quality**: At G2 Pulse and G3 Resolve, you're the voice asking "is this data reliable?"
+- **Kill condition validation**: When a kill condition triggers, help verify the data is valid before the team decides.
+
+---
+
 ## Common First-Month Mistakes
 
 **1. Kill conditions that are too easy.**

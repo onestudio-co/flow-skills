@@ -1,6 +1,6 @@
 {
   "name": "flow",
   "description": "FLOW methodology — 5 skills for decision-centric product development. 3 gates (Commit/Pulse/Resolve), 3 artifacts (Cycle Brief/Kill-Merge Record/Learning Entry), 2 modes (Discovery/Outcome). v3.0: The Great Simplification.",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "mcpServers": "./.mcp.json"
 }

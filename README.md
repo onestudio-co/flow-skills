@@ -2,7 +2,20 @@
 
 > **Decide what to bet on. Run small cycles. Kill what's not working. Keep what you learn.**
 
-`v3.0.1` &middot; `14 docs` &middot; `5 skills` &middot; `18 panel meetings`
+`v3.0.2` &middot; `14 docs` &middot; `5 skills` &middot; `19 panel meetings`
+
+---
+
+## What's New in v3.0.2 — First Real Adoption
+
+Panel Meeting #19: first real-team feedback (12-person team, 48 hours of use). 6 patches:
+
+- **Kill condition validation** — must have metric + threshold + deadline. G1 blocks otherwise.
+- **Practical mode questions** — "Do you have evidence users need this?" replaces theoretical classification.
+- **Learning enforcement** — `/flow-close` requires a Learning Entry before archival.
+- **Coach knowledge boundary** — only answers from FLOW docs. Says "I don't know" when outside scope.
+- **v2 upgrade guide** — `/flow` auto-detects v2 artifacts and offers batch migration.
+- **Role one-pagers** — "FLOW for Developers/PMs/Designers/QA" added to Chapter 8.
 
 ---
 
@@ -130,7 +143,7 @@ Add to your project's `CLAUDE.md`:
 
 ## The Review Panel
 
-11 product managers across fintech, gaming, healthtech, solo startups, e-commerce, insurance, edtech, climate tech, developer tools, agencies, and government. 18 meetings. Meeting #18 produced v3.0 — The Great Simplification.
+11 product managers across fintech, gaming, healthtech, solo startups, e-commerce, insurance, edtech, climate tech, developer tools, agencies, and government. 19 meetings. Meeting #18 produced v3.0 — The Great Simplification. Meeting #19 addressed first real-team adoption feedback — Cycle Brief validation, coach knowledge boundaries, v2 upgrade guide, and role one-pagers.
 
 ---
 

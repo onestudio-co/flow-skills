@@ -20,13 +20,39 @@ Has this cycle already been through G3 Resolve?
 
 **If G3 already completed**: Proceed to archival.
 
-## Step 3 — Archive
+## Step 3 — Require Learning Entry
+
+Before archiving, check if a Learning Entry exists for this cycle.
+
+**If no Learning Entry**: Do NOT proceed to archival. Ask:
+
+"Every cycle teaches something — even a 'this worked as expected' is a learning. What did you learn?"
+
+Prompt with:
+- "What did you test?"
+- "What did you learn?"
+- "What does this mean for future work?"
+
+Write the Learning Entry to `.flow/cycles/[slug]-learning.md`:
+
+```markdown
+# Learning Entry
+Date: [today]
+Cycle: [link to brief]
+What we tested: [one sentence]
+What we learned: [2-3 sentences]
+What this means: [future implications]
+```
+
+**If Learning Entry exists**: Proceed.
+
+## Step 4 — Archive
 
 1. Move the Cycle Brief, Kill/Merge Record, and Learning Entry to `.flow/archive/`
 2. Update `.flow/cycles/` (remove from active)
 3. Confirm: "Cycle archived. WIP slot freed. [Discovery/Outcome] capacity: [N]/[limit]."
 
-## Step 4 — What's Next?
+## Step 5 — What's Next?
 
 After closing, offer forward momentum:
 

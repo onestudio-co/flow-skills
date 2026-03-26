@@ -1,6 +1,6 @@
 {
   "name": "flow-skills",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "FLOW — decision-centric product methodology. 5 skills, 3 gates, 3 artifacts, 2 modes. The Great Simplification (v3).",
   "owner": {
     "name": "One Studio",
@@ -11,7 +11,7 @@
       "name": "flow",
       "source": "./",
       "description": "FLOW methodology — 5 skills for decision-centric product development. 3 gates, 3 artifacts, 2 modes. Panel-reviewed by 11 PMs.",
-      "version": "3.0.1",
+      "version": "3.0.2",
       "author": {
         "name": "One Studio"
       },

@@ -1,5 +1,32 @@
 # Changelog
 
+## v3.0.2 — 2026-03-26
+
+**First Real Adoption** — Panel Meeting #19: 11 panelists reviewed feedback from a 12-person team using FLOW v3 in production for 48 hours. 6 patches approved, 6 items deferred.
+
+### Fixed
+- `/flow-start`: Kill conditions now **require 3 parts** — metric, threshold, deadline. G1 blocks if any are missing.
+- `/flow-start`: Replaced theoretical mode questions with practical ones ("Do you have evidence users need this?")
+- `/flow-start`: Added brief confirmation step — agent shows draft, asks "Does this look right?" before G1
+- `/flow-start`: Added `Owner` field to Cycle Brief template
+- `/flow-close`: Learning Entry is now **required** before archival — no close without learning
+- `/flow-coach`: Added explicit knowledge boundary — only answers from FLOW v3 docs, says "I don't know" when outside scope
+- `/flow-coach`: Added v2 redirect — gently corrects v2 terminology when users use it
+- `/flow-coach`: Added role-aware coaching tips (Dev, PM, Designer, QA)
+- `/flow`: Added v2 detection — scans for D1-D3, old config keys, stale skill references
+- `/flow`: Added upgrade guide — offers batch migration from v2 to v3 with backup and diff preview
+
+### Added
+- **Role one-pagers** in Chapter 8: "FLOW for Developers", "FLOW for PMs", "FLOW for Designers", "FLOW for QA"
+- **Cycle ownership model** in Chapter 7: one person owns config per cycle, others contribute through the brief
+- **Kill condition examples** in `/flow-start`: Discovery and Outcome worked examples with metric/threshold/deadline breakdown
+
+### Panel Decisions
+- **Deferred**: cycle dependencies, roadmap view, tech analysis step, auto-detection, Discovery-to-Design sub-workflow, role-based question branching
+- **Anti-pattern alert**: Gate Theatre identified as active risk from bad Cycle Brief quality
+
+---
+
 ## v3.0.1 — 2026-03-24
 
 **Bugfix** — MCP server hint referenced removed `/flow-intake` skill instead of `/flow-start`.

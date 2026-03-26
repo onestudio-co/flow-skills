@@ -14,10 +14,45 @@ Check if `.flow/` directory exists in the current project root.
    - "How long are your typical cycles? (days)" -> Sets tempo
    - "How many things can your team observe at once?" -> Sets WIP limits
    - "Discovery or Outcome work mostly?" -> Sets initial mode guidance
-3. Write `.flow/config.yaml` with the answers
+3. Write `.flow/config.yaml` with the answers (include `version: 3`)
 4. Confirm: "FLOW is set up. Type `/flow` anytime to see your status, or `/flow-start` to begin a cycle."
 
-**If `.flow/` exists**: Continue to Step 2.
+**If `.flow/` exists**: Check for v2 markers first (Step 1b), then continue to Step 2.
+
+## Step 1b — v2 Detection & Upgrade
+
+Scan for v2 markers:
+- `config.yaml` missing `version: 3` or has old keys (maturity, profile names)
+- `.flow/cycles/` files referencing D1, D2, D3, O1-O5, SPEC-Lite
+- Old skill references (`/flow-intake`, `/flow-gate`, `/flow-observe`)
+
+**If v2 markers found**:
+
+```
+⚠️  FLOW v2 detected — v3 is the current version.
+
+v3 simplified FLOW from 8 gates to 3, 21 concepts to 7.
+Key changes:
+  D1-D3, O1-O5 → G1 Commit, G2 Pulse, G3 Resolve
+  SPEC-Lite → Cycle Brief
+  Maturity levels → removed
+
+Would you like to upgrade? I'll:
+  1. Add version: 3 to your config
+  2. Rename cycle files to v3 format
+  3. Log the migration as a Learning Entry
+
+All changes are shown before applying. Your old files are preserved in .flow/archive/v2/.
+```
+
+If user agrees, batch-migrate:
+1. Back up `.flow/` to `.flow/archive/v2/`
+2. Rewrite `config.yaml` with v3 schema (tempo as number, WIP limits, version: 3)
+3. For each cycle file: rename D1-D3/O1-O5 references to G1/G2/G3, rename SPEC-Lite to Cycle Brief
+4. Write a Learning Entry documenting the migration
+5. Show diff summary of all changes
+
+If user declines, continue with a warning banner on all subsequent `/flow` output.
 
 ## Step 2 — Read Current State
 
@@ -56,6 +91,7 @@ If the user's message contains a clear intent, route directly:
 | "check", "gate", "review", "how's it going", "pulse" | `/flow-check` |
 | "kill", "stop", "done", "merge", "ship", "close" | `/flow-close` |
 | "help", "coach", "what should I", "teach me", "how does" | `/flow-coach` |
+| "upgrade", "migrate", "v2" | Step 1b (upgrade flow) |
 
 If intent is ambiguous, show the status dashboard and offer options.
 

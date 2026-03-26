@@ -50,6 +50,10 @@ They ask three questions:
 >
 > The fix: Track gate failure rates. If gates never fail, the team isn't evaluating honestly. The Flow Coach should be able to point to at least one gate that *didn't* pass in the last month.
 
+### Cycle Ownership
+
+**One person owns config per cycle.** Typically the PM or tech lead. They run `/flow-start`, write the Cycle Brief, and are accountable for the kill condition. Other team members contribute through the brief (adding evidence, updating scope) but don't independently set config values like tempo or WIP for the same cycle. This prevents conflicting state when multiple people answer setup questions.
+
 ### How Roles Shift Between Modes
 
 | | Discovery | Outcome |
