@@ -16,11 +16,17 @@ Listen for the answer. Don't ask more than necessary. One question at a time.
 
 ## Step 1.5 — Detect Role (optional)
 
-Check `.flow/config.yaml` for a `role` field. If set, use it silently. If not set, ask:
+Check `.flow/config.yaml` for the user's role under the `roles` map (keyed by name). If found, use it silently. If not found, ask:
 
 **"What's your primary role on this? (Developer / PM / Designer / QA / Skip)"**
 
-- If they answer, cache it in `.flow/config.yaml` under `role: [value]` so they're never asked again.
+- If they answer, cache it in `.flow/config.yaml` under `roles:` keyed by their name:
+  ```yaml
+  roles:
+    Mohammed Shawwa: developer
+    Mahmoud Atef: pm
+  ```
+- This way each team member's role is stored independently — no overwriting.
 - If they say "Skip" or wear multiple hats, proceed with the universal questions (no role branching).
 - Solo founders or multi-role people should skip — don't force a box.
 
