@@ -1,5 +1,23 @@
 # Changelog
 
+## v3.0.3 — 2026-03-27
+
+**Role-Aware Intake** — Panel Meeting #20 (quick): 4 approve, 1 defer, 0 blocks. Triggered by real team feedback (Shawwa asked if /flow-start questions personalize per role).
+
+### Added
+- `/flow-start`: **Role-aware follow-up questions** — after core intake, adds 1 role-specific question based on user's role (Developer, PM, Designer, QA)
+- `/flow-start`: **Role detection** — asks role once, caches in `.flow/config.yaml`. Skippable for multi-hat people.
+- Discovery role questions: technical spikes (Dev), user feedback targets (PM), fidelity level (Designer), experiment validity (QA)
+- Outcome role questions: technical risk (Dev), metric ownership (PM), design reuse (Designer), acceptance criteria (QA)
+
+### Design Constraints (from panel)
+- Core questions stay universal — role only varies 1 follow-up per mode
+- "Skip" option for solo founders and multi-role people
+- Role cached after first ask — never repeated
+- 4 roles max, no new taxonomy
+
+---
+
 ## v3.0.2 — 2026-03-26
 
 **First Real Adoption** — Panel Meeting #19: 11 panelists reviewed feedback from a 12-person team using FLOW v3 in production for 48 hours. 6 patches approved, 6 items deferred.
@@ -22,7 +40,7 @@
 - **Kill condition examples** in `/flow-start`: Discovery and Outcome worked examples with metric/threshold/deadline breakdown
 
 ### Panel Decisions
-- **Deferred**: cycle dependencies, roadmap view, tech analysis step, auto-detection, Discovery-to-Design sub-workflow, role-based question branching
+- **Deferred**: cycle dependencies, roadmap view, tech analysis step, auto-detection, Discovery-to-Design sub-workflow ~~, role-based question branching~~ (shipped in v3.0.3)
 - **Anti-pattern alert**: Gate Theatre identified as active risk from bad Cycle Brief quality
 
 ---

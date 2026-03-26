@@ -2,9 +2,18 @@
 
 > **Decide what to bet on. Run small cycles. Kill what's not working. Keep what you learn.**
 
-`v3.0.2` &middot; `14 docs` &middot; `5 skills` &middot; `19 panel meetings`
+`v3.0.3` &middot; `14 docs` &middot; `5 skills` &middot; `20 panel meetings`
 
 ---
+
+## What's New in v3.0.3 — Role-Aware Intake
+
+Panel Meeting #20: real team feedback (Shawwa asked if /flow-start personalizes per role). 4 approve, 1 defer.
+
+- **Role-aware follow-up questions** — `/flow-start` adds 1 role-specific question after core intake (Developer, PM, Designer, QA).
+- **Role caching** — asks once, stores in `.flow/config.yaml`. Skippable for multi-hat people.
+- **Discovery roles**: technical spikes (Dev), feedback targets (PM), fidelity level (Designer), experiment validity (QA).
+- **Outcome roles**: technical risk (Dev), metric ownership (PM), design reuse (Designer), acceptance criteria (QA).
 
 ## What's New in v3.0.2 — First Real Adoption
 

@@ -14,6 +14,18 @@ Ask: **"What are you trying to do?"**
 
 Listen for the answer. Don't ask more than necessary. One question at a time.
 
+## Step 1.5 — Detect Role (optional)
+
+Check `.flow/config.yaml` for a `role` field. If set, use it silently. If not set, ask:
+
+**"What's your primary role on this? (Developer / PM / Designer / QA / Skip)"**
+
+- If they answer, cache it in `.flow/config.yaml` under `role: [value]` so they're never asked again.
+- If they say "Skip" or wear multiple hats, proceed with the universal questions (no role branching).
+- Solo founders or multi-role people should skip — don't force a box.
+
+This determines which **follow-up questions** appear in Steps 3, not the core flow.
+
 ## Step 2 — Classify Mode
 
 Use these practical questions to determine mode:
@@ -36,6 +48,12 @@ Tell the user which mode and why. One sentence. Move on.
 
 Guide toward the experiment hierarchy: conversation > prototype > concierge > production code. Push for cheapest valid option.
 
+**Role-specific follow-up (Discovery)** — add ONE of these after the core 3:
+- **Developer**: "Is there a technical spike needed before you can test this? What's the unknown?"
+- **PM**: "Who are the first 3-5 people you'd show this to for feedback?"
+- **Designer**: "What fidelity do you need to test this? Sketch, wireframe, or interactive prototype?"
+- **QA**: "How will you know the experiment is running correctly? What signals would indicate a broken test vs a failed hypothesis?"
+
 ### For Outcome, ask (3-5 questions):
 
 1. "What problem are you solving? What evidence do you have?" -> Problem + validation
@@ -43,6 +61,12 @@ Guide toward the experiment hierarchy: conversation > prototype > concierge > pr
 3. "What would make you stop?" -> Kill condition
 4. "What's IN scope and what's OUT?" -> Scope + non-goals
 5. "How will you collect the metric data?" -> Observation plan
+
+**Role-specific follow-up (Outcome)** — add ONE of these after the core 5:
+- **Developer**: "What's the riskiest technical piece? Should we timebox a spike first?"
+- **PM**: "Who owns the metric collection? How often will you check it?"
+- **Designer**: "What existing patterns can you reuse? Where does this need new design work?"
+- **QA**: "What's the acceptance criteria? How will you verify the observation plan is collecting accurate data?"
 
 ## Step 4 — Write the Cycle Brief
 
